@@ -1,0 +1,18 @@
+基本语法：
+语法和Java的接口相似
+AIDL只支持方法，不能定义静态成员
+AIDL运行方法有任何类型的参数和返回值
+除默认的类型外，均需要导包//Person类
+
+AIDL-开眼
+sdk中提供了一个编译AIDL的程序，${SDK_ROOT}/build-tools\${BUILD_TOOL_VERSION}\aidl.exe
+其中m版本的在bin目录下，不是像上面一样直接就在版本文件夹下面
+
+eclipse自动生成接口文件
+Android Studio需要编译才能生成
+
+short在序列化底层走不通：没有pacel.writeShort()，所以不支持
+
+AIDL （IPC）远程客户端、多个客户端、多线程，三个条件都满足才能用
+Binder
+Messager

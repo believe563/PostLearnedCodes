@@ -1,0 +1,16 @@
+Client:
+.Stub.asInterface(IBinder);
+Funcation()
+
+Server:
+New *.Stub();
+
+
+Funcation-->transact-->onTransact  Proxy-->asInterface(Binder)  Stub(Binder)-->Server
+
+stub-->存根
+proxy-->代理
+Stub这个抽象内部类实现了自己的接口
+Proxy类是Stub类的内部类，Aidl.Stub.asInterface(service) 拿到的只是一个Proxy类的实例
+在Proxy类中的Remoter.transact()方法将add方法等放到操作系统底层，然后全部发送到服务器端，Stub端
+Stub端的onTransaction（）用于接收，然后调用了Service里实现的add方法，

@@ -1,0 +1,28 @@
+Android  Interface Description Language Android接口描述语言developer/android/android-sdk/docs/index.html
+
+Interprocess communication（IPC）跨进程通讯
+
+AIDL IPC，多个应用程序，多线程
+
+Binder 只有IPC，没有多线程，多个应用程序
+
+Messager 只有IPC，没有多线程
+
+语法：
+
+用cmd生成aidl文件：
+在.aidl文件中用java语言创建自己的aidl接口
+新建一个扩展名为AIDL的文件，然后里面写package com.....;//包名，
+再写Interface 文件名，里面可以写一个或几个方法，写完后必须把这个文件放到对应的包下
+然后在android-sdk中的build-tools里找到一个版本的libs路径，添加到环境变量的path里，
+然后在cmd中写 AIDL 文件名.aidl 就在该文件的同级目录下生成了一个java文件
+
+在eclipse中生成.aidl文件：
+在src中新建一个file，扩展名写成.aidl,然后在里面写上包名和Interface 文件名....
+保存之后就可以在与R文件同级目录下找到aidl的java文件了，跟在cmd下生成的文件时一样的
+
+在android studio中生成.aidl文件：
+在module右击，新建folder-->AIDLFolder-->然后在出现的文件夹右击--》new file--》aidlfile，
+然后就可以直接新建出来了
+由于android studio不能自动编译，所以需要手动编译一下，点击那个圆形的有一个向下箭头的按钮，编译成功之后
+就可以在 “生成” 文件夹下找到相应的java文件了

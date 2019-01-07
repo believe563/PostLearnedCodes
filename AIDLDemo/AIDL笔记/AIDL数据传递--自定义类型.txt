@@ -1,0 +1,35 @@
+通过一个案例学习
+
+自定义类型必须实现Parcelable接口，实现序列化
+
+实现parcelable接口必须实现describeConternts方法和writetoparcel方法，
+describeContents方法：
+writeToParcel方法：
+有一个Parcel类型的参数，用于把我们的数据全部写进去，封装成序列化的包，在另一边将通过序列化的包取数据
+用pacel类型的变量调用write方法写进去
+
+还要写一个方法：
+public static final Creator<Person> CREATOR=new Creator<Person>(){
+	public Person createFromParcel(Parcel source){//通过Parcel将数据取出来
+		return new Person(source);//新建一个参数是Parcel类型的构造方法，看下面
+	}
+
+	public Person[] newArray(int size){
+		return new Person[size];//修改数组的长度
+	}
+}
+
+public Person(Parcel source){
+	this.name=source.readString();//打包到Parcel的顺序和取的顺序必须一致
+	this.age=source.readInt();
+}
+
+序列化结束之后，要想计算机能够识别Person这个自定义类型，必须重写一个Person.aidl文件，里面的内容是：
+package com....aidl;//包名
+parcelable Person;
+
+
+服务器端除了上述外，还需要在service中添加相应的代码，自定义的实体类也要复制过去，上述和这个实体类必须是完全一样的
+
+客户端:
+需要把两个aidl文件拷贝过去

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">GaoDeDiTuDemo</string>
+    <string name="action_settings">Settings</string>
+    <string name="sdkkey">d5da42856959fcf7924cc208f1a102ef</string>
+    <string name="traffic">交通状况</string>
+    <string name="normal">标准模式</string>
+    <string name="night">夜晚模式</string>
+    <string name="satellite">卫星模式</string>
+    <string name="no_result">对不起，没有搜索到相关数据</string>
+    <string name="error_network">搜索失败，请检查网络连接</string>
+    <string name="error_key">key验证无效</string>
+    <string name="error_other">未知错误，请稍后重试，错误码为</string>
+    <string-array name="traffic_array">
+        <item>@string/normal</item>
+        <item>@string/night</item>
+        <item>@string/satellite</item>
+    </string-array>
+</resources>

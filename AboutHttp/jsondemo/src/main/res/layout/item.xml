@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+<ImageView
+    android:id="@+id/imageView"
+    android:layout_width="150dp"
+    android:layout_height="100dp"
+    android:layout_alignParentLeft="true"/>
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_toRightOf="@id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:text="name"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_below="@id/name_tv"
+            android:id="@+id/age_tv"
+            android:text="age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_below="@id/age_tv"
+            android:id="@+id/schoolInfo1_tv"
+            android:text="schoolInfo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_below="@id/schoolInfo1_tv"
+            android:id="@+id/schoolInfo2_tv"
+            android:text="schoolInfo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</RelativeLayout>

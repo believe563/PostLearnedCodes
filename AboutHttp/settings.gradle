@@ -1,0 +1,1 @@
+include ':app', ':httpurlconnectiondemo', ':getandpostdemo', ':httpclientdemo', ':jsondemo', ':httpparsexml', ':multithreaddownload', ':pictureupload', ':httpclientuploaddemo'

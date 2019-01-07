@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LinearProgress</string>
+    <string name="action_settings">Settings</string>
+    -
+    <declare-styleable name="ThemableView">
+        <attr name="v_styleId" format="reference" />
+    </declare-styleable>
+</resources>

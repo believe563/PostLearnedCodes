@@ -1,0 +1,18 @@
+从网上下载图片和更新用到handler
+android为什么要设计只能通过handler机制更新UI呢？this is a question
+
+使用handler时遇到的问题：
+1、android.view.ViewRootImpl$CalledGromWrongThreadException:Onlu the original thread that created a view hierarchy(层级，等级) can touch its views.
+   在非UI线程去更新UI时抛出的异常
+2、Can't create handler inside thread that has not called Looper.prepare().
+   在一个子线程中去创建一个handler然后在程序运行中抛出的异常，默认子线程中的looper是空的，在那之前要通过looper.prepare创建一个looper
+
+如何实现与线程相关的handler
+ 自定义handler机制，让handler与线程关联，并实现相关功能，例如handlerThread
+
+经常是子线程给主线程sendMessage，让主线程去更新UI，
+那主线程又是怎么向子线程发送消息的呢
+
+总结android中更新UI的几种方式
+
+非UI线程有时候也可以更新UI

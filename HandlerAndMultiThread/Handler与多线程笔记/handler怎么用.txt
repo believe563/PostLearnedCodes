@@ -1,0 +1,27 @@
+一个handler允许发送或处理一个message或者一个runable对象，并与一个线程的messageQueue进行关联，
+每一个handler与一个单线程进行绑定（带有messageQueue的线程），
+当你创建一个新的handler的时候，它默认情况下会绑定到创建线程的messagequeue当中，
+然后，它将要传递消息和处理，并放到messagequeue（消息队列）中，并且当消息和处理从messagequeue中出来时要执行他们
+
+handler的两个作用：
+1、定时发送一个message或一个runable对象
+2、在线程中处理或执行一个动作
+
+当创建一个应用程序的时候就会创建一个进程，这个进程在整个activity中就是一个main线程，亦为UI线程，这个main线程就是一个activityThread线程，
+在activityThread中，会给我们在系统中默认地去创建Looper，这个Looper会跟messageQueue和UI线程具有一定的联系
+activityThread会运行一个messageQueue来管理顶级的应用，比如四大组件，四大组件默认在activityThread中，即UI线程中
+
+
+sendMessage()
+sendMessageDelayed
+post(Runnable)用里面的runnable对象的run方法就可以更新UI
+postDelayed(Runnable,long)
+
+实现图片的隔一段时间轮换效果
+
+方法1、用post(Runnable)  在thread的run方法中直接写一个handler.post(new runnable{run(){ 写更新的UI信息  }})  外层的run方法要记得start
+方法2、用postDelayed(runable,1000),也可以更新UI
+       移除消息：例子中单击按钮去终止图片的轮巡  用handler.removeCallbacks(myRunnable);从messagequeue中移除runnable
+方法3、用sendMessage()方法，在非主线程中新建一个自定义Message 然后将信息通过arg1，或arg2或obj封装然后sendMessage()，在handler中的handleMessage()方法中将message信息取出来
+       //也可以复用系统的message，不用自己定义  用handler.obtainMessage()得到message，handler是自己定义的handler，然后发送消息可以用sendToTarget()方法
+方法4、在创建handler的时候传一个callback参数 实例化callback，然后callback里有一个handlemessage方法，这个方法有返回值，是为了截获消息，不被后面所接收，返回为true时为截获

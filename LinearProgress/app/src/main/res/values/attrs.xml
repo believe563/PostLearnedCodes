@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="pv_progressMode" format="integer">
+        <enum name="determinate" value="0x00000000" />
+        <enum name="indeterminate" value="0x00000001" />
+        <enum name="buffer" value="0x00000002" />
+        <enum name="query" value="0x00000003" />
+    </attr>
+    <declare-styleable name="LinearProgressDrawable">
+        <attr name="lpd_strokeColors" format="reference" />
+        <attr name="lpd_strokeColor" format="reference|color"/>
+        <attr name="lpd_strokeSecondaryColor" format="reference|color"/>
+        <attr name="pv_progressMode"/>
+
+        <attr name="lpd_reverse" format="boolean"/>
+        <attr name="lpd_travelDuration" format="reference|integer"/>
+        <attr name="lpd_transformDuration" format="reference|integer"/>
+        <attr name="lpd_keepDuration" format="reference|integer"/>
+        <attr name="lpd_transformInterpolator" format="reference"/>
+        <attr name="lpd_inAnimDuration" format="reference|integer"/>
+        <attr name="lpd_outAnimDuration" format="reference|integer"/>
+
+        <attr name="lpd_strokeSize" format="reference|dimension"/>
+        <attr name="lpd_verticalAlign" format="integer">
+            <enum name="top" value="0x00000000" />
+            <enum name="center" value="0x00000001" />
+            <enum name="bottom" value="0x00000002" />
+        </attr>
+        <attr name="pv_progress"/>
+        <attr name="pv_secondaryProgress"/>
+        <attr name="lpd_maxLineWidth" format="reference|dimension|fraction"/>
+        <attr name="lpd_minLineWidth" format="reference|dimension|fraction"/>
+    </declare-styleable>
+    <declare-styleable name="ProgressView">
+        <attr name="pv_progressStyle" format="reference" />
+        <attr name="pv_autostart" format="boolean"/>
+        <attr name="pv_circular" format="boolean"/>
+        <attr name="pv_progressMode"/>
+        <attr name="pv_progress" />
+        <attr name="pv_secondaryProgress" />
+    </declare-styleable>
+</resources>

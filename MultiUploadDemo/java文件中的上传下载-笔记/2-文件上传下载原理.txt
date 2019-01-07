@@ -1,0 +1,25 @@
+在tcp/ip中，最早出现的文件上传机制是ftp，它是将文件由客户端发送到服务器的标准机制，
+并且考虑到了跨平台及二进制格式的文件，
+但是在jsp编程中不能使用ftp方法来上传文件，这是由jsp运行机制所决定的。
+
+文件上传原理********************************************************
+通过为表单元素设置Method="post",enctype="multipart/form-data"属性，
+让表单提交的数据以二进制编码的方式提交，在接收此请求的servlet中用二进制流来获取内容，
+就可以取得上传文件的内容，从而实现文件的上传。
+
+表单enctype属性********（3种）**********************************************
+application/x-www-form-urlencoded:
+这是默认编码方式，它只处理表单域里的value属性值，采用这种编码方式的表单会将表单域的值处理成url编码方式。
+
+multipart/form-data:
+这种编码方式的表单会以二进制流的方式来处理表单数据，这种编码方式会把文件域指定文件的内容也封装到请求参数里。
+
+text/plain:
+这种方式主要适用于直接通过表单发送邮件的方式。
+
+文件下载原理*********************************************************************
+1、后台通过HttpServletResponse.setContentType方法设置Content-Type头字段的值，也就是让服务器知道以哪种方式响应客户端返回的信息，为浏览器无法使用某种方式或激活某个程序来处理的MIME类型，下载类型一般要设置成："application/octet-stream" 或"applicaiton/x-msdownload"等。
+2、需要通过HttpServletResponse.setHeader方法设置返回的头信息中的Content-Disposition属性的值为"attachment;filename=文件名"。设置为附件的方式，浏览器就会以附件的形式打开我们的文件并下载和设置下载的文件名。
+3、在硬盘上读取所下载的文件，并且通过HttpServletResponse.getOutputStream方法返回的ServletOutputStream对象来向客户端写入附件文件内容
+
+代码小事例见ShangchuanXiazaiDemo

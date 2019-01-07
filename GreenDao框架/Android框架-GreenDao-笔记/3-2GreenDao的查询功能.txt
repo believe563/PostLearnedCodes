@@ -1,0 +1,35 @@
+list()直接取出数据并查询数据
+listLazy()不直接取出数据有缓存
+listLazyUncached()延迟加载不缓存数据
+listIterator()自己遍历数据
+
+条件查询：
+like
+eq
+between
+>
+<
+notEq
+isNull
+isNotNull
+排序
+>=
+<=
+原始sql查询
+多线程查询
+
+数据间的关系：
+1v1------------------------
+1v多------------------------
+////        一对多时,,,多的那一方将少的那一方引入为外键，要先拿到主键，写完要先运行一下生成新的Dao文件
+//        Property sonId=father.addLongProperty("sonId").getProperty();
+//        father.addToOne(son,sonId);
+//        son.addToMany(father,sonId).setName("fathers");
+--1v多查询---------------------------
+List<Son> sons=sonDao.queryBuilder().list();
+for(Son son:sons){
+List<Father> fathers=son.getFathers();
+}
+
+
+多v多--------------------------------

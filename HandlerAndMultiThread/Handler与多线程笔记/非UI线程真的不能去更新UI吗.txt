@@ -1,0 +1,2 @@
+实际上是可以的，但是不能在sleep()之后再更新，因为viewRootImpl是在activity的onresume方法中被创建出来的
+viewRootImpl是管理更新UI的判断处理逻辑，会抛出异常

@@ -1,0 +1,29 @@
+首先在当前android的module中添加greenDao的依赖
+其次创建一个javaLibrary的module，在其中添加greendaogenerator的依赖
+
+先用schema创建数据库表，生成数据库，
+Schema schema=new Schema(1,"com.greenrobot.dao");//参数：版本、MyClass存放目录
+        Entity son=schema.addEntity("Son");//表名一定要用大写
+        son.addIdProperty();//id
+        son.addStringProperty("name").notNull();
+        son.addIntProperty("age");
+
+        Entity father = schema.addEntity("Father");
+        father.addIdProperty();
+        father.addStringProperty("name");
+        father.addIntProperty("age");
+
+//        儿子和父亲通过外键相关联
+        Property fatherId=son.addLongProperty("fatherId").getProperty();//儿子表创建父亲的id外键
+        son.addToOne(father, fatherId);//将fatherId这个外键同父亲表相关联
+
+        try {
+            new DaoGenerator().generateAll(schema,"greendaogenerate/src/main/java");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }catch(Exception e){
+
+        }
+
+在生成的表中调用DaoMaster DaoSession 等类打开数据库表 并自定义增删改查的方法进行对数据库表的操作

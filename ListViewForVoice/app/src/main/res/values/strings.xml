@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ListViewForVoice</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="spinner_item">
+        <item name="a">按时间</item>
+        <item name="a">按时长</item>
+        <item name="a">按标签</item>
+    </string-array>
+</resources>

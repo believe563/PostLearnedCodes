@@ -1,0 +1,13 @@
+handler是android给我们提供的用来更新UI的一套机制，
+       也是一套消息处理的机制，我们可以发送消息，也可以通过它处理消息（其实是framwork）
+
+   activity不同生命周期回调的方法都是通过handler机制去发送消息，根据不同的message做不同的分支处理
+   比如常见的时候发送一个消息给framwork，告诉我们去回调activity的oncreate方法或ondestroy方法
+   其实在framwork中activity的交互大部分都是用ams做处理，
+   我们应用程序的核心就是activityThread，
+   activityThread中就是通过handler机制接收到ams给我们发送的activity生命周期的一些管理，
+   比如说ams（即activityManagerService）给我们发送一个启动activity的实例，activityThread中接收到实例之后就会回调activity的onCreate方法，
+   详细的回调机制就是通过handler机制来处理和传递信息的
+
+为什么要使用handler？
+  android在设计的时候，就封装了一套消息创建，传递，处理机制，如果不遵循这样的机制就没有办法更新UI信息，就会抛出异常（非UI线程不能直接去更新UI）

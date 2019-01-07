@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:background="@color/red"
+    tools:context="com.feng.demo.listviewforvoice.MainActivity">
+<include layout="@layout/toolbar_layout"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"/>
+<ListView
+    android:id="@+id/lv_home"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+</LinearLayout>

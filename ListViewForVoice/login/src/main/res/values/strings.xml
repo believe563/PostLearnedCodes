@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Login</string>
+    <string name="sign_up" translatable="true"><u>注册</u></string>
+</resources>

@@ -1,0 +1,36 @@
+四种：
+1、runOnThread
+2、handler post
+3、handler sendMessage
+4、view post
+
+具体在线程内部：
+第一种：handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        textView.setText("the first methods to update UI");
+                    }
+                });
+第二种：handler.sendEmptyMessage(1);
+        然后在类中创建一个handler对象并实现它的handleMessage方法
+       private Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            textView.setText("the second methods to update UI");
+            super.handleMessage(msg);
+        }
+    };
+第三种：runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        textView.setText("the third way to update UI");
+                    }
+                });
+第四种：textView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        textView.setText("the fourth way to update UI");
+                    }
+                });
+
+四种方法归根结底还是拿到handler去更新UI

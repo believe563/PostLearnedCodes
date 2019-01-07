@@ -1,0 +1,6 @@
+避免因为线程之间相互切换时因为looper没有创建完成而造成的空指针异常
+
+handlerThread与子线程的handler调用机制相同，不同点是handlerthread中有线程同步机制，
+                    在处理handlemessage的时候会等待直到创建looper对象，不会出现线程并发导致的问题
+
+handlerThread可以作为主线程向子线程发送耗时操作用

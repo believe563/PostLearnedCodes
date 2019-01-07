@@ -1,0 +1,4 @@
+handler定义在子线程中，并且handlemessage是在子线程中处理的
+
+在子线程中创建handler要考虑得到主线程的looper，然后再创建handler，然后再轮巡，在oncreate中实例化这个子线程的时候要先把它用start()方法开启
+再调用它的handler成员变量发送信息

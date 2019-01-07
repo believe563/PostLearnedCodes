@@ -1,0 +1,1 @@
+通过创建一个基于主线程的handler和基于子线程的handler，相互通过sendmessage发送消息，实现相互之间的通信

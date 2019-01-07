@@ -1,0 +1,21 @@
+地图显示的关键类AMap类：
+它主要是一个控制类，用来控制我们的地图容器，然后用户与地图的所有交互都需要通过这个类
+
+AMap是地图的对象，AMap地图将会通过MapFragment或MapView容器类来表现
+
+Amap类自动处理以下操作：
+1.连接到高德地图服务
+2.下载地图数据
+3.在设备屏幕上显示地图
+4.显示各种控件，如缩放控件
+5.支持各种手势，如平移和缩放手势
+
+
+地图容器MapView类：
+是Android View类的一个子类，它可以帮助你在AndroidView中放置地图，
+
+它是应用程序和窗口部件的基本构件类。MapView作为地图的容器，通过AMap对象显示地图，
+
+使用MapView类，必须重载Activity生命周期所有方法，有onCreate(),onDestroy(),onResume(),
+onPause(),onSaveInstanceState()
+MapView类有很多生命周期，需要将它的生命周期与MapView的生命周期一一绑定

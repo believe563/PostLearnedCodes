@@ -1,0 +1,6 @@
+﻿1.AMap_2DMap_V2.8.0_20151231.jar架包是AMap地图包，支持Android SDK2.2及以上，支持Android SDK2.2及以上；
+ 2.AMap_Location_V2.2.0_20151222.jar架包是AMap定位包，支持Android SDK2.1及以上，
+ 
+3.AMap_Search_V2.8.0_20160105.jar架包是AMap搜索包，支持Android SDK1.6及以上，
+ 
+4.如果遇到问题，可以上技术支持论坛http://bbs.amap.com/forum.php。

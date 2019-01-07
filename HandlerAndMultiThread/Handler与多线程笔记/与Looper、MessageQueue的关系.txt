@@ -1,0 +1,36 @@
+android为什么要设计只能通过handler更新Ui呢？
+最根本的目的是 解决多线程并发的问题
+假如在一个activity中，有多个线程去更新UI，并且都没有加锁机制，会产生什么样的问题？
+更新界面错乱 比如转账转错等
+
+如果对更新Ui的操作都进行加锁处理的话会使性能下降
+
+所以android为我们提供了一套更新UI的机制，只需遵循这样的机制
+
+
+和Looper、messageQueue之间是什么关系
+Looper：消息承装的载体，内部包含了一个MessageQueue，所有的handler发送的消息都走向这个消息队列
+Looper.Looper方法，是一个死循环，不断的从MessageQueue取消息，如果有消息就处理消息，没有消息就阻塞
+
+MessageQueue：
+一个消息队列，可以添加消息，并处理消息
+
+Handler:内部会跟looper进行关联，也就是说在handler的内部可以找到Looper，找到了Looper也就找到了MessageQueue，
+         在handler中发送消息，就是向messagequeue队列中发送消息
+
+重要：！！！
+     handler负责发送消息，looper负责接收handler发送的消息，并直接把消息回传给handler自己
+     messagequeue就是一个存储消息的容器
+
+threadLocal 用于在线程中保存一些变量信息，默认情况下通过threadLocal去创建一个与线程相关的对象
+            有set方法 把变量放到threadlocal中，get方法把变量拿出来
+
+在UI线程中创建一个looper（后台帮我们创建），它有一个messageQueue，messageQueue相当于它的变量
+handler与主线程的looper的messagequeue如何关联呢？进handler中去看看
+    handler中会先把UI线程中的looper对象取出来，拿到它的messagequeue，把发送的消息放到messagequeue中，即handler与looper已经关联了
+
+handler怎么通过sendmessage发送消息呢？怎么样回调handler的handlemessage方法呢？
+通过当前线程拿到一个messagequeue对象，把消息放到队列当中
+
+Looper对象的loop()方法中通过looper取出消息队列messagequeue，然后有一个for循环(死循环)，取出一个消息，如果不为空，就通过target.dispatchMessage()方法
+      在里面

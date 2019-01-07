@@ -1,0 +1,42 @@
+greenDao的学习方法和相关资源的下载
+1-去官方文档
+在How to get started页面中有两个连接： greenDAO example projectDaoExample是一个greenDao使用的例子
+DaoTestGenerator帮助我们去生成dao的抽象接口，帮助更快地生成dao（data access object数据访问对象）
+github上的例子是基于gradle构建的，所以只能在android studio进行编译，首次打开要有半个小时的时间
+
+
+eclipse
+在官网上的download/Source连接下载eclipse上的jar包，将其拷贝到项目中
+需要下载greendao和greendao-generator两个jar包
+还需要下载freemarker 的jar包 在搜索栏中搜索
+通过jar包生成数据库访问层的一些接口
+官网有如何生成数据库表的代码和方法
+
+Schema schema=new Schema(1,"de.greenrobot.daoexample");
+		Entity note=schema.addEntity("Person");
+		note.addIdProperty();
+		note.addStringProperty("name").notNull();
+		note.addStringProperty("sex");
+		note.addIntProperty("age");
+		note.addDateProperty("date");
+		
+		try {
+			new DaoGenerator().generateAll(schema,"../GreenDaoGenerate/src");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch(Exception e){
+			
+		}
+
+运行后打印出的日志如下：
+This program comes with ABSOLUTELY NO WARRANTY
+Processing schema version 1...
+Written E:\workspace\javaee\GreenDaoGenerate\src\de\greenrobot\daoexample\PersonDao.java
+Written E:\workspace\javaee\GreenDaoGenerate\src\de\greenrobot\daoexample\Person.java
+Written E:\workspace\javaee\GreenDaoGenerate\src\de\greenrobot\daoexample\DaoMaster.java
+Written E:\workspace\javaee\GreenDaoGenerate\src\de\greenrobot\daoexample\DaoSession.java
+Processed 1 entities in 318ms
+表明还同时生成了PersonDao.java DaoMaster.java DaoSession.java
+
+Android Studio

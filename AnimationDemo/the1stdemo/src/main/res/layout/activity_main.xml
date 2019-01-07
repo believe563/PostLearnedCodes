@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.fengjianghui.personal.the1stdemo.MainActivity">
+
+    <ImageView
+        android:id="@+id/iv_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/b"/>
+
+    <ImageView
+        android:id="@+id/iv_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/c"/>
+
+    <ImageView
+        android:id="@+id/iv_d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/d"/>
+
+    <ImageView
+        android:id="@+id/iv_e"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/e"/>
+
+    <ImageView
+        android:id="@+id/iv_f"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/f"/>
+
+    <ImageView
+        android:id="@+id/iv_g"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/g"/>
+
+    <ImageView
+        android:id="@+id/iv_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/h"/>
+
+    <ImageView
+        android:id="@+id/iv_i"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/i"/>
+
+    <ImageView
+        android:id="@+id/iv_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/a"
+        android:layout_gravity="left|top"/>
+</FrameLayout>

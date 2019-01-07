@@ -1,0 +1,1 @@
+include ':app', ':baseanimation', ':onclickeventdemo', ':the1stdemo', ':valueanimatordemo', ':valueanimatordemo1'

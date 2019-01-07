@@ -1,0 +1,19 @@
+1、指定显示风格  圆圈  条状
+2、分类：有百分比计数的 和一直转的 即精确和不精确
+3、标题上的progressBar的设置
+4、progressBar的关键属性  最大刻度 当前刻度  如何去增加刻度
+   android：max="100"最大显示进度
+   android:progress="50"第一显示进度
+   android:secondaryProgress="80"第二显示进度
+   sndroid:indeterminate="true"是否精确显示 true为不精确显示
+5、关键方法
+   setProgress(int)设置第一进度
+   setSecondaryProgress（int）设置第二进度
+   getProgress（）获取第一进度
+   getSecondaryProgress（）获取第二进度
+   incrementProgressBy（int）增加或减少第一进度
+   incrementSecondaryProgressBy（int）增加或减少第二进度
+   getMax（）获取最大进度
+6、progressDiolog的基础使用  对话框
+7、自定义progressBar
+    自定义时主要是重写android:progressDrawable="@drawable/progressbar_user_defined"来覆盖原有的样式

@@ -1,0 +1,41 @@
+1 布局样式
+线性linear 
+帧frame 布局叠加 视频图层上的播放按钮 加载时的进度条
+表格table行列分布  被gridView代替
+绝对absolute
+相对relative 灵活
+
+2 使用量(低到高)
+absolute
+table
+frame特殊的布局中才会用
+linear性能和效率高一点
+relative
+在linear和relative布局层次一样的情况下linear性能和效率高一点
+如果linear远多于relative则使用relative
+
+重要！！！
+3 将可复用的组件抽取出来并通过include标签使用
+  <include/>将公用的组件抽取出来单独放到一个xml文件中，
+          然后使用include标签导入共用布局
+  效果：提高UI的制作和复用效率，也能保证制作的UI布局更加规整和易维护
+
+  制作公共标题栏：
+  height改为wrap，不然标题栏就占据整个屏幕了
+  把公共标题栏加在main_activity中后可以在Activity中获得include里包含的控件
+
+
+4 使用ViewStub标签来加载一些不常用的布局，惰性加载 （stub存根、烟蒂）
+  ViewStub与include标签一样可以引入一个外部布局，不同的是，viewStub引入的布局默认不会扩张，
+  既不会占用显示也不会占用位置，从而在解析layout时节省cpu和内存
+  一般情况下需要代码控制使它加载到布局中
+  在小例子中加入一个button，设置在点击之后显示隐藏的内容    用visible属性也可以达到同样的效果，但它不是布局优化的内容
+  小例子中加入一个布局 common_test
+  通过在Activity中实例化ViewStub然后viewStub.inflate();就可以显示所隐藏的内容
+
+
+5 使用merge标签减少布局的嵌套层次，合并UI布局。。。嵌套层次指的是structure上显示的层次
+  场景1 布局根结点是FrameLayout且不需要设置backGround或padding等属性，可以用merge代替
+  场景2 某布局作为子布局被其他布局include时，使用merge当作该布局的顶结点，这样在被引入时顶结点会自动被忽略 
+        在小例子中是在common_progress中将顶结点线性布局换成merge，相当于linearLayout那层没有了里面的内容直接被frameLayout管理
+   使用merge作为顶结点时不能有额外的属性

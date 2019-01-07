@@ -1,0 +1,18 @@
+高德地图的选择路况用过
+学生选课用过
+
+属性：
+android:spinnerMode="dialog"  dialog是对话框模式，dropdown是在当前行下展开的页
+android:prompt="@string/genders" 如果是dialog模式，则对话框最上一行是显示这里的字符串
+android:entries="@array/genders_detail" 点击之后的详细选项
+
+dropDownVerticalOffset| setDropDownVerticalOffset(int)
+spinnerMode=”dropdown”时，下拉的项目选择窗口在垂直方向相对于Spinner窗口的偏移量。
+
+android:dropDownWidth|setDropDownWidth(int)
+在spinnerMode=”dropdown”时，设定下拉框的宽度。
+
+android:popupBackground|setPopupBackgroundResource(int)
+在spinner=”dropdown”时，使用这个属性来设置下拉列表的背景。
+
+在onItemSelected监听事件中获取一个被选中项的内容时用parent.getSelectedItem().toString();

@@ -1,0 +1,5 @@
+以前volley框架中分装了HttpClient，
+但是sdk6.0之后，
+谷歌取消了HttpClient相关属性，
+volley框架不能使用，
+想要正常使用volley，需要将httpclient作为library引入

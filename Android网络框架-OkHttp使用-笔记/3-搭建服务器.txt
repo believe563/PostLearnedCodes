@@ -1,0 +1,6 @@
+安装tomcat+struts
+
+tomcat直接在eclipse上关联tomcat目录的路径就可以，
+
+struts需要先下载较低版本的struts包 解压后将apps文件夹的struts2-blank.war包解压，在WEB-INF文件夹下的libs目录中全选那些jar包，放到web项目的lib中
+然后将WEB-INF目录下的struts.xml文件放到项目的src文件夹下，

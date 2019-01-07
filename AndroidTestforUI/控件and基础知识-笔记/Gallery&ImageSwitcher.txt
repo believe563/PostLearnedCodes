@@ -1,0 +1,23 @@
+使用gallery制作图片浏览器
+
+gallery过时了可以用scrollView或viewPager代替
+
+数据源
+新建适配器
+gallery加载适配器
+适配器中getView要返回相对应的view
+
+
+自定义适配器：
+四种重要方法：getCount()返回已定义的数据源的总数量  如果想要让它呈滚动状态，
+                         就返回Integer.MAX_VALUE然后在后面对应的position也要求余
+              getItem() getItemId()告诉适配器取得目前容器中的数据Id和对象
+              getView()取得目前欲显示的图像view，传入数组id值使之读取与成像
+
+onItemSelected监听器的使用 就是gallery当前选中的view的监听
+
+
+ImageSwitcher的介绍：
+与imageview的功能类似  但可指定切换时的动画效果
+要想让imageSwitcher加载图片的话就要让当前类实现ViewFactory接口
+

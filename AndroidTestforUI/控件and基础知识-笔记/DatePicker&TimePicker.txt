@@ -1,0 +1,22 @@
+DaterPicker:动态输入时间和日期的功能
+TimePicker:
+DatePickerDialog:动态输入时间和日期的 对!话!框!
+TimePickerDialog:
+
+
+针对监测日期时间的监听器：
+OnDateChangedListener:
+更改年月日之后会触发onDateChange()事件
+onTimeChangedListener
+更改了时、分时会触发onTimeChange()事件
+OnDateSetListener
+更改年月日之后会触发onDateSet()事件
+OnTimeSetListener
+更改了时、分时会触发onTimeSet()事件
+
+DatePicker对象以init()这个方法来指定DatePicker初始的年月日及OnDateChangedListener()的事件
+TimePicker对象是以setOnTimeChangedListener()事件来处理时间改变时程序要做的操作
+
+DatePicker中month的计算，初始显示的时候计算的month要+1,init()方法里的初始值不需要+1，
+onDateChangedListener()参数中的monthOfYear需要+1
+

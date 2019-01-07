@@ -1,0 +1,8 @@
+1、添加list作为数据源
+2、定义适配器，用ArrayAdapter
+   纯文字的显示用Arraydapter
+   三个参数：环境 每一项的样式 list
+3、设置下拉列表下拉时的菜单样式arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+   setDropdownViewResource  参数为每一项的样式 参数是系统自带的样式（用checkedTextView实现的）
+4、加载适配器
+5、为Spinner设定监听器

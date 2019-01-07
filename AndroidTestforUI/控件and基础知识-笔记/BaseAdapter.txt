@@ -1,0 +1,44 @@
+BaseAdapter的作用：
+1 降低程序的耦合性
+2 使程序易于扩展
+
+listView的显示与缓存机制：
+listview的每一个item不显示的时候放在recycler中，即view的缓冲池中
+即将显示的将会填充数据并从缓冲池中被取出来，即需要才显示，显示玩就被回收到缓存
+
+baseAdapter的四种方法
+getCount（）
+getItem()
+getItemId()
+getView()
+
+先创建main布局和item布局
+每一个item都有若干项  例如一个imageView和2个textView（title和content）
+
+创建数据源：
+新建一个实体类itemBean，里面对应有三个字段，1个int类型的参数用来存放放在imageView中的图片的id，
+                                    两个string类型的参数用来存放title和content 实现带这三个参数的构造方法
+                                    最后在activity中新建一个类型为itemBean的list，然后向里面加入20条信息
+
+创建适配器：
+继承BaseAdapter，并实现它的方法
+用构造器将数据源和适配器进行关联
+BaseAdapter的三重境界：
+》》》之逗比式：没有使用listView的缓存机制
+创建一个layoutInflater对象(前提是要在构造方法中传入上下文对象context)，
+并在构造器中通过LayoutInflater.from（context）方法初始化
+在getView方法中通过inflate方法将xml文件转化成view，
+再通过findviewbyid获得里面的imageView等标签 再将数据源list里的内容填充到标签中最后返回view
+》》》之普通式：已缓存的将不用创建新的view
+使用系统的参数convertView
+如果convertView已经被缓存过了 就不需要重新创建一个新的view，可以直接拿来使用
+参数中的convertView与自己定义的View没有区别，findViewById会浪费大量的时间
+》》》之文艺式：对findViewByid进行优化  用viewHolder来优化BaseAdapter，通过viewHolder类实现显示数据的视图的缓存
+在BaseAdapter中写一个ViewHholder内部类
+创建ViewHolder对象，里面对应item布局中的三个标签（imageView,textview,textview）
+判断ConvertView是否为空
+  为空时new convertView 并用findviewById找到image和text
+  通过setTag将viewHolder与convertView进行绑定
+  不为空时，通过getTag取出相关联的ViewHolder
+  通过viewHolder对象找到对应控件
+  将对象存放在viewHolder中  每次只需要从viewholder获得对象即可，避免了多次通过findViewById寻找控件

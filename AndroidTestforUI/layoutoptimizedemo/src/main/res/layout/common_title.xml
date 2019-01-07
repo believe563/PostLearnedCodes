@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><!--公共布局，在做公共布局之前要隐藏系统的标题栏-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+    android:background="#000000">
+<TextView
+    android:id="@+id/ret"
+    android:text="返回"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="14sp"
+    android:textColor="#ffffff"
+    android:layout_alignParentLeft="true"
+    android:layout_marginLeft="10dp"
+    android:layout_centerVertical="true"/>
+    <TextView
+        android:id="@+id/title"
+        android:text="布局优化"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#ffffff"/>
+    <TextView
+        android:id="@+id/fun"
+        android:text="功能"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="14sp"
+    android:textColor="#ffffff"/>
+
+</RelativeLayout>

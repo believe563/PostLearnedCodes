@@ -1,0 +1,20 @@
+可拖动的进度条
+听音乐或看视频时的进度条 后面的时间随着变化
+数值 当前的第一进度和第二进度
+
+seekBar的事件：
+事件监听：SeekBar.OnSeekBarChangeListener接口
+三个事件：onProgressChanged-->数值改变
+          onStartTrackingTouch-->开始拖动
+          onStopTrackingTouch-->停止拖动
+
+
+自定义SeekBar
+改变进度条的样式：
+android:progressDrawable="@drawable/seekbar_img"
+改变滑块的样式
+android:thumb="@drawable/thumb"
+
+从原始的style入手
+在sdk中找到selector选择器查看它自带的样式写法
+android:thumb="@drawable/my_thumb"手指按下 按着的状态 选择的状态等的样式

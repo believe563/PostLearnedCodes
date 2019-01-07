@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name">ScrollViewDemo</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="content">关联source和文档，只要配置好sdk路径即可
+
+1、修改：（名字、行列）
+修改类名方法名shift+f6
+把两行变成一行ctrl+shift+j
+
+撤销选中Esc
+alt+f12可以直接打开terminal运行
+
+2、整理：（排版、import整理、包围结构、生成方法）
+弹出包围结构ctrl+alt+t
+管理import引用ctrl+alt+o
+
+3、查找位置、窗口、参数
+快速选择类、方法和字段所在的Project结构的位置或Structure结构的位置等，光标停在那里，按alt+f1
+关闭一个编辑窗口 按鼠标中间的滚轮或者按住shift再按鼠标左键
+查找类所实现的接口用ctrl+alt+B
+找到文档，即弹出文档窗口，ctrl+Q
+查看应用方法的参数ctrl+p
+快速找到方法alt+Q
+在不同的选项卡之间切换ctrl+tab
+快速打开最近浏览的文件ctrl+e
+选中所有相同的字段，按ctrl+shift+f7，顺序向下按f3，向上按shift+f3，取消按esc
+在左侧的project栏开始拼写就会出现所有匹配的项
+根据类名查找类ctrl+N
+
+
+4、光标问题：
+按ctrl+enter  光标不动，下面会多一行空行
+在方法之间快速切换alt+上箭头或alt+下箭头
+
+5、各种提示操作：
+提示类型转换等的操作：alt+enter
+设置代码补全提示，设置-->ed itor-->code completion-->选none为大小写不敏感
+弹出自动提示设置，即鼠标悬浮提示，在设置-->editor-->show quick。。。
+查看变量目前的值alt+点击
+提示自己想不到的方法ctrl+J
+弹出提示代码ctrl+shift+空格
+补全一行中剩下的代码ctrl+shift+enter
+自动弹出所在位置的提示模板ctrl+G
+选择弹出的提示的第一条ctrl+句点
+
+注释：
+ctrl+/：//...
+ctrl+shift+/:/*...*/
+
+
+
+已记住的：
+复制所选的区域并粘贴：ctrl+d
+选择eclipse的编辑器快捷方式在设置-->editor-->keymap
+androidTest文件夹是用来做测试的，main文件夹是主文件夹
+查看源码，按ctrl再点击关键字
+open modulesettings 来删除文件
+app theme可以改界面手机的样式等
+权限的大小写是不可以变的，不然就没有作用了
+
+The Esc key in any tool window moves the focus to the editor.
+Shift+Esc moves the focus to the editor and also hides the current (or last active) tool window.
+The F12 key moves the focus from the editor to the last focused tool window.
+    关联source和文档，只要配置好sdk路径即可
+
+1、修改：（名字、行列）
+修改类名方法名shift+f6
+把两行变成一行ctrl+shift+j
+
+撤销选中Esc
+alt+f12可以直接打开terminal运行
+
+2、整理：（排版、import整理、包围结构、生成方法）
+弹出包围结构ctrl+alt+t
+管理import引用ctrl+alt+o
+
+3、查找位置、窗口、参数
+快速选择类、方法和字段所在的Project结构的位置或Structure结构的位置等，光标停在那里，按alt+f1
+关闭一个编辑窗口 按鼠标中间的滚轮或者按住shift再按鼠标左键
+查找类所实现的接口用ctrl+alt+B
+找到文档，即弹出文档窗口，ctrl+Q
+查看应用方法的参数ctrl+p
+快速找到方法alt+Q
+在不同的选项卡之间切换ctrl+tab
+快速打开最近浏览的文件ctrl+e
+选中所有相同的字段，按ctrl+shift+f7，顺序向下按f3，向上按shift+f3，取消按esc
+在左侧的project栏开始拼写就会出现所有匹配的项
+根据类名查找类ctrl+N
+
+
+4、光标问题：
+按ctrl+enter  光标不动，下面会多一行空行
+在方法之间快速切换alt+上箭头或alt+下箭头
+
+5、各种提示操作：
+提示类型转换等的操作：alt+enter
+设置代码补全提示，设置-->ed itor-->code completion-->选none为大小写不敏感
+弹出自动提示设置，即鼠标悬浮提示，在设置-->editor-->show quick。。。
+查看变量目前的值alt+点击
+提示自己想不到的方法ctrl+J
+弹出最匹配最合适的提示代码ctrl+shift+空格
+补全一行中剩下的代码ctrl+shift+enter
+自动弹出所在位置的提示模板ctrl+G
+选择弹出的提示的第一条ctrl+句点
+
+注释：
+ctrl+/：//...
+ctrl+shift+/:/*...*/
+
+
+
+已记住的：
+复制所选的区域并粘贴：ctrl+d
+选择eclipse的编辑器快捷方式在设置-->editor-->keymap
+androidTest文件夹是用来做测试的，main文件夹是主文件夹
+查看源码，按ctrl再点击关键字
+open modulesettings 来删除文件
+app theme可以改界面手机的样式等
+权限的大小写是不可以变的，不然就没有作用了
+
+The Esc key in any tool window moves the focus to the editor.
+Shift+Esc moves the focus to the editor and also hides the current (or last active) tool window.
+The F12 key moves the focus from the editor to the last focused tool window.</string>
+</resources>

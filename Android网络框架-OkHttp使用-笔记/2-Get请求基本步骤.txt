@@ -1,0 +1,43 @@
+详见代码OkHttpDemo
+
+点击按钮时调用如下方法，需要引入INTERNET权限
+
+public void doGet(View view) throws IOException {
+        //1
+        OkHttpClient okHttpClient=new OkHttpClient();//相当于一个全局的执行者，它里面配置了各种全局的相关信息，里面所有的请求都交由它去执行。
+                                                        //通过它还可以调用超时时间，发生错误的retry。cookie，
+        //2
+        Request.Builder builder = new Request.Builder();//创建一个请求，因为Request是基于构造者模式，所以用.Builder引出来
+        Request request=builder.get().url("http://www.imooc.com").build();//指定method为get，并指定url,build之后返回一个request
+                                                            //request中还有addheader（用来增加header），等方法，通过tag去cancel掉request请求
+        //3
+        Call call=okHttpClient.newCall(request);//返回一个call，拿到call之后可以直接去执行，也可以加入队列去异步执行
+                                            //可以看作单个请求的执行者，
+
+//        Response response=call.execute();//直接（同步）执行，抛出异常，返回是response，可以通过response拿到一些信息
+
+        call.enqueue(new Callback() {//异步执行,里面的方法在子线程里面
+            @Override
+            public void onFailure(Call call, IOException e) {
+                L.e("onFailure:" + e.getMessage());
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                L.e("onResponse:");
+                final String res=response.body().string();//通过response得到字符串信息
+                //onresponse中的参数不是常见的字符串或byte数组，这样做的目的可能是为了一些大文件的操作
+                // 但是从response中可以拿到byte数组
+//                byte[] b=response.body().bytes();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tv.setText(res);
+                    }
+                });
+
+                L.e(res);
+            }
+        });
+    }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../AndroidTest.iml" filepath="$PROJECT_DIR$/../AndroidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../adapterandlistdemo/adapterandlistdemo.iml" filepath="$PROJECT_DIR$/../adapterandlistdemo/adapterandlistdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../asyncloadingdemo/asyncloadingdemo.iml" filepath="$PROJECT_DIR$/../asyncloadingdemo/asyncloadingdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../asynctaskdemo/asynctaskdemo.iml" filepath="$PROJECT_DIR$/../asynctaskdemo/asynctaskdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baseadapterdemo.iml" filepath="$PROJECT_DIR$/baseadapterdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dateandtimepicker/dateandtimepicker.iml" filepath="$PROJECT_DIR$/../dateandtimepicker/dateandtimepicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../fourlabels/fourlabels.iml" filepath="$PROJECT_DIR$/../fourlabels/fourlabels.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../fragmentdemo/fragmentdemo.iml" filepath="$PROJECT_DIR$/../fragmentdemo/fragmentdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../gallerydemo/gallerydemo.iml" filepath="$PROJECT_DIR$/../gallerydemo/gallerydemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../gridviewdemo/gridviewdemo.iml" filepath="$PROJECT_DIR$/../gridviewdemo/gridviewdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../layoutoptimizedemo/layoutoptimizedemo.iml" filepath="$PROJECT_DIR$/../layoutoptimizedemo/layoutoptimizedemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../permissiondemo/permissiondemo.iml" filepath="$PROJECT_DIR$/../permissiondemo/permissiondemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../progressbar/progressbar.iml" filepath="$PROJECT_DIR$/../progressbar/progressbar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../scrollviewdemo/scrollviewdemo.iml" filepath="$PROJECT_DIR$/../scrollviewdemo/scrollviewdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../seekbardemo/seekbardemo.iml" filepath="$PROJECT_DIR$/../seekbardemo/seekbardemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../spinnerdemo/spinnerdemo.iml" filepath="$PROJECT_DIR$/../spinnerdemo/spinnerdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../viewflipperdemo/viewflipperdemo.iml" filepath="$PROJECT_DIR$/../viewflipperdemo/viewflipperdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../viewpagerdemo/viewpagerdemo.iml" filepath="$PROJECT_DIR$/../viewpagerdemo/viewpagerdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../webview/webview.iml" filepath="$PROJECT_DIR$/../webview/webview.iml" />
+    </modules>
+  </component>
+</project>

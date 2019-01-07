@@ -1,0 +1,83 @@
+通过Intent调用系统浏览器
+Uri uri=Uri.parse(url);//url为要链接的地址
+Intent intent=new Intent(Intent.ACTION_VIEW,uri);
+startActivity(intent);
+
+
+自制一个WebView页面
+1、将webView加入应用
+<WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></WebView>
+
+2、使用WebView加载页面
+   用loadURl的函数  web资源：webView.loadUrl("http://www.baidu.com");
+                    本地文件用：webView.loadUrl("file:///android_asset/XX.html");androidStudio中assets文件不在main中，
+                    需要自己用new folders assets 然后用上面的路径打开
+                    本地文件存放在assets文件中
+   使页面获得焦点：webView.requestFocus();
+    处理页面：
+
+3、获取网络访问权限
+   <manifest>
+<uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+
+4、在WebView中使用javaScript
+   需要在webView中启用javascript（通过webView中带有的webSettings()来启用，
+   getSettings()来获取websettings的值,）
+   setJavaScriptEnabled（）来启用JavaScript
+   WebView webView=(WebView) findViewById(R.id.webView);
+   WebSettings webSettings=webView.getSettings();
+   webSettings.setJavaEnabled(true);
+
+5、处理页面导航
+    通常是默认的浏览器打开并加载目标url，
+    用webView.setWebViewClient(new WebViewClient());
+    覆盖这一行为，连接就会在WebView中打开
+
+6、后退与前进
+   前提：webview覆盖了url加载
+   通过goBack（）或goForWard（）向前或向后访问历史记录，已访问过的站点
+
+7、判断页面加载过程
+   由于页面可能加载缓慢，所以需要去判断页面的加载过程，制作进度条给予用户良好的体验效果
+   webView.setWebViewChrome(){
+       public void onProgressChanged(WebView view,int newProgress){
+            if(new Progress==100){
+                 //加载完成
+            }else{
+               //加载中
+            }
+       }
+}
+8、WebView缓存的运用
+   可以大大提升速度
+   优先使用缓存：
+        webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+   不使用缓存：
+        webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+FileExplorer窗口可以打开当前浏览器中的目录情况，
+
+%%%%%出现net::ERR_CACHE_MISS错误提示
+      使用缓存的方式是基于导航类型。正常页面加载的情况下将缓存内容。当导航返回,内容不会恢复（重新加载生成）,
+而只是从缓存中取回内容。可以进行一下代码设置：
+出现net::ERR_CACHE_MISS错误提示
+//使用缓存的方式是基于导航类型。正常页面加载的情况下将缓存内容。当导航返回,
+//内容不会恢复（重新加载生成）,而只是从缓存中取回内容
+		if (Build.VERSION.SDK_INT >= 19) {
+			Toast.makeText(this, "hhahhhhaha", Toast.LENGTH_LONG).show();
+	        webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+
+	    }
+%%%%%出现net::ERR_NAME_NOT_RESOLVED错误
+导致这个错误的因素有很多，我遇到的就比较特殊和纠结。因为用手机调试时需要用流量，鄙人比较穷，
+就用来电脑开的WiFi，可是出现了这个net::ERR_NAME_NOT_RESOLVED错误，只有用手机数据流量才得以解决。
+这是我找到的一些解决方法：
+DNS 是将网站名称解析为互联网地址的网络服务。
+a、把能上网的电脑连上，看一网络连接中的IP、DNS是自动还是指定，如果是指定记下来。 
+b、再把自己的电脑连上，检查一下自己的电脑的网络连接中的IP、DNS，与能上网的电脑设置成一样再试一下。 
+c.浏览器设置代理，请检测自己的浏览器是否设置代理或者正在开启代理软件，导致出现打不开网页情况。 
+d.电脑病毒破坏浏览器组件和系统文件，部分杀毒软件对被木马病毒感染程序进行查杀，但并未进行修复。 
+e.DNS设置问题，DNS服务器解释出错，需要手动在本地连接进行设置。

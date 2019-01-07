@@ -1,0 +1,17 @@
+
+/**
+ * 扇形菜单的例子--->也叫卫星菜单---》使用属性动画实现
+ * 用到插值器，可以为弹出的按钮设置速度变换，比如加速度，先加速后减速等
+ */
+插值器：从起点变到终点，可以是直线型，抛物线型，自定义线型，，，定义了一个动画变化值的加速度
+在模拟器的apidemo中找到views-->Animation-->Interpolators
+Accelerate：加速运动
+Decelerate:减速运动
+Accelerate/Decelerate:开始和结束都很慢，中间比较快
+Overshoot:结束的时候偏出去一点，再往回收
+Bounce:落地回弹
+
+
+set.setInterpolator(new AccelerateInterpolator());//设置加速度插值器
+
+项目文件：the1stdemo

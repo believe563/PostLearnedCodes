@@ -1,0 +1,7 @@
+intent实现activity service contentprovider 和brocastReciever四大组件之间的联系
+
+intent实现页面与页面之间的跳转
+1、startActivity（intent）
+2、startActivityForResult（intent,int requestCode）
+第二种方法a页面需要加onActivityResult（int requestCode,int resultCode,Intent data）方法
+b页面通过setResult（）方法将数据回传给a页面

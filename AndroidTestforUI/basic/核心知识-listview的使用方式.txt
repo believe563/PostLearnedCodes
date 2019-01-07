@@ -1,0 +1,10 @@
+1，数据适配器-baseAdapter的使用
+数据适配器是将数据源的数据转换成listview能够显示的格式，将数据的显示和来源进行了解耦，降低耦合性
+2.listview的现实与数据缓存机制：需要的时候才显示，显示完就回收到缓存，如果显示的是7条数据，一次要加载8条数据，
+因为第一条还没滑出屏幕时，第8条已显示
+3.baseAdapter结构
+四个方法
+getCount（)适配器中数据集中数据的个数，listview中数据的个数
+getItem（int position）获取数据集中指定索引所对应的数据项
+getItemId（int position)获取指定行所对应的id号
+getView(int position,View convertView,ViewGroup parent)最核心！ 获取每个item要显示的内容

@@ -1,0 +1,19 @@
+android基础动画：
+Tween Animation:变换动画
+Frame Animation:帧动画
+Layout Animation:布局动画
+Property Animation:属性动画(相对而言复杂)
+
+Tween Animation又分为四种：
+Alpha:渐变透明度动画
+Scale:渐变尺寸缩放动画
+Translate:位置移动动画
+Rotate:旋转动画
+共同属性：
+1、Duration：动画持续时间(单位：毫秒)
+2、fillAfter：设置为true，动画转化在动画结束后被应用
+3、fillBefore：设置为true，动画转化在动画开始前被应用
+4、interpolator：动画插入器(加速、减速插入器)
+5、repeatCount：动画重复次数
+6、repeatMode：顺序/倒序重复
+7、startOffset：动画之间的时间间隔

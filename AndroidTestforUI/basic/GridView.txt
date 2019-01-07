@@ -1,0 +1,7 @@
+数据源--适配器--视图界面
+
+gridView的三个常用的属性：
+android:numColumns=""每一行显示多少列
+    android:horizontalSpacing=""两列之间的间距
+    android:verticalSpacing=""两行之间的间距
+

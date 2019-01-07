@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidDomInspection -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/material_blue_grey_800" android:state_checked="true"/>
+    <item android:drawable="@color/material_deep_teal_200" android:state_pressed="true"/>
+    <item android:drawable="@color/material_deep_teal_200"></item>
+</selector>

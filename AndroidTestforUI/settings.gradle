@@ -1,0 +1,1 @@
+include ':gridviewdemo', ':fourlabels', ':permissiondemo', ':adapterandlistdemo', ':dateandtimepicker', ':spinnerdemo', ':progressbar', ':webview', ':fragmentdemo', ':viewpagerdemo', ':viewflipperdemo', ':scrollviewdemo', ':gallerydemo', ':seekbardemo', ':layoutoptimizedemo', ':baseadapterdemo', ':asynctaskdemo', ':asyncloadingdemo'

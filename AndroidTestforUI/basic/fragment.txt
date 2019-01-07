@@ -1,0 +1,72 @@
+片段 碎片之意
+在UI中是一个模块化和可重用的角色
+可以和其他fragment进行交互，也可以和夫布局进行交互
+可以支持自己的布局文件和自己的生命周期
+
+知识概要：
+1、fragment可以作为Activitty界面的一部分出现
+2、一个fragment可以在多个activity中使用
+3、在activity运行过程中，可以添加、移除或替换fragment
+4、fragment可以响应自己的输入事件，并且有自己的生命周期，他们的生命周期会受宿主Activity的生命周期影响
+
+一个房子可以摆放很多房间，一个房间里面的陈设可以出现在多个房子中
+
+onCreateView()方法
+Fragment第一次绘制用户界面的时候，系统会调用此方法来绘制，返回一个View，如果不显示UI，返回null即可
+
+fragment的两种加载方式：
+静态加载：
+  在layout中声明，，，其中的name属性指定了在layout中实例化的fragment类
+  标识fragment的方法：
+  android:id提供唯一的id  id一定要写，不然会报找不到fragment的错
+  在activity中加载fragment时要先在activity的layout中加入fragment组件，
+      再在组件的fragment中加入name属性，其值为fragment类的名字
+  android:tag提供一个唯一的字符串
+
+动态加载：
+撰写代码将Fragment添加到一个Activity layout中
+add():添加一个fragment（指定要添加的fragment和插入的view）
+类似的还有remove（）替换
+动态加载时需要处理fragment事务
+对fragment进行添加/移除/替换及执行其他动作，提交给Activity的每一套变化被称作一个事务
+获取事务的代码：
+FragmentManager fragmentManager=getFragmentManager();
+FragmentTransaction beginTransaction=fragmentManager.beginTransaction();
+可以在事务里设置想执行的变化，然后用commit（）提交给Activity
+如果想按下返回键返回前一个fragment 要在commit（）之前加入addToBackStack（）方法
+
+（有图片--关于activity周期和fragment周期的对应表）
+周期：
+1/启动Fragment
+onAttach（）-->onCreate()-->onCreateView()-->onActivityCreated-->onStart()-->onResume()
+屏幕锁屏-->onPause()-->onStop()
+屏幕解锁-->onStart()-->onResume()
+
+
+fragment与Activity通信
+1/Fragment可调用getActivity()方法获取它所在的Activity
+2/Activity可调用FragmentManager的findFragmentById()或findFragmentByTag()方法获取Fragment
+
+Activity-->fragment:在activity中创建bundle数据包并调用fragment的setArguments(Bundle bundle)方法
+Fragment-->Activity:需要在fragment中定义一个内部回调接口再让包含该fragment的activity实现该回调接口。
+                    这样fragment可调用该回调方法将数据传递给activity
+activity向fragment传递数据主要代码：
+activity端代码：
+String text=editText.getText().toString();
+                MyFragment5 myFragment5=new MyFragment5();
+                //把数据打包到fragment中
+                Bundle bundle=new Bundle();
+                bundle.putString("name",text);
+                myFragment5.setArguments(bundle);
+                FragmentManager fragmentManager=getFragmentManager();
+                FragmentTransaction beginTransaction=fragmentManager.beginTransaction();
+                beginTransaction.add(R.id.layout,myFragment5,"fragment5");
+                beginTransaction.commit();
+fragment端代码：
+String text=getArguments().get("name").toString();
+
+fragment向activity传递数据主要代码：
+先在fragment中创建一个接口，然后创建一个接口的对象
+用接口在onAttach中与activity取得联系  通过myListener= (MyListener) activity;语句，
+将获得activity的mylistener调用它的方法
+然后在activity中实现fragment中的接口并且实现它的方法

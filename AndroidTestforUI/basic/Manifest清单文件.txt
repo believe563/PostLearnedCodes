@@ -1,0 +1,43 @@
+主配置清单文件
+包含包名、版本号、组件、权限等信息
+
+全局：
+版本号
+
+组件：
+只能包含一个application
+四大组件 分别用activity、service、contentProvider和broadcastReciever 标签标明
+
+Activity：
+用于显示界面
+标明activity名字时用全名
+activity必须在manifest中定义
+intent-filter可以理解为activity的组件或者过滤器，个人介绍  起对号入座的作用 里面的名字对应的activity是入口activity
+
+Service：
+后台逻辑代码的处理
+service也必须声明
+支持intent-filter子标签
+
+contentProvider：
+管理数据库的访问以及程序内和程序间的共享
+可以把provider理解为域名
+配置时要多配置一个url属性authorities（权威 权力），
+
+broadcastReciever：
+理解为一个全局事件的监听器，面向全局的窃听器
+所匹配的一个intent被应用程序广播出来，就会立即执行
+
+
+权限：
+申请权限===<uses-permimssion>
+自定义权限-->可以自定义命名，来保护android的某些重要组件
+
+自定义权限时，
+被访问的文件：
+要定义自定义文件，用permission标签，并在其中声明name和protectionLevel安全级别
+<permission android:name="eee.fff.ggg"
+        android:protectionLevel="normal"></permission>
+在其activity中要写明 android:permission="eee.fff.ggg"
+访问的文件：
+要用<uses permission>获得权限

@@ -1,0 +1,30 @@
+使用ViewPager实现导航  viewPager是android自带的一种多页面管理控件
+support V4可以解决向下兼容的问题  高版本的控件可以在低版本的上面运行
+
+ViewPager容器中可以盛装两种  一种是fragment 另一种是view
+
+加载显示的页卡
+将layout布局转换为View对象 
+1 LayoutInflater lf=getLayoutInflater().from(this);
+lf.inflate(resource,root);
+2 View.inflate(context,resource,root);
+
+配置Adapter
+1 PagerAdapter 数据源List<View>
+2 FragmentPagerAdapter 数据源List<Fragment>
+3 FragmentStatePagerAdapter  数据源List<Fragment>-5
+
+pagerAdapter：
+是把layout通过infate方法转换成view，再把view和相应的名字放到List中，
+通过构造函数将两个list传给PagerAdapter，然后在里面设置返回值，完成
+
+FragmentPagerAdapter ：
+Fragment导包android.support.v4包，这样可以兼容低版本3.0以下】
+先新建fragmentList，建立类型为fragment的list数据源
+再创建适配器
+fragmentPagetAdapter会把所有页面全部加载进来
+viewPager里fragment比较少的时候可以用它
+FragmentPagerAdapter没有创建和销毁页卡的过程
+
+FragmentStatePagerAdapter：
+有创建和销毁页卡的过程

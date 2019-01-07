@@ -1,0 +1,36 @@
+前面的objectAnimator可以作用于任何一个控件的任何一个属性，
+
+ValueAnimator并不会作用于任何一个控件的任何一个属性，也不会提供任何一种动画
+ValueAnimator简单的说就是一个数值发生器，可以产生你想要的各种数值
+
+在animator动画中，产生各种各样的动画都是在valueanimator中计算出来的
+
+valueanimator怎么用？
+它会根据动画已进行的时间与它持续的总时间的比值，产生一个0~1的时间因子，
+有了这样的时间因子，经过相应的变换，就可以根据startvalue和endvalue来生成中间的相应值，
+通过插值器的使用，还可以进一步控制每一个时间因子产生时的变化速度。
+如果是线性插值器，生成数值的时候就会发生一个线性变化，只要时间相同，那么它的增量也相同，
+如果使用加速度的插值器，那么它的增长速度也会越来越快，
+
+由于valueanimator并没有响应任何动画，也不能控制任何一个属性，没有objectanimator使用广泛。
+
+valueanimatordemo
+得到某些点的坐标，来重绘这些点，达到一个路径的变换效果
+
+总结：
+常用属性：可以自定义属性--Property，并定义它的getset方法，
+	translationX\translationY
+	rotation、rotationX\rotationY--rotation指3d的旋转，是翻转的概念
+	scaleX\scaleY--X、Y轴方向的缩放动画
+	X\Y是具体移动到的某个点
+	alpha--透明度
+常用的方法和类：
+ValueAnimator--数值发生器
+ObjectAnimator--ValueAnimator的子类、封装了ValueAnimator，可以让我们更轻松的使用属性动画框架
+		通过ObjectAnimator操作上面的属性，让它产生动画效果
+AnimatorUpdateListener--监听valueanimator产生的value值，并做相应动画的改变
+AnimatorListenerAdapter--监听事件，用这个监听事件，在代码中只需要写需要的监听方法，不用写出全部方法
+PropertyValuesHolder和AnimatorSet是用来控制动画集合的显示效果、顺序与流程控制
+TypeEvaluators--值计算器
+Interpolators--差值器--和只计算器一起控制数值的产生和变化规律--图形显示的图片在文件夹中
+

@@ -1,0 +1,53 @@
+使用viewFlipper实现屏幕切换的动画效果
+viewPlipper是android自带的一种多页面管理控件，可以实现子页面的自动切换（通过设置切换时间和效果）
+手势滑动切换view可以用viewPager 因为它在里面已经提供好了
+
+为ViewFlipper加入View
+1 静态导入：
+  在layout布局文件中直接导入ImageView
+2 动态导入：
+  声明好ViewFlipper之后用它的addView方法
+  flipper.addView(getImageView(R.drawable.pic1));在viewflipper里直接填充一些view的布局，包括一些view的对象及其子类的对象
+
+常用方法：
+setAnimation:设置view进入屏幕时使用的动画
+setOutAnimation:设置view退出屏幕时使用的动画
+shownext：显示下一个view
+showPrevious 显示上一个view
+setFlipInternal:设置切换的时间间隔
+startFlipping：使用上面设置的时间间隔来切换所有的view，切换会循环进行  这个一定要写
+stopFlipping：停止view切换
+
+实现图片轮播：
+在res文件夹下的anim文件夹下的animation资源文件夹  动画集set
+ translate 位置转移动画效果  
+            整型值:  
+                fromXDelta 属性为动画起始时 X坐标上的位置  
+                toXDelta   属性为动画结束时 X坐标上的位置  
+                fromYDelta 属性为动画起始时 Y坐标上的位置  
+                toYDelta   属性为动画结束时 Y坐标上的位置  
+                注意:  
+                         没有指定，  
+                         默认是以自己为相对参照物  
+            长整型值：  
+                duration  属性为动画持续时间  
+                说明:   时间以毫秒为单位  
+在这些属性里面还可以加上%和p,例如:
+android:toXDelta="100%",表示自身的100%,也就是从View自己的位置开始。
+android:toXDelta="80%p",表示父层View的80%,是以它父层View为参照的。
+
+透明度
+fromAlpha   开始的透明度  0完全透明  
+toAlpha     结束的透明度  1完全不透明  
+
+缩放动画scale
+scale 缩放比率 
+
+旋转动画rotate
+fromDegrees="0"     开始角度  
+toDegrees="-90"     结束角度  
+pivotX="50%"        中心点x  
+pivotY="50%"        中心点y
+
+支持手势滑动的ViewFlipper：
+要在activity中加入一个onTouchEvent函数来监控手势事件的处理

@@ -1,0 +1,43 @@
+File 类：
+
+File 类中提供了文件的创建、目录的创建、删除、文件列表、获取文件有关信息等操作，
+不涉及文件内容的读和写，读与写的操作要靠 write() 和 read() 方法。
+
+Writer 和 Reader：
+
+Writer 和 Reader 用于字符流的写入和读取，也就是说写入和读取的单位是字符，如果读与写的操作不涉及字符，那么是不需要 Writer 和 Reader 的。 
+
+Writer 类（抽象类），子类必须实现的方法仅有 write()、flush()、close()。继承了此类的类是用于写操作的 “Writer”。 
+
+Reader 类（抽象类），子类必须实现的方法仅有 read()、close()。继承了此类的类是用于读操作的“Reader”
+
+write()方法和 read()方法： 
+write()方法是将数据写入到文件（广义概念，包括字节流什么的）中。
+read()方法是将文件（广义概念，包括字节流什么的）中的数据读出到缓冲目标上。
+
+inputstream是将目标写到文件中的流
+outputstream是将文件中的数据输出到某个目标的流
+是字节流
+
+inputstreamreader是字节流通向字符流的桥梁 使用指定的charset读取字节并将其解码为字符 它使用的字符集可以由名称指定或显式给定，或者可以接受平台默认的字符集。
+OutputStreamWriter是字符流通向字节流的桥梁 使用指定的charset将要写入流中的字符编码成字节 它使用的字符集可以由名称指定或显式给定，或者可以接受平台默认的字符集。
+
+InputStream是字节流，而Reader 是字符流，
+InputStreamReader是两者之间的桥梁，
+利用InputStream初始化的InputStreamReader会将InputStream中的字节流转化为字符流。
+然后可利用 read() 方法读出
+
+BufferReader和BufferWriter： 
+
+缓冲机制是说先把数据存到缓冲内存中，再一次性写入文件，减少打开文件的消耗。 
+
+BufferReader首先是一个 Reader，也就是说是字符流。BufferWriter同理不解释。
+
+综述： 
+
+似乎InputStream与 Reader 对应，OutputStream与 Writer 对应。
+前者用于二进制文件的读与写，后者用于文本文件的读与写。
+可见如下的对应关系： 
+BufferedInputStream/BufferedOutputStream BufferedReader/BufferedWriter 
+                     FileInputStream/FileOutputStream FileReader/FileWriter
+

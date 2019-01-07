@@ -1,0 +1,4 @@
+用到的知识点：
+1、Range "bytes="+start+"-"+end 
+2、RandomAccessFile 设置吸入的位置
+3、开启线程发送网络请求

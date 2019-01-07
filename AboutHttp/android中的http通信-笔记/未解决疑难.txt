@@ -1,0 +1,10 @@
+12-09 17:50:05.642 26577-26577/? E/Zygote: Zygote:  error closing descriptor
+                                           libcore.io.ErrnoException: close failed: EBADF (Bad file number)
+                                               at libcore.io.Posix.close(Native Method)
+                                               at libcore.io.BlockGuardOs.close(BlockGuardOs.java:75)
+                                               at com.android.internal.os.ZygoteInit.closeServerSocket(ZygoteInit.java:226)
+                                               at com.android.internal.os.ZygoteConnection.handleChildProc(ZygoteConnection.java:879)
+                                               at com.android.internal.os.ZygoteConnection.runOnce(ZygoteConnection.java:242)
+                                               at com.android.internal.os.ZygoteInit.runSelectLoop(ZygoteInit.java:717)
+                                               at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:653)
+                                               at dalvik.system.NativeStart.main(Native Method)

@@ -1,0 +1,8 @@
+JSON是一种轻量级的数据交换格式，它是基于javaScript的一个子集
+是一个开源类库
+google提供了googlejson
+阿里提供了fastJson都是很好的开源类库
+
+定义：
+最简单的:{"name","nate"}
+json可以记录一个数组信息，比如定义一个json，json里又包含一个数组

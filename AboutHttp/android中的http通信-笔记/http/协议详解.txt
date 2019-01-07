@@ -1,0 +1,6 @@
+可以打开浏览器将自己写的网页url填到网页地址
+然后在设置找到开发人员工具，在network一项双击就可以看到详细的协议信息
+
+在android端的file encoding=utf-8
+所以一般情况下在get方法中需要将字符串用UrlEncoder.encode()方法处理一下
+而在post方法中不需要处理，因为它是用out.write()方法发送的消息，已转为utf-8的格式，但最好用UrlEncoder.encode()方法处理

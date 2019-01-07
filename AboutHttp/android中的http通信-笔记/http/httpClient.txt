@@ -1,0 +1,40 @@
+httpClient是apache的一个子项目
+好处：方便我们快速的进行http应用的访问操作，比java提供给我们的api要更加丰富
+
+在服务器端没有收到信息，可能的情况是：
+1、不在同一个局域网上
+2、IP地址不正确
+3、url拼写不正确
+4、权限没有加
+
+具体代码：
+//发送一个get请求
+        HttpGet httpGet=new HttpGet(url);
+        //http的发送
+        HttpClient client = new DefaultHttpClient();
+        try {
+            //发送get请求，并得到一个httpResponse对象
+            HttpResponse response=client.execute(httpGet);
+            //首先判断一下请求的结果码
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                //得到服务器的实体数据回来
+                String content = EntityUtils.toString(response.getEntity());
+                System.out.println("content------->"+content);
+            }
+
+//用post方式传送信息：
+        HttpPost post = new HttpPost(url);
+        HttpClient client = new DefaultHttpClient();
+        //通过namevaluePair去存储数据
+        ArrayList<NameValuePair> list = new ArrayList<NameValuePair>();
+        list.add(new BasicNameValuePair("name",name));
+        list.add(new BasicNameValuePair("age", age));
+        try {
+            post.setEntity(new UrlEncodedFormEntity(list, HTTP.UTF_8));
+            HttpResponse response=client.execute(post);
+            if (response.getStatusLine().getStatusCode()==HttpStatus.SC_OK) {
+                String content = EntityUtils.toString(response.getEntity());
+
+            }
+
+post方式要通过new UrlEncodedFormEntity(list, HTTP.UTF_8)将list中的数据转化成HTTP.UTF-8防止乱码

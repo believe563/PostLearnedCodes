@@ -1,0 +1,34 @@
+在bin文件下找到startup.bat(Window 批处理文件)
+
+
+修改startup.bat
+在第一行前加入如下内容:
+SET JAVA_HOME=D:\tool\Java\jdk6  //jdk的安装目录
+SET CATALINA_HOME=D:\tool\Tomcat6  //Tomcat 的目录
+JAVA_HOME就是环境变量中配置的内容.CATALINA_HOME就是刚才下载后解压的目录
+5.修改shutdown.bat
+在第一行前加入上面两名一模一样的内容:
+SET JAVA_HOME=D:\tool\Java\jdk6
+SET CATALINA_HOME=D:\tool\Tomcat6
+6.修改service.bat
+在第一行前加:
+set CATALINA_HOME=D:\tool\Tocmat6
+set SERVICE_NAME=Tomcat6
+set PR_DISPLAYNAME=Apache Tomcat
+第一行自不必说,第二行是服务的名字,在命令行中通过该名字进行服务的控制(启动/关闭)
+第三行是服务的显示名称,即在服务管理器中显示的名称.
+7.添加服务
+在DOS界面下,进入Tomcat解压目录的bin目录,输入命令:
+service.bat install
+如果安装成功,会提示:The service 'Tomcat6（或者你修改一后的SERVICE_NAME）' has been installed
+如果失败,要先检查该机器中以前是否安装过Tomcat服务.有,则先删除该服务:
+
+******* 并且启动的时候需要  运行 startup   并且不能关闭 startup 服务
+
+可以在Windows下的环境变量的Path  中加上Tomcat的bin的路径   就可以在cmd中直接输入startup
+启动Tomcat了 
+
+（输入java -version的指令 可以查出java的版本）
+另外  Tomcat的 位数 必须与  jdk 的位数 对应  64的tomcat对应32位的  jdk  会报：
+
+java.lang.UnsatisfiedLinkError: C:\apache\apache-tomcat-7.0.14\bin\tcnative-1.dll: Can't load AMD 64-bit .dll on a IA 32

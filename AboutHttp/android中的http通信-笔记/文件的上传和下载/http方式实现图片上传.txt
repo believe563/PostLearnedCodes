@@ -1,0 +1,9 @@
+用到两个权限：网络权限和向外存的写权限
+
+需要httpmime-4.4-beta1.jar
+    httpcore-4.4-beta1.jar
+    httpclient-4.4-beta1.jar三个包
+
+用beta包比较完整，如果用一般的包就会报错、
+
+项目名：httpClientUploadDemo

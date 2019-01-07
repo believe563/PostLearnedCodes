@@ -1,0 +1,88 @@
+httpUrlConnection还可以通过post、get传递参数给服务器
+
+通过get方式传递参数时，url后面要加参数 用？&的形式
+
+用get和post发送数据的区别：
+1、get方法是将数据写在url字符串里，然后通过httpUrlConnection连接数据库并将参数传送过去，然后通过bufferedReader读取服务器返回的信息
+   post方法是通过outputStream的write()方法将要传递的信息发送过去（在write方法中要将传递的参数转换成字节-getBytes），后面读取服务器返回的信息方法相同
+2、get方法用于传递轻量级的参数，参数不能大于2k，在url中用？&将参数连接进去，这样写参数可见
+   post可以传递很多参数，且参数不可见
+
+post、get传递参数对乱码的处理：
+    在javaweb页面中
+    index.jsp最上面要加上contentType="text/html;charset=utf-8" pageEncoding="utf-8"
+    web.xml一定也要是utf-8的
+    servlet页面默认是iso-8859-1格式，所以要通过new string(name.getBytes("iso-8859-1"),"utf-8")进行转码操作
+    servlet对客户端返回响应信息时，必须设置response.setContentType("text/html;charset=utf-8");指定字符串输出格式
+
+    在get格式时可以注意到，url中提交的中文信息被浏览器转换成了服务器可识别的编码，在android中也要先将中文转换服务器可识别的编码URLEncoder.encode（keyValue,"UTF-8"）
+    如果上传的数据包含中文时可能会出现乱码，主要原因有两个：
+
+    ①客户端发送请求时没有对URL进行编码，我们只要使用URLEncoder.encode（keyValue,"UTF-8"）处理即可。
+
+    ②Tomcat服务器在获取参数时，默认编码不是"UTF-8"，一般是"ISO-8859-1"，此时要如何处理呢？
+
+    主要思路是这样的：先把以"ISO-8859-1"(假设是这种编码，如果不是也无所谓)编码获取的数据转为最原始的二进码数据，
+     然后再对该二进制数据以"UTF-8"格式进行重新编码，即new String(name.getBytes("iso-8859-1"),"utf-8")
+
+知识普及：
+什么是字符编码：
+    计算机要处理各种字符，就需要将字符和二进制内码对应起来，这种对应关系就是字符编码。要制定字符编码首先要确定字符集，并将
+
+字符集内的字符排序，然后和二进制数字对应起来，根据字符集内字符的多少，确定几个字节来编码
+    1、ISO-8859-1可以表示的是西欧语言，看起来很单一，但是由于是单字节编码，与计算机最基础的表示单位一致，
+       所以在很多时候，仍旧使用ISO-8859-1编码来表示，而且在很多协议上默认使用这种编码。
+    2、Unicode编码（统一码）,通常所说的UTF-8就是Unicode编码的实现方式。
+    3、GB2312字集是简体字集
+    4、BIG5字集是台湾繁体字集；
+    5、GBK字集是简繁字集；
+    6、GB18030 是国家制定的一个强制性大字集标准；
+    7、Linux系统默认的使用的是ISO-8859-1编码,。
+    8、现在的PC平台必须支持GB18030，对嵌入式产品暂不作要求。所以手机、MP3一般只支持GB2312。
+
+网络传输产生中文乱码原因
+
+    网络通信中，产生乱码的原因主要是通信过程中使用了不同的编码方式：服务器中的编码方式，传输过程中的编码方式，
+    传输到达终端设备的编码方式。因此在传输过程中就需要至少两次编码转换：首先从服务器编码转为网络编码，再从网络编码转为终端设备编码。
+    在转换的过程中出现任何情况都可能出现编码混乱。
+
+###javaweb中用get post传递参数乱码解决方法：
+    get： jsp文件中：用？&方式传，（或者不传，而是在servlet页面用request.getParameter根据name值获得），
+             
+             jsp中的中文用浏览器会对url进行URL encode，然后发送给服务器，
+             （URL encode的过程就是把部分的url做为字符，按照某种编码方式（如：utf-8,gbk等）编码成二进制！！的字节码，
+             然后每个字节用一个包含3个字符的 字符串 "%xy" 表示，其中xy为该字节的两位十六进制表示形式。
+             URL encode到底按照那种编码方式对字符编码？不同的浏览器有不同的做法，中文版的浏览器一般会默认的使用GBK，通过设置浏览器也可以使用UTF-8）   
+          servlet文件：要设置response.setContentType("text/html;charset=utf-8");确保回传的数据是utf-8的形式
+             服务器端获取到数据，第一步是先把数据用iso-8859-1进行解码，服务器tomcat默认缺省用的是iso-8859-1，所以就将中文把URL encode后的%XY状态解码为iso-8859-1的形式
+             中文输出要用new String(name.getBytes("iso-8859-1"),"utf-8")将文字定义成utf-8显示出来
+    post：jsp文件中：要设置contentType="text/html;charset=utf-8" pageEncoding="utf-8"
+                  （这段代码是为了让浏览器知道用什么字符集来对网页解释，另一个作用是定form表单的post方法提交数据的URL encode编码方式）
+                  （对于get方法来数，浏览器对数据的URL encode的编码方式是有浏览器设置来决定，而post方法，开发人员可以指定。）
+                   通过在JSP中设置request.setCharacterEncoding("…")，这时服务器会以JSP 中指定的字符集解码。
+                  （也可以不写上面这行代码直接用new String(name.getBytes("iso-8859-1"),"utf-8")将文字定义成utf-8显示出来）
+
+
+android GET 和POST请求中文乱码问题
+
+
+方案一：
+
+GET:POST
+
+对于中文字段，客户端使用URLEncoder.encode()方法进行一次编码
+
+服务器使用：String data=new String(request.getParameter("title").getBytes("ISO-8859-1"),"UTF-8");解码
+
+个人觉得这种方法挺麻烦的，喜欢采用方案二
+
+方案二：
+
+GET：客户端使用URLEncoder.encode(URLEncoder.encode(username,"UTF-8"), "UTF-8")对中文字段进行两次编码
+
+POST:客户端使用URLEncoder.encode(username,"UTF-8");只进行一次编码就行了，经测试编码两次也行
+
+服务端使用String username=URLDecoder.decode(request.getParameter("username"),"utf-8");进行一次解码
+
+感觉第二种方法通用性强一些
+

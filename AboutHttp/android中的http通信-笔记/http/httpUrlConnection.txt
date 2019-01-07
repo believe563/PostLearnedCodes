@@ -1,0 +1,33 @@
+1、通过解析url获得网址并在webView上显示出相应的网页
+   new一个URL，将url字符串传入
+   用URL通过openConnection()创建一个HttpURLConnection
+   HttpURLConnection可以设置超时等待的时间conn.setReadTimeout(5000);//网页请求的方式conn.setRequestMethod("GET");获得字符流conn.getInputStream()
+   inputstreamreader将字符流转化为字节流，然后bufferedreader获得页面信息流的数据
+   ：//bufferedReader就是页面信息的流的数据
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+   通过BufferedReader 的readline一行一行的读字符串，然后用stringBuffer将这些字符串得到，
+   webView中将信息加载为网页webView.loadData(stringbuffer.toString(),"text/html;charset=utf-8",null);
+   第二个参数是网页类型
+
+2、通过网络请求下载一图片下载到本地进行展示
+   InputStream in=conn.getInputStream();得到一个输入流//即从网络上输入流 输出流是将从输入的url中得到的信息输出到SD卡上
+   out = new FileOutputStream(directory);参数是SD卡上的存储路径
+   if (out!=null)是如果new fileOutputStream成功，则判断
+                    while ((len=in.read(bytes))!=-1) {
+                        out.write(bytes, 0, len);
+                    }来每次从fileinputstream中取bytes字长的信息写到SD卡中
+    Bitmap bitmap = BitmapFactory.decodeFile(directory.getAbsolutePath());是将信息流解析成bitmap 
+    最后让imageview加载bitmap就可以显示出来了
+
+
+
+//设置为true时就可以拿到一个输入流
+            conn.setDoInput(true);
+            InputStream in=conn.getInputStream();
+
+if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))判断是否挂载了内存卡
+
+File parent = Environment.getExternalStorageDirectory();
+                String myDownLoadPicture=String.valueOf(System.currentTimeMillis());
+                directory = new File(parent, myDownLoadPicture);
+                out = new FileOutputStream(directory);生成目录并new一个fileoutputstream

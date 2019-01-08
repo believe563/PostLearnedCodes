@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:tabBackground="?attr/colorPrimary"
+        app:tabSelectedTextColor="#4CAF50"
+        app:tabTextColor="@android:color/white" />
+    <!--其实就是向下滚动时Scrolling View和
+    Child View之间的滚动优先级问题。
+    对比scroll和scroll | enterAlways设置，
+    发生向下滚动事件时，前者优先滚动Scrolling View，
+    后者优先滚动Child View，当优先滚动的一方
+    已经全部滚进屏幕之后，另一方才开始滚动。-->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

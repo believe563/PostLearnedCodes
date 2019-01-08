@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+    <TextView 
+        android:id="@+id/tv5"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:gravity="center"
+        android:background="#00a299"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        android:text="糗百-纯文"/>
+    <ListView 
+        android:id="@+id/lv3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"></ListView>
+
+</LinearLayout>

@@ -1,0 +1,177 @@
+package com.example.dluandroid03_07_13;
+
+import java.util.Random;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+	private int size = 50;
+	private int margin = 60;
+	int col = 11;
+	int row = 16;
+	private int index = 1;
+	private RelativeLayout rl;
+	private TextView first;// 第一个字块
+	private MyListener myListener;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		rl = (RelativeLayout) findViewById(R.id.rl);
+		initUI();
+		setRandomBackground();
+	}
+
+	private void setRandomBackground() {
+		int array[] = new int[row * col];
+		for (int i = 0; i < array.length; i++) {
+			array[i] = i + 1;
+		}
+		// 将数组元素打乱
+		for (int i = 0; i < array.length - 1; i++) {
+			int r = new Random().nextInt(array.length - i - 1);
+			int temp = array[array.length - i - 1];
+			array[array.length - i - 1] = array[r];
+			array[r] = temp;
+		}
+
+		for (int i = 0; i < array.length; i += 2) {
+			TextView tv1 = (TextView) rl.findViewWithTag(array[i] + "");
+			TextView tv2 = (TextView) rl.findViewWithTag(array[i + 1] + "");
+			int color = getRandomColor();
+			tv1.setBackgroundColor(color);
+			tv2.setBackgroundColor(color);
+		}
+	}
+
+	// 获取随机颜色的方法
+	private int getRandomColor() {
+		int colors[] = { Color.argb(255, 238, 169, 169),
+				Color.rgb(81, 168, 221), Color.rgb(152, 169, 178),
+				Color.rgb(219, 77, 109), Color.GRAY, Color.rgb(247, 145, 110),
+				Color.rgb(123, 163, 63), Color.rgb(251, 226, 81) };
+		int r = new Random().nextInt(colors.length);
+		return colors[r];
+	}
+
+	class MyListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			TextView tv = (TextView) v;
+			if (first == null) {
+				first = tv;
+				return;
+			}
+			// 点的第二块等于第一块
+			if (first == tv) {
+				first = null;
+				return;
+			}
+			// 判断颜色是否相同
+			ColorDrawable draw1 = (ColorDrawable) first.getBackground();
+			ColorDrawable draw2 = (ColorDrawable) tv.getBackground();
+			if (draw1.getColor() != draw2.getColor()) {// 颜色不同
+				first = null;
+				return;
+			}
+			// 判断两个色块是否符合消除规则
+			if (judge(first, tv)) {
+				first.setBackgroundColor(Color.WHITE);
+				tv.setBackgroundColor(Color.WHITE);
+			}
+			first = null;
+		}
+
+	}
+
+	private void initUI() {
+		myListener = new MyListener();
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				TextView tv = new TextView(this);
+				tv.setWidth(size);
+				tv.setHeight(size);
+				tv.setX(0 + j * margin);
+				tv.setY(0 + i * margin);
+				tv.setBackgroundColor(Color.rgb(239, 199, 189));
+				tv.setTag(index + "");
+				tv.setOnClickListener(myListener);
+				index++;
+				rl.addView(tv);
+			}
+		}
+	}
+
+	boolean judge(TextView tv1, TextView tv2) {
+		String tag1 = (String) tv1.getTag();
+		String tag2 = (String) tv2.getTag();
+		int arg1 = Integer.parseInt(tag1);
+		int arg2 = Integer.parseInt(tag2);
+		int max = arg1 > arg2 ? arg1 : arg2;
+		int min = arg1 < arg2 ? arg1 : arg2;
+
+		boolean flag1 = judgeZero(max, min);
+		boolean flag2 = judgeOne(max, min);
+		boolean flag3 = judgeTwo(max, min);
+		return flag1 || flag2 || flag3;
+	}
+
+	private boolean judgeTwo(int max, int min) {
+		return false;
+	}
+
+	private boolean judgeOne(int max, int min) {
+		return false;
+	}
+
+	private boolean judgeZero(int max, int min) {
+		boolean flag1 = judgeRow(max, min);
+		boolean flag2 = judgeCol(max, min);
+		return flag1||flag2;
+	}
+
+	private boolean judgeCol(int max, int min) {
+		if (max % col == min % col) {
+			for (int i = min + col; i < max; i += col) {
+				TextView tv = (TextView) rl.findViewWithTag(i + "");
+				ColorDrawable draw = (ColorDrawable) tv.getBackground();
+				if (draw.getColor() != Color.WHITE) {
+					return false;
+				}
+			}
+		} else {
+			return false;
+		}
+		return true;
+	}
+
+	private boolean judgeRow(int max, int min) {
+		int minRow = min / col;
+		int maxRow=max/col;
+		if (max%col==0) {
+			maxRow--;
+		}
+		if (minRow == maxRow) {
+			for (int i = min + 1; i < max; i++) {
+				TextView tv = (TextView) rl.findViewWithTag(i + "");
+				ColorDrawable draw = (ColorDrawable) tv.getBackground();
+				if (draw.getColor() != Color.WHITE) {
+					return false;
+				}
+			}
+		} else {
+			return false;
+		}
+		return true;
+	}
+
+}

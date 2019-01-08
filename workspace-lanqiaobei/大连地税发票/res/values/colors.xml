@@ -1,0 +1,9 @@
+<resources>
+
+    <color name="result_view">#B0000000</color>
+    <color name="viewfinder_laser">#00F</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="blue_light">#33B5E5</color>
+    <color name="blue_bright">#0DF</color>
+
+</resources>

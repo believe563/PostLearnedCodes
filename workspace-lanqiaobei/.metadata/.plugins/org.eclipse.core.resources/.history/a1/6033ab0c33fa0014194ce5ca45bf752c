@@ -1,0 +1,72 @@
+package com.example.circlecanvas;
+
+import java.util.Random;
+
+import com.example.circlecanvas.CircleCanvas.CircleInfo;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.graphics.Color;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+		
+public class MainActivity extends Activity {
+
+	private CircleCanvas mCircleCanvas;
+//	@SuppressWarnings("deprecation")//deprecation 贬低 反对
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		//装载activity_main.xml布局文件
+		ViewGroup viewGroup=(ViewGroup) getLayoutInflater().inflate(R.layout.activity_main,null);
+		mCircleCanvas=new CircleCanvas(this);//创建circleCanvas画布类对象
+		mCircleCanvas.setPadding(20, 20, 20,20);
+		//将circleCanvas对象添加到当前界面的视图中（两个按钮的下方）
+		viewGroup.addView(mCircleCanvas,new LayoutParams(800,800));
+		setContentView(viewGroup);
+	}
+
+	//开始随机绘制圆形，第一个按钮的监听事件
+	public void onClick_DrawRandomCircle(View view) {
+		Random random=new Random();
+		float randomX=(float)(200+random.nextInt(100));
+		float randomY=(float)(200+random.nextInt(100));
+		float randomRadius=(float)(200+random.nextInt(40));
+		int randomColor=0;
+		if(random.nextInt(100)>50){
+			randomColor=Color.BLUE;
+		}else {
+			if(random.nextInt(100)>50){
+				randomColor=Color.RED;
+			}else{
+				randomColor=Color.GREEN;
+			}
+		}
+		CircleInfo circleInfo=new CircleInfo();
+		
+		circleInfo.setX(randomX);
+//		Log.v("verbose_randomX", String.valueOf(randomX));
+		circleInfo.setY(randomY);
+//		Log.d("debug_randomY", String.valueOf(randomY));
+		circleInfo.setRadius(randomRadius);
+//		Log.i("info_randomRadius", String.valueOf(randomRadius));
+		circleInfo.setColor(randomColor);
+//		Log.w("warn_randomColor", String.valueOf(randomColor));
+		mCircleCanvas.mCircleInfos.add(circleInfo);
+//		Log.e("Error_area", String.valueOf(3.14*randomRadius*randomRadius));
+		mCircleCanvas.invalidate();//使画布重绘
+		//用println方法输出verbose级别的调试信息
+//		Log.println(Log.VERBOSE, "println_verbose", "verbose_println");
+		
+		
+	}
+	
+	public void onClick_Clear(View view) {
+		mCircleCanvas.mCircleInfos.clear();//清除绘制历史
+		mCircleCanvas.invalidate();
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.innova.reward.util;
+
+import android.util.Log;
+
+/**
+ * 公用的一个工具方法,log......
+ * 
+ * @author guo
+ * 
+ */
+public class CommonUtil {
+	public static void log(String msg) {
+		Log.i("msg", msg);
+	}
+}

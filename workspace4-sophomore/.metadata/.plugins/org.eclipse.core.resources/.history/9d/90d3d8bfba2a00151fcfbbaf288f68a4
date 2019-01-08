@@ -1,0 +1,68 @@
+package com.example.dluadroid05_07_15;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.dluadroid05_07_15.R;
+import com.example.dluadroid05_07_15.R.id;
+import com.example.dluadroid05_07_15.R.layout;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.widget.TextView;
+
+public class MainActivity extends FragmentActivity {
+
+	private ViewPager viewPager;
+	// 创建链表，存储fragment
+	private List<Fragment> fragmentList;
+
+	private TextView line;
+	@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        viewPager=(ViewPager) findViewById(R.id.viewpager);
+        line=(TextView) findViewById(R.id.line);
+       //将fragment放入数组中
+        fragmentList=new ArrayList<Fragment>();
+        fragmentList.add(new Fragment01());
+        fragmentList.add(new Fragment02());
+        fragmentList.add(new Fragment03());
+        //初始化适配器,如果不继承fragmentactivity的话fragmentmanager参数用不了
+        MyFragmentPagerAdapter myFragmentPagerAdapter=new MyFragmentPagerAdapter(getSupportFragmentManager());
+        //viewPager绑定适配器
+        viewPager.setAdapter(myFragmentPagerAdapter);
+    }
+
+	// 通过适配器把数据绑定到viewpager上
+	// 新建一个fragmentpageradapter
+	private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+
+		
+		public MyFragmentPagerAdapter(FragmentManager fm) {
+			super(fm);
+			// TODO Auto-generated constructor stub
+		}
+
+		// 根据下标。返回对应的fragment
+		@Override
+		public Fragment getItem(int arg0) {// 某一页的时候显示一个特定的fragment
+			// TODO Auto-generated method stub
+			return fragmentList.get(arg0);
+		}
+
+		// 显示的总页数
+		@Override
+		public int getCount() {// 滑动的页数，一共有多少页
+			// TODO Auto-generated method stub
+			return fragmentList.size();
+		}
+
+	}
+
+}

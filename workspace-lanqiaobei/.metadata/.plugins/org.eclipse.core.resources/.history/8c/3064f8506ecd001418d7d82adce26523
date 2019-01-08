@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PhoneNuCheck</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="submit">提交</string>
+    <string name="textViewCheck">验证码</string>
+    <string name="hint">请输入手机号：</string>
+    <string name="hintCheckNo">请输入验证码：</string>
+
+</resources>

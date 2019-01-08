@@ -1,0 +1,32 @@
+package com.example.qiubaichunwen;
+
+import java.util.ArrayList;
+
+import entity.QiuShiBaiKe;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class SecondActivity extends Activity {
+	private ListView lv;
+	private String login;
+	private String content;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		lv = (ListView) findViewById(R.id.lv);
+		login = getIntent().getStringExtra("login");
+		content = getIntent().getStringExtra("content");
+		// Log.i("mytag",login+"SecondActivity");
+		// Log.i("mytag",content);
+		Toast.makeText(this,
+				"mylistener"+"login+"+login+"content"+"+"+content,Toast.LENGTH_SHORT).show();
+		lv.setAdapter(new MyAdapter1(this, login, content));
+	}
+}

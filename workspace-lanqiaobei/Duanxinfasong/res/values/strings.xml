@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Duanxinfasong</string>
+    <string name="action_settings">Settings</string>
+    <string name="number">请输入电话号码</string>
+    <string name="content">短信内容</string>
+    <string name="button">发送</string>
+    <string name="success">发送成功</string>
+</resources>

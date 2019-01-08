@@ -1,0 +1,140 @@
+package com.example.phonenucheck;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.app.Activity;
+import android.content.ContentValues;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+	private AutoCompleteTextView textView_TeleNo;
+	private Button button_GetCheck;
+	private AutoCompleteTextView checkNo;
+	private SmsContent contentObserver;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		textView_TeleNo = (AutoCompleteTextView) findViewById(R.id.teleNumber);
+		checkNo = (AutoCompleteTextView) findViewById(R.id.checkNo);
+		button_GetCheck = (Button) findViewById(R.id.button_GetCheck);
+		// 注册短信收件箱变化监听
+		contentObserver=new SmsContent(new Handler());
+		this.getContentResolver().registerContentObserver(
+				Uri.parse("content://sms/"), true,contentObserver );
+//		button_GetCheck.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View arg0) {
+//				// TODO Auto-generated method stub
+//				if (textView_TeleNo.getText().toString().length() == 0) {
+//					Toast.makeText(MainActivity.this, "请输入手机号",
+//							Toast.LENGTH_SHORT).show();
+//				} else if (textView_TeleNo.getText().toString().length() < 11) {
+//					Toast.makeText(MainActivity.this, "您输入的手机号不是11位",
+//							Toast.LENGTH_SHORT).show();
+//				} else if (!textView_TeleNo.getText().toString()
+//						.matches("^(13|15|18)\\d{9}$")) {
+//					Toast.makeText(MainActivity.this, "您输入的手机号有误",
+//							Toast.LENGTH_SHORT).show();
+//				} 
+////				else {
+//					// /**
+//					// * 向指定手机号发送短信
+//					// * */
+//					// String content = "您收到的验证码为123456";
+//					// /**
+//					// * 发送短信的方法。第一个参数为目标者手机号、第二个参数为短信中心地址 null为默认地址、
+//					// * 第三个参数短信的文本内容、第四个参数是一个intent会把发送结果带回。第五个参数不知，一般为null
+//					// */
+//					// SmsManager smsManager = SmsManager.getDefault();
+//					// PendingIntent sentIntent = PendingIntent.getBroadcast(
+//					// MainActivity.this, 0, new Intent(), 0);
+//					// smsManager.sendTextMessage(textView_TeleNo.getText().toString(),
+//					// null, content,
+//					// sentIntent, null);
+//					//
+//					
+////				}
+//
+//			}
+//
+//		});
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		this.getContentResolver().unregisterContentObserver(contentObserver);
+	}
+}
+
+
+/*
+ * 监听短信数据库
+ */
+class SmsContent extends ContentObserver {
+	public SmsContent(Handler handler) {
+		super(handler);
+		// TODO Auto-generated constructor stub
+	}
+
+	private Cursor cursor = null;
+	private Activity activity = new Activity();
+
+	private AutoCompleteTextView checkNo;
+	
+	@SuppressWarnings("deprecation")
+	public void onChange(boolean selfChange,AutoCompleteTextView textView_TeleNo,AutoCompleteTextView checkNo) {
+		// TODO Auto-generated method stub
+		super.onChange(selfChange);
+		// 读取收件箱中指定号码的短信
+		cursor = activity.managedQuery(Uri.parse("content://sms/inbox"),
+				new String[] { "_id", "address", "read", "body" },
+				" address=? and read=?", new String[] {"18842672682", "0" },
+				"_id desc");
+		// 按id排序，如果按date排序的话，修改手机时间后，读取的短信就不准了
+		if (cursor != null && cursor.getCount() > 0) {
+			ContentValues values = new ContentValues();
+			values.put("read", "1"); // 修改短信为已读模式
+			cursor.moveToNext();
+			int smsbodyColumn = cursor.getColumnIndex("body");
+			String smsBody = cursor.getString(smsbodyColumn);
+			checkNo.setText(getDynamicPassword(smsBody));
+			System.out.println("成功");
+		}
+
+	}
+
+
+public static String getDynamicPassword(String str) {
+	// 6是验证码的位数一般为六位
+	Pattern continuousNumberPattern = Pattern.compile("[^0-9]{6}");
+	Matcher m = continuousNumberPattern.matcher(str);
+	String dynamicPassword = "";
+	while (m.find()) {
+		System.out.print(m.group());
+		dynamicPassword = m.group();
+	}
+
+	return dynamicPassword;
+}
+
+
+
+
+
+}

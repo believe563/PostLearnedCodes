@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dp"
+            android:layout_weight="1" />
+        <TabWidget 
+            android:id="@android:id/tabs"
+            android:visibility="gone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"/>
+        <!--176-220-213绿 239-199-189粉 253-231-198黄-->
+        <!-- #b0dcd5绿  #efc7bd粉  #f3e7c6黄 -->
+        <RadioGroup
+            android:gravity="center_vertical" 
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:id="@+id/main_radio"
+            android:background="@drawable/button_color"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/btFriends"
+                android:tag="tagfriends"
+                android:layout_marginTop="2.0dip"
+                android:text="联系人"
+                android:drawableTop="@drawable/top_friends" />
+                <RadioButton
+                android:id="@+id/btVtc"
+                android:tag="tagVtc"
+                android:layout_marginTop="2.0dip"
+                android:text="语音转换"
+                android:drawableTop="@drawable/top_vtc"/>
+                <RadioButton
+                android:id="@+id/btMyself"
+                android:tag="tagMyself"
+                android:layout_marginTop="2.0dip"
+                android:text="联系人"
+                android:drawableTop="" />
+                
+        </RadioGroup>
+    </LinearLayout>
+
+</TabHost>

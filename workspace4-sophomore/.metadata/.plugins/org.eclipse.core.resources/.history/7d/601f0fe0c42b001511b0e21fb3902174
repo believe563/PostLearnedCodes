@@ -1,0 +1,24 @@
+package com.example.qiubaichunwen;
+
+import android.content.Context;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+
+public class MyListener implements OnItemClickListener {
+
+	private Context context;
+	private View view;
+	public MyListener(Context context, View view) {
+		super();
+		this.context = context;
+		this.view = view;
+	}
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+
+		
+	}
+
+}

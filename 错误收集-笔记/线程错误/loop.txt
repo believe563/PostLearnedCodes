@@ -1,0 +1,5 @@
+Android错误集合：异常"This message is already in use“的一般起因
+
+解决方法：message使用逻辑错误，要使用正确的message，看message是否对应正确
+写在Looper.loop()之后的代码不会被立即执行，当调用后 mHandler.getLooper().quit()后，loop才会中止
+一个message只能被send一次

@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+//集合框架
+public class Main {
+public static void main(String[] args) {
+//	//新建一个装载String类型的链表（数组）
+//	ArrayList<String> mList=new ArrayList<String>();
+//	for (int i = 0; i < 20; i++) {
+//		//通过list.add方法添加数据
+//		mList.add(i+"");
+//	}
+//	for (int i = 0; i < mList.size(); i++) {
+//		//list.get（int position）方法获取数据
+//		System.out.println(mList.get(i));
+//	}
+	
+//	//以键值对的形式存储数据
+//	//key--value，map里的数据无序
+//	HashMap<Integer, String>map=new HashMap<Integer, String>();
+//	for (int i = 0; i <20; i++) {
+//		map.put(i, i+"");
+//	}
+////	for (int i = 0; i < 20; i++) {
+////		String string=map.get(i);
+////		System.out.println(string );
+////	}
+//	System.out.println(map.toString());
+	
+//	//创建一个存放map对象的list
+//	ArrayList<HashMap<String, String>> dateList=new ArrayList<HashMap<String,String>>();
+//	//通过循环，为list添加数据，map的对象
+//	for (int i = 0; i < 20; i++) {
+//		HashMap<String, String>map=new HashMap<String, String>();
+//		//向map对象内存值
+//		map.put("赛亚人"+i, i+"孙悟空");
+//		map.put("地球人"+i, i+"克林");
+//		map.put("那美克星人"+i, i+"比克");
+//		//将map对象存入list中
+//		dateList.add(map);
+//	}
+//	for (int i = 0; i <20; i++) {
+//		//分步骤取出需要的数据
+//		HashMap<String, String> map=new HashMap<String, String>();
+//		//取map对象
+//		map=dateList.get(i);
+//		//取map里的数据
+//		System.out.println(map.toString());
+//	}
+}
+}

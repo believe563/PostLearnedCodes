@@ -1,0 +1,7 @@
+package com.example.phonenucheck;
+
+import android.app.Application;
+
+public class Myappli extends Application{
+	
+}

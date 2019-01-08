@@ -1,0 +1,17 @@
+package com.example.test;
+
+import android.os.Bundle;
+import android.text.Html;
+import android.widget.TextView;
+import android.app.Activity;
+
+public class MainActivity extends Activity {
+private TextView tv=(TextView) findViewById(R.id.tv);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        String string="<font color=\"#ff0000\">我有一个梦想</font><br>";
+        tv.setText(Html.fromHtml(string));
+    }
+}

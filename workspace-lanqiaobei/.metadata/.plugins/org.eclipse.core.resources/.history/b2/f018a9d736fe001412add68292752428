@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b5CAA0"
+    android:orientation="vertical" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/user_Id"
+        android:textColor="#776677"
+        android:textSize="@dimen/text_size" />
+    <AutoCompleteTextView
+        style="?android:attr/textViewStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bordercolor"
+        android:hint="@string/hint_UserId"
+        android:layout_marginTop="10dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loginPwd"
+        android:textColor="#776677"
+        android:textSize="@dimen/text_size"
+        android:layout_marginTop="10dp" />
+    <AutoCompleteTextView
+        style="?android:attr/textViewStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bordercolor"
+        android:hint="@string/hint_LoginPwd"
+        android:inputType="textPassword"
+        android:layout_marginTop="10dp" />
+    <TextView
+        android:id="btLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
+        android:text="@string/btLogin"
+        android:textColor="#776677"
+        android:textSize="@dimen/text_size" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:id="@+id/btRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/btRegister"
+            android:textColor="#776677"
+            android:textSize="@dimen/text_size" />
+    </RelativeLayout>
+</LinearLayout>

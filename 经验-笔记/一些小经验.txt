@@ -1,0 +1,40 @@
+修改主题：
+android:theme="@android:style/Theme.Black.NoTitleBar" >
+
+自定义onClick监听：
+我在布局文件中定义了一个 android:onClick="onLoadProgressBar"
+然后再Activity中写了这个
+public void onLoadProgressBar(View view){
+        startActivity(new Intent(MainActivity.this,ProgressBarTest.class));
+    }
+不写view参数就运行错误了，但不会报编译时错误，所以必须加View参数！！！
+
+在androidstudio下报错your android sdk is missing,out of date,or is missing templates....
+解决办法：在android studio安装目录的bin目录下，找到idea.properties文件，
+          在文件后追加disable.android.first.run=true,可以跳过
+
+android加入jar包的时候要放在libs文件夹下，加入so文件时要在main文件夹下新建一个JniLibs文件夹，再将so文件
+复制进去，不这样做会报错。
+
+查错：先查看导入的包是否正确，再从程序的入口逐步排查
+
+给一个在当前api不能使用的方法添加@new api就能使这些方法暂时可以使用
+
+轮询就是按顺序不断询问是否需要服务，，效率比较低
+
+下载gradle一直卡住不动，可以在gradle.properties中加入下面一行
+#systemProp.https.proxyHost=127.0.0.1#systemProp.https.proxyPort=8123
+也可以直接用自由门（自由门好像不可以）
+
+
+W/SQLiteConnectionPool: A SQLiteConnection object for database '/data/data/com.google.android.gms/databases/auto_complete_suggestions.db' was leaked!  Please fix your application to end transactions in progress properly and to close the database when it is no longer needed.
+在写纯界面的时候遇到：
+解决方法：textColor属性中设置了@drawable/tab_text
+tab_text中的内容为：
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:color="@color/colorBlack" android:state_pressed="false"/>
+<item android:color="@color/colorWhite" android:state_pressed="true"/>
+</selector>
+在item中android：drawable=""不适合在textcolor属性中调用，textcolor调用的drawable
+只能用android：color

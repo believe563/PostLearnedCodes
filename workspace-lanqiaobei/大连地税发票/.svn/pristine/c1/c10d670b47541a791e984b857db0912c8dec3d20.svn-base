@@ -1,0 +1,35 @@
+package com.innova.reward.data;
+
+/**
+ * 放一些常量
+ * 
+ * @author guo
+ * 
+ */
+public interface Constant {
+	String HOST      = "http://59.46.135.250:8004/dl-taxBsptWeb/";
+	String COOKIE    = "Cookie";
+	String POST_ADDR = HOST + "WA2120Action.do?method=doSelectZjfp";
+	String MAIN_ADDR = HOST + "WA2120Action.do?method=doInit";
+	String CODE_ADDR = HOST + "ValidImageServlet.validImage?sessionKey=YZMWA212001&t=Wed%20Mar%2011%2020:45:07%20UTC+0800%202015";
+	
+	String RES_MONEY 	      = "摇奖期";
+	String RES_YZM_WRONG      = "验证码输入错误";
+	String RES_FP_NOT_IN_POOL = "未曾进入奖池";
+	String RES_FP_IN_NO_MONEY = "未曾中奖";
+
+	String FP_DM         = "fpdm";
+	String FP_HM         = "fphm";
+	String DB_NAME       = "fp_db.db";
+	String TABLE_NAME_FP = "fp_info";
+	
+	String[] TITLES      = { "消息通知", "数据管理", "个人资料" };
+	
+	String FIRST_USE                     = "first_use";
+	String IS_LOGINED 				     = "is_logined";
+	String IS_HAVE_NEW_FP_RECORD         = "is_have_new_fp_record";
+	String IS_OPEN_RECEIVE_SYSTEM_MSG    = "is_open_receive_system_msg";
+	String iS_OPEN_QUERY_REWARD_REMIND   = "is_open_query_reward_remind";
+	String IS_IN_FRAG					 = "is_in_frag";
+	String IS_TO_REWARD                  = "is_to_reward";
+}

@@ -1,0 +1,10 @@
+1432432762582	Delete element
+1432542452239	Extracts string '请输入用户名' into R.string.hint_inputId
+1432542483630	Extracts string '请输入密码' into R.string.hint_inputPwd
+1432542544766	Extracts string '请再次输入密码' into R.string.hint_reInputPwd
+1432542585107	Extracts string '请输入您的手机号' into R.string.input_phoNum
+1432542635929	Extracts string '注册' into R.string.btRegister
+1432557442156	Rename resource 'friend.xml'
+1432557460811	Rename resource 'voice_to_context'
+1432557490851	Rename resource 'vtc.xml'
+1432557538491	Rename resource 'voice_to_context.xml'

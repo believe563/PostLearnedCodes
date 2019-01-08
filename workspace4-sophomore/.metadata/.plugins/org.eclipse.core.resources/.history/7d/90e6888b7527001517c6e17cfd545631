@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
+public class Main {
+public static void main(String[] args) {
+//	//新建一个装载String类型的链表（数组）
+//	ArrayList<String> mList=new ArrayList<String>();
+//	for (int i = 0; i < 20; i++) {
+//		//通过list.add方法添加数据
+//		mList.add(i+"");
+//	}
+//	for (int i = 0; i < mList.size(); i++) {
+//		//list.get（int position）方法获取数据
+//		System.out.println(mList.get(i));
+//	}
+	
+//	//以键值对的形式存储数据
+//	//key--value，map里的数据无序
+//	HashMap<Integer, String>map=new HashMap<Integer, String>();
+//	for (int i = 0; i <20; i++) {
+//		map.put(i, i+"");
+//	}
+////	for (int i = 0; i < 20; i++) {
+////		String string=map.get(i);
+////		System.out.println(string );
+////	}
+//	System.out.println(map.toString());
+}
+}

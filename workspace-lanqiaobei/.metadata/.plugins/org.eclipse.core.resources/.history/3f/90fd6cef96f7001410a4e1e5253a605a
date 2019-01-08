@@ -1,0 +1,55 @@
+package com.example.circlecanvas;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.view.View;
+
+public class CircleCanvas extends View {
+
+	public List<CircleInfo> mCircleInfos=new ArrayList<CircleCanvas.CircleInfo>();
+	public CircleCanvas(Context context) {
+		super(context);
+	}
+
+	public static class CircleInfo {
+		public CircleInfo() {
+			
+		}
+		private float x;
+	    private float y;
+	    private float radius;
+	    private int color;
+		public float getX() {
+			return x;
+		}
+		public void setX(float X) {
+			X=this.x;
+		}
+		public float getY() {
+			return y;
+		}
+		public void setY(float y) {
+			this.y = y;
+		}
+		public float getRadius() {
+			return radius;
+		}
+		public void setRadius(float radius) {
+			this.radius = radius;
+		}
+		public int getColor() {
+			return color;
+		}
+		public void setColor(int color) {
+			this.color = color;
+		}
+		
+ 	}
+	protected void onDraw() {
+		
+	}
+
+}

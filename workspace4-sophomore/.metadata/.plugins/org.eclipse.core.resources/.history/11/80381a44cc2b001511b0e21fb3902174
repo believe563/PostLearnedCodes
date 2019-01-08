@@ -1,0 +1,26 @@
+package com.example.qiubaichunwen;
+
+import java.util.ArrayList;
+
+import entity.QiuShiBaiKe;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.widget.TextView;
+
+public class SecondActivity extends Activity {
+	private TextView tv1;
+	private TextView tv2;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	// TODO Auto-generated method stub
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.item1);
+	tv1=(TextView) findViewById(R.id.tv1);
+	tv2=(TextView) findViewById(R.id.tv2);
+	ArrayList<?extends Parcelable> list=getIntent().getParcelableArrayListExtra("data1");
+	tv1.setText(((QiuShiBaiKe) list.get(position)).getLogin());
+	tv2.setText(((QiuShiBaiKe) list.get(position)).getContent());
+}
+}

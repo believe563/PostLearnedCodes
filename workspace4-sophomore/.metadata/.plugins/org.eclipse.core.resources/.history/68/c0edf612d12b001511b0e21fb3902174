@@ -1,0 +1,93 @@
+package com.example.qiubaichunwen;
+
+import java.util.ArrayList;
+
+import entity.QiuShiBaiKe;
+
+import android.app.Activity;
+import android.database.DataSetObserver;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+public class SecondActivity extends Activity {
+	private TextView tv1;
+	private TextView tv2;
+	ListView lv;
+	ArrayList<?extends Parcelable> list;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	// TODO Auto-generated method stub
+	super.onCreate(savedInstanceState);
+	lv=(ListView) findViewById(R.id.lv);
+	tv1=(TextView) findViewById(R.id.tv1);
+	tv2=(TextView) findViewById(R.id.tv2);
+	ArrayList<?extends Parcelable> list=getIntent().getParcelableArrayListExtra("data1");
+	lv.setAdapter(new Adapter1() {
+		
+		@Override
+		public void unregisterDataSetObserver(DataSetObserver observer) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void registerDataSetObserver(DataSetObserver observer) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public boolean isEmpty() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public boolean hasStableIds() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public int getViewTypeCount() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public int getItemViewType(int position) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+	})
+}
+}

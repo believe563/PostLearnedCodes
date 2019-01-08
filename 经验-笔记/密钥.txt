@@ -1,0 +1,5 @@
+查看sha1证书指纹
+keytool -list -keystore apkSign.jks 或者debug.keystore
+要把签名放在项目的根目录下
+
+

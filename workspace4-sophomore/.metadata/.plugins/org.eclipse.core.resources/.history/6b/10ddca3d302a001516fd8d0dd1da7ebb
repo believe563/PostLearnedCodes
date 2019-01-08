@@ -1,0 +1,47 @@
+
+public class Main {
+public static void main(String[] args){
+//打星号
+//	for (int i = 0; i < 10; i++) {
+//		for (int j = 0; j < 10; j++) {
+////			if (i==0||i==9) {
+////				System.out.print("*");
+////			}else {
+////				if (j==0||j==9) {
+////					System.out.print("*");
+////				}else {
+////					System.out.print(" ");
+////				}
+////			}
+//			System.out.print("*");
+//		}
+//		System.out.println();
+//	}
+	
+//	//打乘法表
+//	for (int i = 1; i <=9; i++) {
+//		for (int j = 1; j <=i; j++) {
+//			System.out.print(j+"*"+i+"="+i*j+" ");
+//		}
+//		System.out.println();
+//	}
+	
+	//菱形?????
+	for (int i = 0; i <5; i++) {
+		int k=i;
+		if (i>5/2) {
+			k=5-1-i;
+		}
+		for (int j = 0; j < 5; j++) {
+			if (j==5/2-k||j==5/2+k) {
+				System.out.print("*");
+			}else {
+				System.out.print(" ");
+			}
+		}
+		System.out.println();
+	}
+	
+	}
+
+}

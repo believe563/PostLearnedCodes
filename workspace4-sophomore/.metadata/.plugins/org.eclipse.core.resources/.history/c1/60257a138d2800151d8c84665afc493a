@@ -1,0 +1,16 @@
+package com.example.dluandroid01;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+
+public class MainActivity extends Activity {
+
+	private Button[] buttons=bt0,bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+	}
+}

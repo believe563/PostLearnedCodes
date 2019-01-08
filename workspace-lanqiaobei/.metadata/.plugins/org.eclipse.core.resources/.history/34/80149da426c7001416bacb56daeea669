@@ -1,0 +1,12 @@
+/** sss */
+public class Javadoc {
+	/** aaa */
+	public static void main(String[] args) {
+		
+		int i = 0;
+	}
+
+	/** bbb */
+	public void f() {
+	}
+}

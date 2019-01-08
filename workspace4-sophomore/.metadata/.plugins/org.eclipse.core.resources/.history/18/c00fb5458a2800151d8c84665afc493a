@@ -1,0 +1,219 @@
+package com.example.dluandroid01;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends Activity implements OnClickListener{
+	private TextView tvresult;
+	private Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0;
+	private Button[] buttons = { bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9,
+			bt0 };
+	private int[] ids = { R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5,
+			R.id.bt6, R.id.bt7, R.id.bt8, R.id.bt9, R.id.bt0 };
+	private Button btadd, btmin, btmul, btdiv, btcle, btequ;
+	private Button[] tagbts = { btadd, btmin, btmul, btdiv, btcle, btequ };
+	private int[] tagids = { R.id.btadd, R.id.btmin, R.id.btmul, R.id.btdiv,
+			R.id.btcle, R.id.btequ };
+	// 用于显示结果
+	private String countstr = "";
+	private String countstr1 = "";
+	private int a;
+	private int b;
+	private int num = 0;
+	private static final int ADD = 0;
+	private static final int MIN = 1;
+	private static final int MUL = 2;
+	private static final int DIV = 3;
+	private int state;
+	private int flag;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		// 创建数字按钮的监听对象
+		CountListener countListener = new CountListener();
+		TagListener taglistener = new TagListener();
+		
+		tvresult = (TextView) findViewById(R.id.tvresult);
+		// 通过循环，实例化按键
+		// 绑定按键监听
+		for (int i = 0; i < buttons.length; i++) {
+			buttons[i] = (Button) findViewById(ids[i]);
+			buttons[i].setOnClickListener(countListener);
+		}
+		// 运算符实例化，绑定监听
+		for (int i = 0; i < tagbts.length; i++) {
+			tagbts[i] = (Button) findViewById(tagids[i]);
+			tagbts[i].setOnClickListener(taglistener);
+		}
+
+	}
+
+	class CountListener implements OnClickListener {
+		@Override
+		public void onClick(View v) {
+			switch (v.getId()) {
+			case R.id.bt1:
+				countstr = countstr + "1";
+				countstr1 = countstr1 + "1";
+				break;
+			case R.id.bt2:
+				countstr = countstr + "2";
+				countstr1 = countstr1 + "2";
+				break;
+			case R.id.bt3:
+				countstr = countstr + "3";
+				countstr1 = countstr1 + "3";
+				break;
+			case R.id.bt4:
+				countstr = countstr + "4";
+				countstr1 = countstr1 + "4";
+				break;
+			case R.id.bt5:
+				countstr = countstr + "5";
+				countstr1 = countstr1 + "5";
+				break;
+			case R.id.bt6:
+				countstr = countstr + "6";
+				countstr1 = countstr1 + "6";
+				break;
+			case R.id.bt7:
+				countstr = countstr + "7";
+				countstr1 = countstr1 + "7";
+				break;
+			case R.id.bt8:
+				countstr = countstr + "8";
+				countstr1 = countstr1 + "8";
+				break;
+			case R.id.bt9:
+				countstr = countstr + "9";
+				countstr1 = countstr1 + "9";
+				break;
+			case R.id.bt0:
+				countstr = countstr + "0";
+				countstr1 = countstr1 + "0";
+				break;
+			}
+			tvresult.setText(countstr);
+		}
+
+	}
+
+	class TagListener implements OnClickListener {
+		@Override
+		public void onClick(View v) {
+			switch (v.getId()) {
+			case R.id.btadd:
+				a=Integer.parseInt(countstr1);
+				if (flag==0) {
+					num=a;
+					countstr1="";
+					flag=1;
+					countstr = countstr + "+";
+					state = ADD;
+					tvresult.setText(countstr);
+				}
+				break;
+			case R.id.btmin:
+				a=Integer.parseInt(countstr1);
+				if (flag==0) {
+					num=a;
+					countstr1="";
+					flag=1;
+					countstr = countstr + "-";
+					state = MIN;
+					tvresult.setText(countstr);
+				}
+				break;
+			case R.id.btmul:
+				a=Integer.parseInt(countstr1);
+				if (flag==0) {
+					num=a;
+					countstr1="";
+					flag=1;
+					countstr = countstr + "*";
+					state = MUL;
+					tvresult.setText(countstr);
+				}
+				break;
+			case R.id.btdiv:
+				a=Integer.parseInt(countstr1);
+				if (flag==0) {
+					num=a;
+					countstr1="";
+					flag=1;
+					countstr = countstr + "/";
+					state = DIV;
+					tvresult.setText(countstr);
+				}
+				break;
+			case R.id.btcle:
+
+				break;
+			case R.id.btequ:
+//				Toast.makeText(MainActivity.this, "11312414", Toast.LENGTH_SHORT).show();
+				if (flag==1) {
+//					b = Integer.parseInt(countstr1);
+					countstr1 = "";
+					
+//					Toast.makeText(MainActivity.this, "8989898888888888", Toast.LENGTH_SHORT).show();
+					switch (state) {
+					case ADD:
+						Log.i("123", "))))))))))))))))))))))))))))))))");
+						num +=Integer.parseInt(countstr1);
+						break;
+					case MIN:
+						num -=Integer.parseInt(countstr1);
+						break;
+					case MUL:
+						num *=Float.parseFloat(countstr1);
+						break;
+					case DIV:
+						if (b != 0) {
+							num /=Float.parseFloat(countstr1);
+						} else {
+							Toast.makeText(MainActivity.this, "除数不能为0",
+									Toast.LENGTH_SHORT).show();
+						}
+	tvresult.setText(num);
+						break;
+					}
+	
+				}
+				
+//				switch (state) {
+//				case ADD:
+//					num += b;
+//					break;
+//				case MIN:
+//					num -= b;
+//					break;
+//				case MUL:
+//					num *= b;
+//					break;
+//				case DIV:
+//					if (b != 0) {
+//						num /= b;
+//					} else {
+//						Toast.makeText(MainActivity.this, "除数不能为0",
+//								Toast.LENGTH_SHORT).show();
+//					}
+//
+//					break;
+//				}
+//
+//				tvresult.setText(num);
+				break;
+		}
+
+		}
+	}
+
+}

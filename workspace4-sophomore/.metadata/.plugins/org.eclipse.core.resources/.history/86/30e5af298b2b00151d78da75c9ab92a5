@@ -1,0 +1,6 @@
+package entity;
+
+public class QiuShiBaiKe {
+private String content ;
+private String login;
+}

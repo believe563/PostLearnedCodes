@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">大连地税发票</string>
+    <string name="input_username">输入账号</string>
+    <string name="input_pwd">输入密码</string>
+    <string name="username">账号</string>
+    <string name="login">登录</string>
+    <string name="can_not_login">无法登录?</string>
+    <string name="register_user">新用户</string>
+    <string name="fp_in">发票录入</string>
+    <string name="personal_setting">个人设置</string>
+    <string name="get_reward_query">中奖查询</string>
+    <string name="fpdm_12_num">发票代码应为12位数字</string>
+    <string name="fphm_8_num">发票号码应为8位数字</string>
+    <string name="input_hand">输入</string>
+    <string name="input_distinguish">识别</string>
+    <string name="save">保存</string>
+    <string name="dm">代    码</string>
+    <string name="hint_continue_num">连续的张数</string>
+    <string name="continue_num">连    号</string>
+    <string name="hm">号    码</string>
+    <string name="clear">清空</string>
+    <string name="clear_no_reward_data">清除未中奖数据</string>
+    <string name="clear_reward_data">清除已中奖信息</string>
+    <string name="phone_bind">手机绑定</string>
+    <string name="login_pwd_modify">登录密码修改</string>
+    <string name="exit_login">退出登录</string>
+    <string name="query_reward_remind">兑奖提醒</string>
+    <string name="receive_system_msg">接受系统信息</string>
+    <string name="eight_num">8位号码</string>
+    <string name="twelve_num">12位代码</string>
+    <string name="fp_query_result">发票查询结果</string>
+    <string name="password">密码</string>
+    <string name="again_password">重复密码</string>
+    <string name="submit">提交</string>
+    <string name="phone_format_error">号码格式不正确</string>
+    <string name="pwd_no_empty">密码不能为空</string>
+    <string name="twice_pwd_not_same">两次密码不一致</string>
+    <string name="net_is_bad">网络未开启或被禁用</string>
+    <string name="fail">失败，请重试</string>
+    <string name="duplicated_phone_number">该手机号已被注册</string>
+    <string name="no_this_id">没有该账户</string>
+    <string name="pwd_wrong">密码不正确</string>
+    <string name="success">成功</string>
+    <string name="submiting">正在提交</string>
+    <string name="register">注册</string>
+    <string name="please_check">请核对</string>
+    <string name="distinguish_correct">识别正确</string>
+    <string name="distinguish_again">再次识别</string>
+    <string name="entry_success">录入成功</string>
+    <string name="external_storage_bad">存储卡不可用，不能开启扫描</string>
+
+</resources>

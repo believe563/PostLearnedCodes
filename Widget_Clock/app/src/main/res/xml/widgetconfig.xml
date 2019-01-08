@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="80dp"
+    android:minHeight="40dp"
+    android:initialLayout="@layout/widget"
+    android:updatePeriodMillis="8640000">
+
+</appwidget-provider>
+<!--创建配置文件-->
+<!--android:initialLayout="@layout/widget"是组件的布局-->
+<!--android:updatePeriodMillis="8640000"是设置更新的时间间隔，最短为30分钟，小于30分钟也为30分钟-->

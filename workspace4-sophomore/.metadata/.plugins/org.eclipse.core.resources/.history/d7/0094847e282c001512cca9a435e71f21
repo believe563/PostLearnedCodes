@@ -1,0 +1,30 @@
+package com.example.qiubaichunwen;
+
+import java.util.ArrayList;
+
+import db.SQLiteReadHelper;
+import entity.QiuShiBaiKe;
+import android.os.Bundle;
+import android.app.Activity;
+import android.util.Log;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+private ListView lv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        lv=(ListView) findViewById(R.id.lv);
+        SQLiteReadHelper helper = new SQLiteReadHelper(MainActivity.this, "qiushibaike.db",R.raw.qiushibaike);
+		ArrayList<QiuShiBaiKe> dataList = (ArrayList<QiuShiBaiKe>) helper.getDatabaseData();
+//		for (int i = 0; i < dataList.size(); i++) {
+//			Log.i("mytag", dataList.get(i).getLogin());
+//		}//测试
+		lv.setAdapter(new MyAdapter(this,dataList));
+		Toast.makeText(MainActivity.this,"mainactivity",Toast.LENGTH_SHORT).show();
+		lv.setOnItemClickListener(new MyListener(this,dataList));
+    }
+
+}

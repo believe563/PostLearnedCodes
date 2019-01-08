@@ -1,0 +1,61 @@
+package huabao;
+
+import java.util.ArrayList;
+
+import com.example.dluadroid05_07_15.R;
+import com.example.dluadroid05_07_15.R.layout;
+
+import entity.Picture1;
+import android.content.Context;
+import android.graphics.Picture;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class MyAdapter extends BaseAdapter {
+
+	private Context context;
+	private ArrayList<Picture1> list;
+
+	public MyAdapter(Context context, ArrayList<Picture1> list) {
+		super();
+		this.context = context;
+		this.list = list;
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return list.size();
+	}
+
+	@Override
+	public Object getItem(int position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		View view = LayoutInflater.from(context).inflate(R.layout.item3, null);
+		TextView tv4 = (TextView) convertView.findViewById(R.id.tv4);
+		ImageView iv = (ImageView) convertView.findViewById(R.id.iv);
+		Picture1 picture = list.get(position);
+		if (position == 0) {
+
+		}
+		tv4.setText(picture.getDigest());
+		iv.setImageBitmap(picture.getBitmap());
+		return view;
+	}
+
+}

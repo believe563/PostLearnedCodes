@@ -1,0 +1,8 @@
+1431316498725	Extracts string 'Draw Random Circle' into R.string.bt_drawRandomCircle
+1431316542706	Extracts string 'Clear' into R.string.bt_Clear
+1431316619604	Extracts string 'onClick_DrawRandomCircle' into R.string.onclick_drawrandomcircle
+1431316654567	Extracts string 'onClick_ClearCircle' into R.string.onclick_clearcircle
+1431316751317	Extracts string 'onclick_clear' into R.string.onclick_clear
+1431317520947	Encapsulate field 'y'
+1431317526320	Encapsulate field 'radius'
+1431317530903	Encapsulate field 'color'

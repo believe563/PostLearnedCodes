@@ -1,0 +1,53 @@
+package com.innova.reward.aty;
+
+import android.os.Bundle;
+import android.view.View;
+
+import com.innova.reward.R;
+import com.innova.reward.data.Constant;
+
+public class AtyLogin extends AtyBase {
+
+	@Override
+	protected void onCreate(Bundle bundle) {
+		super.onCreate(bundle);
+		// 已经登录过了
+		if (sp.getBoolean(Constant.IS_LOGINED, false)) {
+			finish();
+			myStartActivity(this, MainActivity.class);
+		} else {
+			setContentView(R.layout.aty_login);
+
+			// 介绍界面已经看过了
+			sp.edit().putBoolean(Constant.FIRST_USE, false).commit();
+
+			findViewById(R.id.btn_login).setOnClickListener(this);
+		}
+	}
+
+	/*
+	 * 所有的点击事件都放在这里
+	 */
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_login:
+			if (validateLogin()) {
+				sp.edit().putBoolean(Constant.IS_LOGINED, true).commit();
+				myStartActivity(this, MainActivity.class);
+				finish();
+			}
+			break;
+		}
+	}
+
+	/**
+	 * 验证登录
+	 * 
+	 * @return
+	 */
+	private boolean validateLogin() {
+		// TODO 验证登录
+		return true;
+	}
+}

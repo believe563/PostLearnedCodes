@@ -1,0 +1,22 @@
+1431962655475	Extracts string '开始录音' into R.string.record
+1431962951189	Extracts string '用户名' into R.string.userId
+1431963065606	Extracts string '请输入用户名' into R.string.hint_UserId
+1431963105141	Extracts string 'pwd' into R.string.loginPwd
+1431963250486	Extracts string '请输入密码' into R.string.hint_LoginPwd
+1431963805613	Extracts string '注册' into R.string.btRegister
+1432024933363	Extracts string '登录' into R.string.btLogin
+1432028494199	Delete element
+1432028763877	Delete element
+1432029366206	Delete element
+1432032819215	Rename resource 'borderColor.xml'
+1432034382692	Rename resource 'activity_main.xml'
+1432034586524	Rename resource 'main_activity'
+1432035084273	Extracts string '开始录音' into R.string.record
+1432035493887	Extracts string '查看语音记录' into R.string.checkRecord
+1432048228077	Delete element
+1432048395328	Rename resource 'contextPict.jpg'
+1432048412537	Rename resource 'recordPict.jpg'
+1432087404218	Rename compilation unit 'MainActivity.java'
+1432200942882	Rename resource 'main_ctivity.xml'
+1432201180197	Copy file
+1432201224657	Copy file

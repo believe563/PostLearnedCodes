@@ -1,0 +1,8 @@
+computeSourcePath=true
+contextsDir=C\:\\Program Files\\Apache Software Foundation\\Tomcat 6.0\\webapps
+eclipse.preferences.version=1
+fixTomcatHomeBug=fixed
+managerUrl=http\://localhost\:8080/manager
+tomcatConfigFile=C\:\\Program Files\\Apache Software Foundation\\Tomcat 6.0\\conf\\server.xml
+tomcatDir=C\:\\Program Files\\Apache Software Foundation\\Tomcat 6.0
+tomcatVersion=tomcatV6

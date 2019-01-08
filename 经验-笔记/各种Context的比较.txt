@@ -1,0 +1,65 @@
+Context是关于应用程序环境的全局信息的接口（即上下文），Context是抽象类，实现由Android系统提供，并且允许访问特定于应用程序的资源和类，以及向上调用对于应用级操作，如launching activities，广播和接收意图等。
+
+getApplicationContext ：生命周期是整个应用，应用摧毁，它才摧毁。取得的是当前app所使用的application，在AndroidManifest中唯一指定。和应用程序关联的，并且在程序的生命周期内，总是一样的，所以在当前app的任意位置使用这个函数得到的是同一个Context应用程序。
+
+XXXActivity.this（this）:可以称为活动Context,当前这个Activity的,是关联在某个活动上的，随着Activity的销毁（比如横竖屏切换等情况）,这个Context也会被销毁N多次。
+
+getApplication：andorid 开发中共享全局数据，用来获取Application实例的，但是该方法只在Activity和Service中才能调用；在一些其他的地方，比如说当我们在BroadcastReceiver中也想获取Application实例，这时就需要使用getApplicationContext()方法。
+
+getBaseContext：Don't use getBaseContext(), just use the Context you have. （不要使用getBaseContext()，只使用你有的Context）。这句话出自一位编写Android SDK的谷歌工程师，除此之外，我暂时没有找到关于getBaseContext的一些使用方法。
+
+以上几个Context，最常用的就是XXXActivity.this和getApplicationContext，有些情况下两个当中使用哪一个都可以，但是有些时候则不行，比如说在使用Dialog或者是 进度条对话框，就需要用活动的Context，不能用getApplicationContext。除去需要考虑使用后能否运行，还应该考虑是否会造成内存泄露。
+
+以下是一个很简单的例子：
+
+（1）public class InstanceExample {
+
+private static InstanceExample instance;
+
+private Context context;
+
+private InstanceExample (Context context) {
+
+this.context = context;
+
+}
+
+public static InstanceExample getInstance(Context context) {
+
+if (instance != null) {
+
+instance = new InstanceExample (context);
+
+}
+
+return instance;
+
+}
+
+}
+
+(2)public class InstanceExample {
+
+private static InstanceExample instance;
+
+private Context context;
+
+private InstanceExample (Context context) {
+
+this.context = context.getApplicationContext();// 使用Application 的context
+
+}
+
+public static InstanceExample getInstance(Context context) {
+
+if (instance != null) {
+
+instance = new InstanceExample (context);
+
+}
+
+return instance;
+
+}
+
+上面两种的单例写法都没有问题，但是第一种写法就有可能造成内存泄露。因为传进来的Context不确定，如果在Acivity是传一个this进去，这个类中的Instance是一个static,而且是强引用，所以只要项目还活着，Activity就没办法进行内存回收，但是Activity的生命周期并没有那么长，所以就造成了内存泄露。第二种写法就不会造成内存泄露问题，引用的是一个ApplicationContext，它的生命周期和单例对象一致。this和ApplicationContext还是有很大不同的，使用的时候需要多想想。

@@ -1,0 +1,28 @@
+package com.example.huabao;
+
+import java.util.ArrayList;
+
+import db.SQLiteReadHelper;
+import entity.Picture1;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.util.Log;
+import android.view.Menu;
+import android.widget.ListView;
+
+public class MainActivity extends Activity {
+	private ListView lv;
+	private ArrayList<Picture1> pictureList;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		lv = (ListView) findViewById(R.id.lv);
+		SQLiteReadHelper helper=new SQLiteReadHelper(this,"picture",R.raw.picture);
+		pictureList=(ArrayList<Picture>) helper.getDatabaseData();
+		Log.i("mytag", pictureList.toString());
+		lv.setAdapter(new MyAdapter(this, pictureList));
+	}
+}

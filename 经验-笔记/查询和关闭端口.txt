@@ -1,0 +1,11 @@
+cmd
+netstat -ano|findstr "端口号"
+
+找到的端口号最后一列为Pid
+
+再
+tasklist|findstr "Pid"
+就可以看到占用该端口号的进程
+
+再用TASKKILL /PID  进程Id /F   
+结束进程ID为pid 的进程

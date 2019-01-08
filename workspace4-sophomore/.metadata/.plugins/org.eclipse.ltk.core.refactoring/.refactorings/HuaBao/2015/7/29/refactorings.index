@@ -1,0 +1,12 @@
+1437102222046	Rename package 'Picture'
+1437103534360	Rename type 'Picture'
+1437103788084	Encapsulate field 'imgsrc'
+1437103834603	Encapsulate field 'digest'
+1437103839592	Encapsulate field 'bitmap'
+1437104713749	Rename type 'Adapter'
+1437111415169	Rename resource 'default.jpg'
+1437111443068	Rename resource 'default1.png'
+1437111574197	Move file
+1437111581499	Move file
+1437111614473	Move file
+1437111647010	Rename resource 'pic1.png'

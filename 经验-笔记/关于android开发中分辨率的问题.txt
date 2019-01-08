@@ -1,0 +1,28 @@
+drawable文件夹有ldpi、mdpi、hdpi、xhdpi四种
+dpi指像素/英寸
+ldpi指120
+mdpi指160
+hdpi指240
+xhdpi指320
+例如小米手机的854*480的分辨率，它的dpi就是854的平方加480的平方和开二次方后除以4，结果大约是245，
+则该手机会调用drawable-hdpi里的资料
+
+所以，只要做4套资源分别放在l、m、h、xh下，图标可以按照3:4:6:8的比例制作图片资源
+
+android手机屏幕大小不一，有480*320,640*360,800*480，怎样才能让app适应不同的屏幕呢？
+答：在res目录下创建不同的layout，文件夹，比如layout-640*360，layout800*480，所有的layout文件在编译之后都会写入R.java里，而系统会根据屏幕的大小自己选择合适的layout进行使用
+
+drawable-hdpi里存放高分辨率的图片，如WVGA（800*480）（wide video graphics array），
+drawable-mdpi里存放中等分辨率的图片，如HVGA(480*320)
+drawable-ldpi里存放低分辨率的图片，如QVGA（320*240）
+系统会根据机器的分辨率来分别到这几个文件夹里去找对应的图片。
+注意：三者的解析度不一样，把分辨率调低，图片会变大，分辨率高，图片缩小。
+
+
+竖屏和横屏：
+layout-port-800*600是放置竖屏的布局文件
+layout-land-800*600是放置横屏的布局文件
+
+每个activity都有属性screenOrentation,每个activity都需要设置，可以设置为竖屏（portrait）或无重力感应（nosensor）
+要让程序界面保持一个方向，
+manifest清单文件中配置 screenOrientation="landscape"（横向）或screenOrientation="portrait"(纵向)

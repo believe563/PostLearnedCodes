@@ -1,0 +1,74 @@
+package com.example.dluadroid04;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.widget.ListView;
+
+public class MainActivity extends Activity {
+
+	ArrayList<Object> list=new ArrayList<Object>();
+	ListView lv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        //获得数据
+        initChinaData();
+        //把数据展示出来
+        lv=(ListView) findViewById(R.id.lv);
+        lv.setAdapter(new MYAdapter(this,list));
+        lv.setOnItemClickListener(new MyListener(this, list));
+    }
+    void initChinaData(){
+    	//IO流
+    	InputStream in=getResources().openRawResource(R.raw.area);
+    	//BufferedReader可以按行读取数据
+    	BufferedReader reader=new BufferedReader(new InputStreamReader(in));
+    	String str="";
+    	try {
+			while ((str=reader.readLine())!=null) {
+				//逻辑代码
+				
+				//不以空格开头,证明str是省名
+				if (!str.startsWith(" ")) {//省
+					//创建一个省map
+					HashMap<String,Object> proMap=new HashMap<String, Object>();
+					//将省名存入map中
+					proMap.put("title", str);
+					//讲一个空数组存入map中
+					proMap.put("sub",new ArrayList<Object>());
+					//将省map存入总的list中
+					list.add(proMap);
+				}else if (!str.startsWith("    ")) {//市
+					HashMap<String, Object> cityMap=new HashMap<String, Object>();
+					//将城市名存入map中
+					cityMap.put("title",str);
+					cityMap.put("sub",new ArrayList<Object>());
+					//通过list找到省map
+					HashMap<String, Object> proMap=(HashMap<String, Object>) list.get(list.size()-1);
+					//找到城市list
+					ArrayList<Object> cityList=(ArrayList<Object>) proMap.get("sub");
+					cityList.add(cityMap);
+				}else {//区
+					
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				reader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+    }
+}

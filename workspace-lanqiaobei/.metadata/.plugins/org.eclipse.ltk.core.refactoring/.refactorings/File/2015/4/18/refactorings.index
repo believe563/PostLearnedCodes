@@ -1,0 +1,5 @@
+1430140946383	Extracts string '内容' into R.string.content
+1430140970950	Extracts string '保存' into R.string.btSave
+1430140995348	Extracts string '文件名称' into R.string.fileName
+1430141212724	Extracts string '这里输入文件名称' into R.string.hintFileName
+1430141229652	Extracts string '这里输入文件内容' into R.string.hintFileContent

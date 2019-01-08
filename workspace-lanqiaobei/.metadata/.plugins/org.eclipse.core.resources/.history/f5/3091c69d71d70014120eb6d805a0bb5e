@@ -1,0 +1,136 @@
+package com.example.phonenucheck;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.text.style.TextAppearanceSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+	private AutoCompleteTextView textView_TeleNo;
+	private Button button_GetCheck;
+	private AutoCompleteTextView checkNo;
+	private SmsContent contentObserver;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		textView_TeleNo = (AutoCompleteTextView) findViewById(R.id.teleNumber);
+		checkNo = (AutoCompleteTextView) findViewById(R.id.checkNo);
+		button_GetCheck = (Button) findViewById(R.id.button_GetCheck);
+		
+		contentObserver = new SmsContent(new Handler());
+		this.getContentResolver().registerContentObserver(
+				Uri.parse("content://sms/inbox"), true, contentObserver);
+		Toast.makeText(this,"ContentObserverע������", 0).show();
+//		contentObserver.onChange(false, textView_TeleNo, checkNo);
+		// button_GetCheck.setOnClickListener(new OnClickListener() {
+		// @Override
+		// public void onClick(View arg0) {
+		// // TODO Auto-generated method stub
+		// if (textView_TeleNo.getText().toString().length() == 0) {
+		// Toast.makeText(MainActivity.this, "�������ֻ���",
+		// Toast.LENGTH_SHORT).show();
+		// } else if (textView_TeleNo.getText().toString().length() < 11) {
+		// Toast.makeText(MainActivity.this, "��������ֻ��Ų���11λ",
+		// Toast.LENGTH_SHORT).show();
+		// } else if (!textView_TeleNo.getText().toString()
+		// .matches("^(13|15|18)\\d{9}$")) {
+		// Toast.makeText(MainActivity.this, "��������ֻ�������",
+		// Toast.LENGTH_SHORT).show();
+		// }
+		// // else {
+		// // /**
+		// // * ��ָ���ֻ��ŷ��Ͷ���
+		// // * */
+		// // String content = "123456";
+		// // 
+		// // SmsManager smsManager = SmsManager.getDefault();
+		// // PendingIntent sentIntent = PendingIntent.getBroadcast(
+		// // MainActivity.this, 0, new Intent(), 0);
+		// // smsManager.sendTextMessage(textView_TeleNo.getText().toString(),
+		// // null, content,
+		// // sentIntent, null);
+		// //
+		//
+		// // }
+		//
+		// }
+		//
+		// });
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		this.getContentResolver().unregisterContentObserver(contentObserver);
+		Toast.makeText(this, "ȡ��ע��", 0).show();
+	}
+}
+
+/*
+ * �����������ݿ�
+ */
+class SmsContent extends ContentObserver {
+	public SmsContent(Handler handler) {
+		super(handler);
+	}
+
+	private Cursor cursor = null;
+	private Activity activity = new Activity();
+
+	@SuppressWarnings("deprecation")
+	public void onChange(boolean selfChange,
+			AutoCompleteTextView textView_TeleNo, AutoCompleteTextView checkNo) {
+		
+		super.onChange(selfChange);
+		
+		Toast.makeText(Myappli.getContext(), "��ʼ���ú���", 0).show();
+		cursor = activity.managedQuery(Uri.parse("content://sms/inbox"),
+				new String[] { "_id", "address", "read", "body" },
+				" address=? and read=?", new String[] { "18842648396", "0" },
+				"_id desc");
+		
+		if (cursor != null) {
+			ContentValues values = new ContentValues();
+			values.put("read", "1");
+			cursor.moveToNext();
+			int smsbodyColumn = cursor.getColumnIndex("body");
+			String smsBody = cursor.getString(smsbodyColumn);
+			Toast.makeText(Myappli.getContext(),"��������Ϊ" +smsBody, 0).show();
+			checkNo.setText(getDynamicPassword(smsBody));
+			System.out.println("�ɹ�");
+		}
+
+	}
+
+	public static String getDynamicPassword(String str) {
+		
+		Pattern continuousNumberPattern = Pattern.compile("[^0-9]{6}");
+		Matcher m = continuousNumberPattern.matcher(str);
+		String dynamicPassword = "";
+		while (m.find()) {
+			System.out.print(m.group());
+			dynamicPassword = m.group();
+		}
+
+		return dynamicPassword;
+	}
+
+}

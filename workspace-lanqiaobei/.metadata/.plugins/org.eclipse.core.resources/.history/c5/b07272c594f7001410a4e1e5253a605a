@@ -1,0 +1,7 @@
+package com.example.circlecanvas;
+
+import android.view.View;
+
+public class CircleCanvas extends View {
+
+}

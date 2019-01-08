@@ -1,0 +1,18 @@
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+public static void main(String[] args) {
+//	List是ArrayList的父类，实际上是她的接口
+	List<Person> dates=new ArrayList<Person>();
+	for (int i = 0; i < 20; i++) {
+		Person person=new Person();
+		person.setName("特兰克斯"+i);
+		person.setAge(14+i);
+		dates.add(person);
+	}
+Person person=dates.get(10);
+String name=person.getName();
+}
+}

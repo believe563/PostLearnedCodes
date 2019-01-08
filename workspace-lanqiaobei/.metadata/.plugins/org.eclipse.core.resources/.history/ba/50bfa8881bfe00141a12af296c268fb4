@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">手机语音记录器</string>
+    <string name="action_settings">设置</string>
+    <string name="userId">用户名：</string>
+    <string name="hint_UserId">请输入用户名(默认为手机号)</string>
+    <string name="loginPwd">密码：</string>
+    <string name="hint_LoginPwd">请输入密码</string>
+    <string name="btRegister"><u>注册</u></string>
+    <string name="btLogin"><u>登录</u></string>
+    <string name="record">开始录音</string>
+</resources>

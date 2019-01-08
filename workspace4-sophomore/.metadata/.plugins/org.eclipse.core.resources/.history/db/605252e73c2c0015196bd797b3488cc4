@@ -1,0 +1,54 @@
+package entity;
+
+import android.graphics.Bitmap;
+
+public class Picture1 {
+ private String digest;
+ private String imgsrc;
+ private String imodify;
+ private String title;
+ private byte[] image;
+ private Bitmap bitmap;
+
+
+public String getImodify() {
+	return imodify;
+}
+public void setImodify(String imodify) {
+	this.imodify = imodify;
+}
+public String getTitle() {
+	return title;
+}
+public void setTitle(String title) {
+	this.title = title;
+}
+public byte[] getImage() {
+	return image;
+}
+public void setImage(byte[] image) {
+	this.image = image;
+}
+public void setBmp(Bitmap bmp) {
+	// TODO Auto-generated method stub
+	
+}
+public String getImgsrc() {
+	return imgsrc;
+}
+public void setImgsrc(String imgsrc) {
+	this.imgsrc = imgsrc;
+}
+public String getDigest() {
+	return digest;
+}
+public void setDigest(String digest) {
+	this.digest = digest;
+}
+public Bitmap getBitmap() {
+	return bitmap;
+}
+public void setBitmap(Bitmap bitmap) {
+	this.bitmap = bitmap;
+}
+}

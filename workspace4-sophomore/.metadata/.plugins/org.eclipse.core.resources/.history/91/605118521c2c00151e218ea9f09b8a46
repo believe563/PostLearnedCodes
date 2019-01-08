@@ -1,0 +1,60 @@
+package com.example.qiubaichunwen;
+
+import java.util.ArrayList;
+import java.util.zip.Inflater;
+
+import entity.QiuShiBaiKe;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+public class MyAdapter1 extends BaseAdapter {
+private Context context;
+private String login;
+private String content;
+private ListView lv;
+
+	
+
+	public MyAdapter1(Context context, String login, String content, ListView lv) {
+	super();
+	this.context = context;
+	this.login = login;
+	this.content = content;
+	this.lv = lv;
+}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 1;
+	}
+
+	@Override
+	public Object getItem(int position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		View view=LayoutInflater.from(context).inflate(R.layout.item1, null);
+		TextView tv1=(TextView) view.findViewById(R.id.tv1);
+		TextView tv2=(TextView) view.findViewById(R.id.tv2);
+		tv1.setText(login);
+		tv2.setText(content);
+		return null;
+	}
+
+}

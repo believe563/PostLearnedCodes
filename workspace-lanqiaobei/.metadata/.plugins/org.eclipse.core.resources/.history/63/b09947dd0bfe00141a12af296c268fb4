@@ -1,0 +1,4 @@
+<resources>
+    
+    <solid android:color="@color/white"/>
+</resources>

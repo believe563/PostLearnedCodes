@@ -1,0 +1,40 @@
+package com.example.qiubaichunwen.getdatabasedemo;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.db.SQLiteReadHelper;
+import com.example.entity.NetEasyData;
+
+public class MainActivity extends Activity {
+	
+	ImageView imageView;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		imageView = (ImageView) findViewById(R.id.textview);
+		
+		SQLiteReadHelper helper = new SQLiteReadHelper(MainActivity.this, "neteasyblz.db",R.raw.neteasyblz);
+		List<NetEasyData> dataList = (List<NetEasyData>) helper.getDatabaseData();
+		
+		imageView.setImageBitmap(dataList.get(0).getBmp());
+		
+		
+	}
+	
+
+}

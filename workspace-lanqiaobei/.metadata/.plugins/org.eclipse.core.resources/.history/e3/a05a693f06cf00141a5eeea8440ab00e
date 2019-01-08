@@ -1,0 +1,15 @@
+package com.example.phonenucheck;
+
+import android.app.Application;
+import android.content.Context;
+
+public class Myappli extends Application {
+	private Context context;
+
+	public Context getContext() {
+		if (context == null) {
+			context = getApplicationContext();
+		}
+		return context;
+	}
+}

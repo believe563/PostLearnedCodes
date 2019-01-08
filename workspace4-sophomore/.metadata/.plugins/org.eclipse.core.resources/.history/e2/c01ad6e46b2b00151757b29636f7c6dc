@@ -1,0 +1,77 @@
+package com.example.dluadroid05_07_15;
+import java.util.jar.JarFile;
+
+import com.example.dluadroid05_07_15.R;
+import com.example.dluandroid02.MainActivity.MyListener;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+/**
+ * 创建一个fragment
+ *
+ */
+public class Fragment01 extends Fragment{
+
+	private View view;
+	// 创建一个相对布局的对象
+		RelativeLayout rl;
+		private int size = 50;
+		private int row = 16;
+		private int col = 11;
+		private int index = 1;
+		private int margin = 60;
+		private int level = 5;
+		private TextView tvnum;
+		private int blacknum = 0;
+	//覆写父类的oncreateview方法
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		view=inflater.inflate(R.layout.fragment01, container,false);
+
+		// 将成员变量与布局文件绑定
+				rl = (RelativeLayout) findViewById(R.id.rl);
+
+				// 创建一个监听器的对象
+				MyListener l = new MyListener();
+				tvnum = new TextView(this);
+				tvnum.setWidth(size * col);
+				tvnum.setHeight(size * 2);
+				tvnum.setX(0);
+				tvnum.setY(row * margin);
+				tvnum.setBackgroundColor(Color.argb(256, 77, 77, 77));
+				rl.addView(tvnum);
+				for (int i = 0; i < row; i++) {
+					for (int j = 0; j < col; j++) {
+						// 使用代码创建一个textView的对象
+						TextView tv = new TextView(this);
+						// 设置TextView的宽度和高度
+						tv.setWidth(size);
+						tv.setHeight(size);
+						// 设置textView的位置
+						tv.setX(0 + j * margin);
+						tv.setY(0 + i * margin);
+						// 设置textView的背景色
+						tv.setBackgroundColor(Color.WHITE);
+						// 设置textView的监听器
+						tv.setOnClickListener(l);
+						tv.setTag("" + index);
+						index++;
+						// 将textView添加到布局上
+						rl.addView(tv);
+					}
+				}
+				init(level);
+		return view;
+	}
+}

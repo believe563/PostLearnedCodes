@@ -1,0 +1,165 @@
+package com.innova.reward.frag;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
+import android.content.ContentValues;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.innova.reward.R;
+import com.innova.reward.aty.AtyBase;
+import com.innova.reward.aty.MainActivity;
+import com.innova.reward.data.Constant;
+import com.innova.reward.util.DBUtil;
+import com.innova.reward.util.MyAppli;
+import com.innova.reward.view.MyToast;
+
+public class InFrag extends BaseFrag {
+	private Button mBtnClear, mBtnSave;
+	private TextView mTvDistinguish, mTvManual;
+	private EditText mEtContinuous, mEtFpdm, mEtFphm;
+	private LinearLayout mLlManual;
+
+	// private FrameLayout mFlDistinguish;
+
+	public View onCreateView(LayoutInflater inf, ViewGroup vp, Bundle bundle) {
+		View v = inf.inflate(R.layout.lyt_in, null);
+
+		initViews(v);
+		initEvents();
+
+		return v;
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_save:
+			final String fpdm = mEtFpdm.getText().toString();
+			final String fphm = mEtFphm.getText().toString();
+			int fpContinuous;
+			try {
+				fpContinuous = Integer.valueOf(mEtContinuous.getText().toString());
+			} catch (Exception e) {
+				fpContinuous = 1;
+			}
+			if (validate(fpdm, fphm)) {
+
+				List<ContentValues> list = new ArrayList<ContentValues>();
+				ContentValues values;
+				for (int i = 0; i < fpContinuous; i++) {
+					values = new ContentValues();
+					values.put(Constant.FP_DM, fpdm);
+					// 连续录入发票
+					values.put(Constant.FP_HM, String.valueOf(Integer.parseInt(fphm) + i));
+					list.add(values);
+				}
+				DBUtil.addData(getActivity(), list);
+				AtyBase.sp.edit().putBoolean(Constant.IS_HAVE_NEW_FP_RECORD, true).commit();
+				MyToast.toast("录入成功", 0);
+				AtyBase.sp.edit().putBoolean(Constant.IS_IN_FRAG, true).commit();
+				AtyBase.sp.edit().putBoolean(Constant.IS_TO_REWARD, true).commit();
+				refreshTable();
+			}
+			break;
+		case R.id.btn_clear:
+			mEtContinuous.setText("");
+			mEtFpdm.setText("");
+			mEtFphm.setText("");
+		}
+	}
+
+	/**
+	 * 刷新发票表格
+	 */
+	private void refreshTable() {
+		getActivity().finish();
+		myStartActivity(MainActivity.class);
+	}
+
+	private boolean validate(String fpdm, String fphm) {
+		Pattern pFpdm = Pattern.compile("\\d{12}");
+		Pattern pFphm = Pattern.compile("\\d{8}");
+		boolean bFpdm = pFpdm.matcher(fpdm).matches();
+		boolean bFphm = pFphm.matcher(fphm).matches();
+		if (bFpdm && bFphm) {
+			return true;
+		} else if (!bFpdm) {
+			MyToast.toast(MyAppli.getContext().getString(R.string.fpdm_12_num), 0);
+		} else {
+			MyToast.toast(MyAppli.getContext().getString(R.string.fphm_8_num), 0);
+		}
+		return false;
+	}
+
+	private OnTouchListener touchListener = new OnTouchListener() {
+
+		@Override
+		public boolean onTouch(View v, MotionEvent event) {
+			switch (v.getId()) {
+			case R.id.tv_manual:
+				handleTouchOnManual(event);
+				break;
+
+			case R.id.tv_distinguish:
+				handleTouchOnDistinguish(event);
+			}
+			return true;
+		}
+
+		private void handleTouchOnDistinguish(MotionEvent event) {
+			int action = event.getAction();
+			if (action == MotionEvent.ACTION_DOWN) {
+				mTvDistinguish.setBackground(getResources().getDrawable(R.drawable.x_in_method_distinguish_selected));
+			} else if (action == MotionEvent.ACTION_UP) {
+				mTvManual.setBackground(getResources().getDrawable(R.drawable.x_in_method_manual_unselected));
+				mLlManual.setVisibility(View.GONE);
+				mTvManual.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+				mTvDistinguish.setTextColor(getResources().getColor(android.R.color.white));
+			}
+		}
+
+		private void handleTouchOnManual(MotionEvent event) {
+			int action = event.getAction();
+			if (action == MotionEvent.ACTION_DOWN) {
+				mTvManual.setBackground(getResources().getDrawable(R.drawable.x_in_method_manual_selected));
+			} else if (action == MotionEvent.ACTION_UP) {
+				mTvDistinguish.setBackground(getResources().getDrawable(R.drawable.x_in_method_distinguish_unselected));
+				mLlManual.setVisibility(View.VISIBLE);
+				mTvDistinguish.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+				mTvManual.setTextColor(getResources().getColor(android.R.color.white));
+			}
+		}
+	};
+
+	@Override
+	protected void initViews(View v) {
+		mTvManual = (TextView) v.findViewById(R.id.tv_manual);
+		mTvDistinguish = (TextView) v.findViewById(R.id.tv_distinguish);
+		mLlManual = (LinearLayout) v.findViewById(R.id.ll_manual);
+		// mFlDistinguish = (FrameLayout) v.findViewById(R.id.fl_distinguish);
+		mBtnSave = (Button) v.findViewById(R.id.btn_save);
+		mBtnClear = (Button) v.findViewById(R.id.btn_clear);
+		mEtFpdm = (EditText) v.findViewById(R.id.et_fpdm);
+		mEtFphm = (EditText) v.findViewById(R.id.et_fphm);
+		mEtContinuous = (EditText) v.findViewById(R.id.et_continuous);
+	}
+
+	@Override
+	protected void initEvents() {
+		mBtnSave.setOnClickListener(this);
+		mBtnClear.setOnClickListener(this);
+		mTvManual.setOnTouchListener(touchListener);
+		mTvDistinguish.setOnTouchListener(touchListener);
+	}
+}

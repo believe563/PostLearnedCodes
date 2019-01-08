@@ -1,0 +1,2 @@
+Caused by: android.view.InflateException: You must specifiy a layout in the include tag: <include layout="@layout/layoutID" 
+解决方法：导入layout前面去掉android

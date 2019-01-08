@@ -1,0 +1,68 @@
+package com.example.circlecanvas;
+
+import java.util.Random;
+
+import com.example.circlecanvas.CircleCanvas.CircleInfo;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.graphics.Color;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+
+public class MainActivity extends Activity {
+
+	private CircleCanvas mCircleCanvas;
+//	@SuppressWarnings("deprecation")//deprecation 贬低 反对
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		//装载activity_main.xml布局文件
+		ViewGroup viewGroup=(ViewGroup) getLayoutInflater().inflate(R.layout.activity_main,null);
+		mCircleCanvas=new CircleCanvas(this);
+		viewGroup.addView(mCircleCanvas,LayoutParams.FILL_PARENT,350);
+		setContentView(viewGroup);
+	}
+
+	public void onClick_DrawRandomCircle(View view) {
+		Random random=new Random();
+		float randomX=(float)(100+random.nextInt(100));
+		float randomY=(float)(100+random.nextInt(100));
+		float randomRadius=(float)(20+random.nextInt(40));
+		int randomColor=0;
+		if(random.nextInt(100)>50){
+			randomColor=Color.BLUE;
+		}else {
+			if(random.nextInt(100)>50){
+				randomColor=Color.RED;
+			}else{
+				randomColor=Color.GREEN;
+			}
+		}
+		CircleInfo circleInfo=new CircleInfo();
+		circleInfo.setColor(randomColor);
+		Log.w("warn_randomColor", String.valueOf(randomColor));
+		circleInfo.setX(randomX);
+		Log.v("verbose_randomX", String.valueOf(randomX));
+		circleInfo.setY(randomY);
+		Log.d("debug_randomY", String.valueOf(randomY));
+		circleInfo.setRadius(randomRadius);
+		Log.i("info_randomRadius", String.valueOf(randomRadius));
+		mCircleCanvas.mCircleInfos.add(circleInfo);
+		Log.e("Error_area", String.valueOf(3.14*randomRadius*randomRadius));
+		mCircleCanvas.invalidate();//使画布重绘
+		//用println方法输出verbose级别的调试信息
+		Log.println(Log.VERBOSE, "println_verbose", "verbose_println");
+		
+		
+	}
+	
+	public void onClick_Clear(View view) {
+		mCircleCanvas.mCircleInfos.clear();//清除绘制历史
+		mCircleCanvas.invalidate();
+		
+	}
+
+}

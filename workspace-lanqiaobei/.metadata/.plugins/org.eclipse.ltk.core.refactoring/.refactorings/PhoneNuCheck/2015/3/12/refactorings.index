@@ -1,0 +1,5 @@
+1426680281386	Rename field 'textViewTele'
+1426681371840	Extracts string '请输入手机号：' into R.string.teleNumber
+1426681484512	Extracts string '请输入手机号：' into R.string.hintTeleNo
+1426683441798	Extracts string '手机：' into R.string.textView_TeleNo
+1426684787475	Extracts string '获取手机验证码' into R.string.button_GetCheck

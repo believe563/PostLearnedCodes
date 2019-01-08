@@ -1,0 +1,58 @@
+package entity;
+
+import android.graphics.Bitmap;
+
+public class NetEasyData {
+	
+	
+	private String title;
+	private String digest;
+	private String imgsrc;
+	private String lmodify;
+	
+	private byte [] image;
+	
+	private Bitmap bmp;
+	
+	
+	
+	public Bitmap getBmp() {
+		return bmp;
+	}
+	public void setBmp(Bitmap bmp) {
+		this.bmp = bmp;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getDigest() {
+		return digest;
+	}
+	public void setDigest(String digest) {
+		this.digest = digest;
+	}
+	public String getImgsrc() {
+		return imgsrc;
+	}
+	public void setImgsrc(String imgsrc) {
+		this.imgsrc = imgsrc;
+	}
+	public String getLmodify() {
+		return lmodify;
+	}
+	public void setLmodify(String lmodify) {
+		this.lmodify = lmodify;
+	}
+	public byte[] getImage() {
+		return image;
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+	
+	
+	
+}

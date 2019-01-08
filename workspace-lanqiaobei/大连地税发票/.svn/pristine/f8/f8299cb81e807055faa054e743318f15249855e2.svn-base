@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#100F"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/rl_switch_group"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:splitMotionEvents="false" >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/tv_manual"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/x_in_method_manual_selected"
+                android:gravity="center"
+                android:text="@string/input_hand"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/tv_distinguish"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/x_in_method_distinguish_unselected"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/input_distinguish"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="24sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:background="@android:color/white" >
+
+        <include layout="@layout/lyt_manual" />
+
+        <!-- <include layout="@layout/lyt_distinguish" /> -->
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">手机语音记录器</string>
+    <string name="action_settings">设置</string>
+    <string name="userId">用户名</string>
+    <string name="hint_UserId">请输入用户名</string>
+</resources>

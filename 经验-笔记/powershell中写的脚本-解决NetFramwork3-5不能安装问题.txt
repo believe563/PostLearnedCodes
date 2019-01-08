@@ -1,0 +1,5 @@
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' -Name UseWUServer -Value 0
+Restart-Service -Name wuauserv
+Install-WindowsFeature Net-Framework-Core
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' -Name UseWUServer -Value 1
+Restart-Service -Name wuauserv

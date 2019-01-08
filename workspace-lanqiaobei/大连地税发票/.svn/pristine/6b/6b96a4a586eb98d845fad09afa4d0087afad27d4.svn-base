@@ -1,0 +1,51 @@
+package com.innova.reward.aty;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+/**
+ * 基础Activity，写一些很常用的方法
+ * 
+ */
+public class AtyBase extends FragmentActivity implements OnClickListener {
+	public static SharedPreferences sp;
+
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		sp = PreferenceManager.getDefaultSharedPreferences(this);
+	}
+
+	/**
+	 * 封装纯属界面跳转的方法
+	 * 
+	 * @param context
+	 *            Context对象
+	 * @param clazz
+	 *            要调转的Activity
+	 */
+	protected void myStartActivity(Context context, Class<?> clazz) {
+		startActivity(new Intent(context, clazz));
+	}
+
+	@Override
+	public void onClick(View v) {
+	}
+
+	/**sharedpreferences 成批产出变量
+	 * @param vars  v1,v2,v3...
+	 */
+	public void removeVars(String... vars) {
+		Editor editor = sp.edit();
+		for (String var : vars) {
+			editor.remove(var);
+		}
+		editor.commit();
+	}
+}

@@ -1,0 +1,15 @@
+package com.example.registerpageframe;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+public class SMSBroadcastReceiver extends BroadcastReceiver {
+
+	@Override
+	public void onReceive(Context context, Intent intent) {//intent对象就是短信到来广播意图
+
+		intent.getExtras().get("pdus");//getExtras取得专门用于存放参数的方法
+	}
+
+}

@@ -1,0 +1,24 @@
+widget的用途
+widget的特点和用法步骤
+
+可以把推送服务放到组件上吗？
+
+widget的用途：
+可以添加到手机桌面上的程序
+
+widget的特点：
+快捷、方便
+个性化、可自定义功能--实时地显示新闻的内容
+可及时控制更新widget显示内容
+
+widget用法步骤：
+1、绘制widget布局--支持的布局只有imageView、imageButton、textView、progressBar、clock
+	如果想要使用更复杂的view，就需要对framwork进行改写
+2、配置widget的基本属性：
+	例如添加支持的最大宽度、最小宽度、最大最小高度等
+3、定义AppWidgetProvider
+	类似于android开发中的广播，接收、更新的操作都在这里
+4、提供ConfigurationActivity
+	用来初始化widget，一些配置等
+
+详见blog：https://blog.csdn.net/qq_17311561/article/details/51265466

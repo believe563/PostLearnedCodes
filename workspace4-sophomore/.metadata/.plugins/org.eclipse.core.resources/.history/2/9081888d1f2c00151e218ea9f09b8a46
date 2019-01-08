@@ -1,0 +1,24 @@
+package com.example.qiubaichunwen;
+
+import java.util.ArrayList;
+
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.widget.ListView;
+
+public class SecondActivity extends Activity {
+	ListView lv1;
+	ArrayList<?extends Parcelable> list;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	// TODO Auto-generated method stub
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.activity_main);
+	lv1=(ListView) findViewById(R.id.lv1);
+	String login=getIntent().getStringExtra("data");
+	String content=getIntent().getStringExtra("data1");
+	lv.setAdapter(new MyAdapter1(this,login,content));
+}
+}

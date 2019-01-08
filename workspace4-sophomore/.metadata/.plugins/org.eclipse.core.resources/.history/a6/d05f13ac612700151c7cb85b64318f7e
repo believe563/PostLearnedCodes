@@ -1,0 +1,24 @@
+
+public class Test {
+public static void main(String[] args){
+	int n=0;
+	for (int i = 0; i < 17; i++) {
+		for (int j = 0; j < 17; j++) {
+			if (i%2==0) {
+				if (j>=i&&j<=17-1-i) {
+					System.out.print("*");
+				}else {
+					System.out.print((j%2==0)?"*":" ");
+				}
+			}else {
+				if (j>=i&&i<=17-1-i) {
+					System.out.print(" ");
+				}else {
+					System.out.print((j%2==0)?"*":" ");
+				}
+			}
+		}
+		System.out.println();
+	}
+}
+}

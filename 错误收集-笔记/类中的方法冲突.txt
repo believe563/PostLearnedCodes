@@ -1,0 +1,3 @@
+attempting to assign weaker access privileges('protected');was 'public'
+
+将这个方法显示地写出来，然后将其访问权限设置为public

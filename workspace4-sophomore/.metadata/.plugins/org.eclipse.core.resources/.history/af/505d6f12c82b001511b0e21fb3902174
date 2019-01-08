@@ -1,0 +1,24 @@
+package com.example.qiubaichunwen;
+
+import java.util.ArrayList;
+
+import entity.QiuShiBaiKe;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class SecondActivity extends Activity {
+	private TextView tv;
+	private TextView tv1;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	// TODO Auto-generated method stub
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.item1);
+	tv=(TextView) findViewById(R.id.tv);
+	tv1=(TextView) findViewById(R.id.tv1);
+	int position=getIntent().getIntExtra("data", 0);
+	ArrayList<QiuShiBaiKe> list=getIntent().getParcelableArrayListExtra("data1");
+}
+}

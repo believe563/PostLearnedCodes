@@ -1,0 +1,88 @@
+关联source和文档，只要配置好sdk路径即可
+
+1、修改：（名字、行列）
+修改类名方法名shift+f6
+把两行变成一行ctrl+shift+j
+
+撤销选中Esc
+alt+f12可以直接打开terminal运行
+设置代码提示大小写不敏感--》Settings--》editor--》codecompletion--》casesensitive改为none即可
+
+2、整理：（排版、import整理、包围结构、生成方法）
+弹出包围结构ctrl+alt+t
+管理import引用ctrl+alt+o
+排版ctrl+alt+L
+删除一行ctrl+Y
+for循环模块打itar
+快速提取代码放到自定义方法里ctrl+alt+M
+
+3、查找位置、窗口、参数
+
+查看一个类的所有方法：alt+7
+
+选中一个类或方法 再按shift+f1查找所对应的文档
+快速选择类、方法和字段所在的Project结构的位置或Structure结构的位置等，光标停在那里，按alt+f1
+关闭一个编辑窗口 按鼠标中间的滚轮或者按住shift再按鼠标左键
+查找类所实现的接口用ctrl+alt+B
+找到文档，即弹出文档窗口，ctrl+Q
+查看应用方法的参数ctrl+p
+快速找到方法alt+Q
+在不同的选项卡之间切换ctrl+tab
+快速打开最近浏览的文件ctrl+e
+选中所有相同的字段，按ctrl+shift+f7，顺序向下按f3，向上按shift+f3，取消按esc
+在左侧的project栏开始拼写就会出现所有匹配的项
+根据类名查找类ctrl+N
+查找接口和抽象类的使用方法，用ctrl+alt+B
+用弹出窗口查看图片ctrl+shift+I
+设置书签：f11，
+查看全部书签：shift+f11
+移除书签：ctrl+f11（有书签时是移除书签，没有书签时是添加标记，然后可以按ctrl+标记定位到书签位置）
+显示所在的上下文信息alt+q
+ctrl+shift+a 可以将菜单中的和工具栏中的各种操作打出来，然后执行（对于没有快捷键的操作的使用很方便）
+做对比时非常有用的方法：先选中一段代码，复制，然后选中另一段代码，右击选择compare with clipboard 就可以对比两段代码
+隐藏除当前编辑页面外的其它页面ctrl+shift+f12
+回到上一个编辑窗口f12
+搜索当前项目的所有文件：ctrl+shift+n
+定位到父类：ctrl+u
+打开当前文件位置或任意上层路径--ctrl+点击tab
+根据编号打开面板：alt+数字
+查看当前文件的相关文件：文件类名左侧的黄色图标（ctrl+alt+home-被占用）
+在项目结构或者资源管理器中打开当前文件：alt+f1
+文件结构弹窗（The File Structure Popup）ctrl+f12
+
+查看上次浏览的位置ctrl+alt+←|→
+
+4、光标问题：
+按ctrl+enter  光标不动，下面会多一行空行
+在方法之间快速切换alt+上箭头或alt+下箭头
+
+5、各种提示操作：
+提示类型转换等的操作：alt+enter
+设置代码补全提示，设置-->editor-->general-->code completion-->选none为大小写不敏感
+弹出自动提示设置，即鼠标悬浮提示，在设置-->editor-->show quick。。。
+查看变量目前的值alt+点击
+提示自己想不到的方法ctrl+J
+弹出参数中最合适的参数提示ctrl+shift+空格
+补全一行中剩下的代码ctrl+shift+enter
+自动弹出所在位置的提示模板ctrl+G
+选择弹出的提示的第一条ctrl+句点
+
+注释：
+ctrl+/：//...
+ctrl+shift+/:/*...*/
+
+android窗口的调整
+点击左下方的方框可以隐藏它的工具，双击alt键可以显示(第二次需要长按）
+
+已记住的：
+复制所选的区域并粘贴：ctrl+d
+选择eclipse的编辑器快捷方式在设置-->editor-->keymap
+androidTest文件夹是用来做测试的，main文件夹是主文件夹
+查看源码，按ctrl再点击关键字
+open modulesettings 来删除文件
+app theme可以改界面手机的样式等
+权限的大小写是不可以变的，不然就没有作用了
+
+The Esc key in any tool window moves the focus to the editor.
+Shift+Esc moves the focus to the editor and also hides the current (or last active) tool window.
+The F12 key moves the focus from the editor to the last focused tool window.

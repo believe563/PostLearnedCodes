@@ -1,0 +1,40 @@
+private static final String TAG = "VideoServiceTest";
+
+    public void testLocalIpAndMac(){
+        Log.i(TAG, "IP: "+getLocalIpAddress()+", MAC: "+getLocalMacAddress());
+    }
+
+    /**
+     * 获取Android本机IP地址
+     *
+     * @return
+     */
+    private String getLocalIpAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface
+                    .getNetworkInterfaces(); en.hasMoreElements();) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf
+                        .getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        return inetAddress.getHostAddress().toString();
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+            Log.e("WifiPreference IpAddress", ex.toString());
+        }
+        return null;
+    }
+
+    /**
+     * 获取Android本机MAC
+     *
+     * @return
+     */
+    private String getLocalMacAddress() {
+        WifiManager wifi = (WifiManager)PayDemoActivity.this.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiInfo info = wifi.getConnectionInfo();
+        return info.getMacAddress();
+    }

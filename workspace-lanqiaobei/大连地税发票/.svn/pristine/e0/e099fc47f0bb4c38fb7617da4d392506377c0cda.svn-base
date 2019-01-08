@@ -1,0 +1,310 @@
+package com.innova.reward.frag;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.innova.reward.R;
+import com.innova.reward.data.Constant;
+import com.innova.reward.util.DBUtil;
+import com.inqbarna.tablefixheaders.TableFixHeaders;
+import com.inqbarna.tablefixheaders.adapters.BaseTableAdapter;
+
+/**
+ * excel表格，第一列固定
+ */
+public class RewardQueryFrag extends BaseFrag {
+	private int mCntFp;// 所有发票的记录数
+	private final static int SIZE_REWARD_TYPE = 3;// 中奖类型的个数
+	private TableFixHeaders mTfs;
+
+	/**
+	 * 发票类型,name->发票类型 list->该类型中的数据
+	 */
+	private class FpRecordType {
+		private String name;
+		private List<FpRecord> list = new ArrayList<FpRecord>();
+
+		FpRecordType(String name) {
+			this.name = name;
+		}
+
+		public int size() {
+			return list.size();
+		}
+
+		public FpRecord get(int i) {
+			return list.get(i);
+		}
+
+		private void setList(List<FpRecord> list) {
+			this.list = list;
+		}
+	}
+
+	/**
+	 * 发票记录
+	 * 
+	 */
+	private class FpRecord {
+		private String[] data;
+
+		private FpRecord(String... data) {
+			this.data = data;
+		}
+	}
+
+	/*
+	 * 相当于activity的onCreate
+	 */
+	@Override
+	public View onCreateView(LayoutInflater infl, ViewGroup vg, Bundle bundle) {
+		View v = infl.inflate(R.layout.lyt_manager, null);
+
+		initViews(v);
+		initEvents();
+
+		return v;
+	}
+
+	/**
+	 * 表格适配器
+	 * 
+	 */
+	public class FamilyTableAdapter extends BaseTableAdapter {
+
+		private FpRecordType[] familys;
+		private String[] headers = { "中奖类型", "发票代码", "发票号码", "备注" };
+
+		private int[] widths = { 80, 110, 75, 200 };
+		private float density;
+
+		/**
+		 * 表格数据的适配器
+		 */
+		public FamilyTableAdapter(Context c) {
+			familys = new FpRecordType[] { new FpRecordType("中奖"), new FpRecordType("没中奖"), new FpRecordType("未进奖池") };
+
+			density = c.getResources().getDisplayMetrics().density;
+
+			// 从数据库里把发票信息查询出来
+			showData();
+		}
+
+		/**
+		 * 从数据库中查询数据，显示结果
+		 */
+		private void showData() {
+			ArrayList<ArrayList<FpRecord>> lists = new ArrayList<ArrayList<FpRecord>>();
+			for (int i = 0; i < 4; i++) {
+				lists.add(new ArrayList<FpRecord>());
+			}
+
+			SQLiteDatabase db = DBUtil.getDb(getActivity(), true);
+			Cursor cursor = db.rawQuery("select * from " + Constant.TABLE_NAME_FP, null);
+			if (cursor != null && cursor.getCount() > 0) {
+				while (cursor.moveToNext()) {
+					String fpdm = cursor.getString(cursor.getColumnIndex("fpdm"));
+					String fphm = cursor.getString(cursor.getColumnIndex("fphm"));
+					String zjlx = cursor.getString(cursor.getColumnIndex("zjlx"));
+					String bz = cursor.getString(cursor.getColumnIndex("bz"));
+					switch (bz.charAt(bz.length() - 1)) {
+					case '奖':
+						lists.get(0).add(new FpRecord(zjlx, fpdm, fphm, bz));
+						break;
+					case '与':
+						lists.get(1).add(new FpRecord(zjlx, fpdm, fphm, bz));
+						break;
+					case '待':
+						lists.get(2).add(new FpRecord(zjlx, fpdm, fphm, bz));
+					}
+				}
+			}
+			cursor.close();
+			db.close();
+			// 第一类的数据
+			familys[0].setList(lists.get(0));
+			// 第二类的数据
+			familys[1].setList(lists.get(1));
+			// 第三类的数据
+			familys[2].setList(lists.get(2));
+			// 计算数据的总条数
+			for (ArrayList<FpRecord> l : lists) {
+				mCntFp += l.size();
+			}
+		}
+
+		/*
+		 * 表格有多少行
+		 */
+		@Override
+		public int getRowCount() {
+			return SIZE_REWARD_TYPE + mCntFp;
+		}
+
+		/*
+		 * 可移动列的个数
+		 */
+		@Override
+		public int getColumnCount() {
+			return 3;
+		}
+
+		@Override
+		public View getView(int r, int c, View view, ViewGroup vp) {
+			View v = null;
+			switch (getItemViewType(r, c)) {
+			case 0:
+				v = getFirstHeader(r, c, view, vp);
+				break;
+			case 1:
+				v = getHeader(r, c, view, vp);
+				break;
+			case 2:
+				v = getFirstBody(r, c, view, vp);
+				break;
+			case 3:
+				v = getBody(r, c, view, vp);
+				break;
+			case 4:
+				v = getFamilyView(r, c, view, vp);
+			}
+			return v;
+		}
+
+		private View getFirstHeader(int r, int c, View v, ViewGroup vp) {
+			if (v == null) {
+				v = getActivity().getLayoutInflater().inflate(R.layout.item_table_header_first, vp, false);
+			}
+			((TextView) v.findViewById(android.R.id.text1)).setText(headers[0]);
+			return v;
+		}
+
+		private View getHeader(int r, int c, View v, ViewGroup vp) {
+			if (v == null) {
+				v = getActivity().getLayoutInflater().inflate(R.layout.item_table_header, vp, false);
+			}
+			((TextView) v.findViewById(android.R.id.text1)).setText(headers[c + 1]);
+			return v;
+		}
+
+		private View getFirstBody(int r, int c, View v, ViewGroup vp) {
+			if (v == null) {
+				v = getActivity().getLayoutInflater().inflate(R.layout.item_table_first, vp, false);
+			}
+			v.setBackgroundResource(r % 2 == 0 ? R.drawable.bg_table_color1 : R.drawable.bg_table_color2);
+			((TextView) v.findViewById(android.R.id.text1)).setText(getDevice(r).data[c + 1]);
+			return v;
+		}
+
+		private View getBody(int r, int c, View v, ViewGroup vp) {
+			if (v == null) {
+				v = getActivity().getLayoutInflater().inflate(R.layout.item_table, vp, false);
+			}
+			v.setBackgroundResource(r % 2 == 0 ? R.drawable.bg_table_color1 : R.drawable.bg_table_color2);
+			((TextView) v.findViewById(android.R.id.text1)).setText(getDevice(r).data[c + 1]);
+			return v;
+		}
+
+		private View getFamilyView(int r, int c, View v, ViewGroup vp) {
+			if (v == null) {
+				v = getActivity().getLayoutInflater().inflate(R.layout.item_table_family, vp, false);
+			}
+			String str;
+			if (c == -1) {
+				str = getFamily(r).name;
+			} else {
+				str = "";
+			}
+			((TextView) v.findViewById(android.R.id.text1)).setText(str);
+			return v;
+		}
+
+		@Override
+		public int getWidth(int c) {
+			return Math.round(widths[c + 1] * density);
+		}
+
+		@Override
+		public int getHeight(int r) {
+			final int height;
+			if (r == -1) {
+				height = 35;
+			} else if (isFamily(r)) {
+				height = 25;
+			} else {
+				height = 45;
+			}
+			return Math.round(height * density);
+		}
+
+		@Override
+		public int getItemViewType(int r, int c) {
+			final int itemViewType;
+			if (r == -1 && c == -1) {
+				itemViewType = 0;
+			} else if (r == -1) {
+				itemViewType = 1;
+			} else if (isFamily(r)) {
+				itemViewType = 4;
+			} else if (c == -1) {
+				itemViewType = 2;
+			} else {
+				itemViewType = 3;
+			}
+			return itemViewType;
+		}
+
+		private boolean isFamily(int r) {
+			int family = 0;
+			while (r > 0) {
+				r -= familys[family].size() + 1;
+				family++;
+			}
+			return r == 0;
+		}
+
+		private FpRecordType getFamily(int r) {
+			int family = 0;
+			while (r >= 0) {
+				r -= familys[family].size() + 1;
+				family++;
+			}
+			return familys[family - 1];
+		}
+
+		private FpRecord getDevice(int r) {
+			int family = 0;
+			while (r >= 0) {
+				r -= familys[family].size() + 1;
+				family++;
+			}
+			family--;
+			return familys[family].get(r + familys[family].size());
+		}
+
+		@Override
+		public int getViewTypeCount() {
+			return 5;
+		}
+	}
+
+	@Override
+	protected void initViews(View v) {
+		mTfs = (TableFixHeaders) v.findViewById(R.id.table);
+		BaseTableAdapter baseTableAdapter = new FamilyTableAdapter(getActivity());
+		mTfs.setAdapter(baseTableAdapter);
+	}
+
+	@Override
+	protected void initEvents() {
+	}
+}

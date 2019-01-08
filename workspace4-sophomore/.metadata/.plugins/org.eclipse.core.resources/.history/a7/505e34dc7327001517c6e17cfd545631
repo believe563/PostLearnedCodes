@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+
+
+public class Main {
+public static void main(String[] args) {
+	//新建一个装载String类型的链表（数组）
+	ArrayList<String> mList=new ArrayList<String>();
+	for (int i = 0; i < 20; i++) {
+		//通过list.add方法添加数据
+		mList.add(i+"");
+	}
+	for (int i = 0; i < mList.size(); i++) {
+		//list.get（int position方法获取数据）
+		System.out.println(mList.get(i));
+	}
+}
+}

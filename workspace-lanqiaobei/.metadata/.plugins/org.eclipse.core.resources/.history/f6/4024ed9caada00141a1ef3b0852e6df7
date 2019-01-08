@@ -1,0 +1,50 @@
+package com.yqy.yqy_resoult;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+
+	Button btn_i;
+	TextView tv_show;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		btn_i = (Button) findViewById(R.id.btn_i);
+		tv_show = (TextView) findViewById(R.id.tv_show);
+		btn_i.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent(MainActivity.this, BActivity.class);
+				startActivityForResult(i, 20);//20为任意数字  但与B不许一致
+			}
+		});
+		
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (20 == resultCode && data != null) {//20
+			String str = data.getStringExtra("str");
+			tv_show.setText(""+str);
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+}

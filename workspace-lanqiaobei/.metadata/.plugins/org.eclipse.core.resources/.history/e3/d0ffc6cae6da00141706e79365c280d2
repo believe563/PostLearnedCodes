@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">大连地税发票</string>
+    <string name="smssdk_bind_mobile_show">手机注册</string>
+    <string name="smssdk_appkey_dialog_title">请输入您的应用信息</string>
+    <string name="smssdk_appkey">AppKey</string>
+</resources>

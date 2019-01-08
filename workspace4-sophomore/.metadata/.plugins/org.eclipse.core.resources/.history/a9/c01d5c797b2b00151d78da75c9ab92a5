@@ -1,0 +1,41 @@
+package com.example.dluadroid05_07_15;
+import com.example.dluadroid05_07_15.R;
+import com.example.dluandroid03_07_13.MainActivity.MyListener;
+
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+/**
+ * 创建一个fragment
+ *
+ */
+public class Fragment02 extends Fragment{
+
+	private View view;
+	private int size = 50;
+	private int margin = 60;
+	int col = 11;
+	int row = 16;
+	private int index = 1;
+	private RelativeLayout rl;
+	private TextView first;// 第一个字块
+	private MyListener myListener;
+	//覆写父类的oncreateview方法
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		view=inflater.inflate(R.layout.fragment02, container,false);
+		rl = (RelativeLayout) view.findViewById(R.id.rl);
+		initUI();
+		setRandomBackground();
+		return view;
+	}
+}

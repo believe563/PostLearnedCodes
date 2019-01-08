@@ -1,0 +1,24 @@
+package com.example.qiubaichunwen;
+
+import java.util.List;
+
+import db.SQLiteReadHelper;
+import entity.QiuShiBaiKe;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.widget.ImageView;
+
+public class MainActivity extends Activity {
+private ImageView iv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        iv=(ImageView) findViewById(R.id.iv);
+        SQLiteReadHelper helper = new SQLiteReadHelper(MainActivity.this, "qiushibaike.db",R.);
+		List<QiuShiBaiKe> dataList = (List<QiuShiBaiKe>) helper.getDatabaseData();
+
+    }
+
+}

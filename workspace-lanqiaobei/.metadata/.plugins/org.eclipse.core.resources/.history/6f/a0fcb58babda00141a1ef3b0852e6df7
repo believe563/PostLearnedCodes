@@ -1,0 +1,44 @@
+package com.yqy.yqy_resoult;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class BActivity extends Activity {
+	EditText et_content;
+	Button btn_back;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_b);
+
+		et_content = (EditText) findViewById(R.id.et_content);
+		btn_back = (Button) findViewById(R.id.btn_back);
+
+		btn_back.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent();
+				i.putExtra("str", et_content.getText().toString());
+				setResult(20, i);//20是一个返回结果码，必须与mainactivity一致
+				finish();
+
+			}
+		});
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.b, menu);
+		return true;
+	}
+
+}

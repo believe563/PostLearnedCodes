@@ -1,0 +1,2 @@
+掌握widget基础用法及步骤
+用widget实现一个基本的时钟功能--可自动更新时间、可增加和删除--看代码--WidgetClockDemo

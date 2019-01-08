@@ -1,0 +1,40 @@
+package com.example.vtcdog;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+
+	private TextView btLogin=findViewById(R.id.btLogin);
+	private TextView btRegister=findViewById(R.id.btRegister);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.login);
+		
+	
+	}
+
+}
+
+//class MyThread extends Thread {
+//
+//	long  minPrime;
+//	public MyThread(long minPrime) {
+//		this.minPrime=minPrime;
+//	}
+//	
+//	@Override
+//	public void run() {
+//		// TODO Auto-generated method stub
+//		super.run();
+//		try {
+//			Thread.sleep(minPrime);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;SQLiteReadHelper.java&apos; to &apos;HuaBao/src/db&apos;&#x0D;&#x0A;- Original project: &apos;GetDatabaseDemo&apos;&#x0D;&#x0A;- Destination element: &apos;HuaBao/src/db&apos;&#x0D;&#x0A;- Original element: &apos;com.example.db.SQLiteReadHelper.java&apos;" description="Copy compilation unit" destination="=HuaBao/src&lt;db" element1="/src&lt;com.example.db{SQLiteReadHelper.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1437102726181" units="1" version="1.0"/>
+</session>

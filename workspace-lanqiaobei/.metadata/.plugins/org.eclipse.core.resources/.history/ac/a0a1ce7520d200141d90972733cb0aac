@@ -1,0 +1,26 @@
+package com.example.registerpageframe;
+
+import javax.security.auth.PrivateCredentialPermission;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.pm.FeatureInfo;
+import android.view.Menu;
+import android.view.Window;
+import android.widget.ImageButton;
+
+public class Registe_PhoneNum extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+    	super.onCreate(savedInstanceState);
+        private ImageButton mReturnButton;
+    	
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.input_phonenum);
+        
+        mReturnButton=(ImageButton) findViewById(R.id.ib_return);
+        
+    }
+    
+}

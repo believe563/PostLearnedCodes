@@ -1,0 +1,5 @@
+1426297035570	Extracts string '电话' into R.string._
+1426299944124	Extracts string '提交' into R.string.submit
+1426300005674	Extracts string '电话' into R.string.textTele
+1426300067269	Rename field 'textTele'
+1426348334956	Extracts string '请输入11位手机号：' into R.string.hint

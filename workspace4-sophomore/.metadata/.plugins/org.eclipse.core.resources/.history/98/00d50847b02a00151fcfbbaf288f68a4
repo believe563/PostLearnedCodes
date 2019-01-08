@@ -1,0 +1,9 @@
+import android.support.v4.app.Fragment;
+
+/**
+ * 创建一个fragment
+ *
+ */
+public class Fragment01 extends Fragment{
+
+}

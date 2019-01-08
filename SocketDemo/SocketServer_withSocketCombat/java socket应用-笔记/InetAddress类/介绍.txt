@@ -1,0 +1,23 @@
+主要用于表示网络上的硬件资源，实际上主要用来表示ip地址信息
+没有构造方法，不能直接new一个对象
+可以在java的文档中看到
+
+静态方法getLocalHost()返回一个InetAddress实例(IP地址)
+然后用这个实例可以通过.getHostName()和.getHostAddress()获得主机名和地址，如：
+计算机名：wheat
+IP地址：169.254.47.126
+.getAddress()获得字节数组形式的ip
+字节数组形式的ip：[-87, -2, 47, 126]
+
+//直接输出InetAddress
+		System.out.println(address);
+wheat/169.254.47.126
+
+
+//根据主机名获取InetAddress实例
+		InetAddress address2=InetAddress.getByName("wheat");
+		System.out.println(address2);
+		
+//根据ip地址获取InetAddress实例
+		InetAddress address3=InetAddress.getByName("169.254.47.126");
+		System.out.println(address3);

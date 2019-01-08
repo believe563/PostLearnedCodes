@@ -1,0 +1,11 @@
+URL--Uniform Resource Locator--统一资源定位符，表示Internet上某一资源的地址
+
+2、由2部分组成
+	协议名称和资源名称，中间用冒号隔开
+http://www.imooc.com---http是协议名称，后面的是资源名称
+
+java.net包中有 URL类
+
+看API文档中
+
+构造方法--根据字符串、协议和主机名和端口号和文件名、协议名称和端口号和文件名等各种方法创建URL对象

@@ -1,0 +1,13 @@
+UDP（用户数据报协议）协议是无连接、不可靠的、无序的
+特点是传输的速率相对较快
+
+UDP以数据报作为数据传输的载体
+
+数据传输过程：
+	先将要传输的数据定义成数据报（datagram），在数据报中指明数据所要达到的socket（主机地址和端口号），然后再将数据报发送出去。
+
+相关操作类：DatagramPacket：表示数据报包 DatagramSocket：进行端到端通信的类
+
+datagrampacket的构建 发送的长度 字节 目标地址和相应端口 或接收的数据和数据长度
+datagramsocket的构建 无参（将其绑定到主机上任何可用的端口） 或指定端口和本地地址（InetAddress）
+			close（），getInetAddress（），getPort(),send（datagrampacket p）从此套接字发送数				据报包，receive(DatagramPacket)从此套接字接收数据报包

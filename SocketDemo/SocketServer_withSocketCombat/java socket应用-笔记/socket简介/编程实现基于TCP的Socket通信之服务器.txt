@@ -1,0 +1,55 @@
+服务器端：
+1、创建ServerSocket对象，绑定监听端口
+ServerSocket serverSocket=new ServerSocket(8888);
+2、通过accept()方法监听客户端请求，返回Socket的实例
+Socket socket=serverSocket.accept();
+3、连接建立后，通过输入流读取客户端发送的请求信息
+InputStream is=socket.getInputStream();//字节流
+			InputStreamReader isr=new InputStreamReader(is);//字符流
+			BufferedReader br=new BufferedReader(isr);//添加缓冲，提高效率
+			String info=null;
+			while((info=br.readLine())!=null){//循环读取客户端的信息
+				System.out.println("我是服务器，客户端说："+info);
+			}
+socket.shutdownInput();//关闭输入流
+4、通过输出流向客户端发送响应信息
+OutputStream os=socket.getOutputStream();
+			PrintWriter pw=new PrintWriter(os);
+			pw.write("来自服务器的响应信息");
+			pw.flush();
+			socket.shutdownOutput();
+5、关闭相关资源
+pw.close();
+			os.close();
+			
+			br.close();
+			isr.close();
+			is.close();
+			socket.close();
+			serverSocket.close();			
+
+客户端：
+1、创建Socket对象，指明需要连接的服务器的地址和端口号
+Socket socket=new Socket("127.0.0.1", 8888);//地址也可以是localhost
+2、建立连接后，通过输出流向服务器端发送请求信息
+OutputStream os=socket.getOutputStream();//字节输出流
+		PrintWriter pw=new PrintWriter(os);//将输出流包装为打印流
+		pw.write("来自客户端的请求信息");
+		pw.flush();
+		socket.shutdownOutput();//关闭输出流
+3、通过输入流获取服务器响应的信息
+InputStream is=socket.getInputStream();
+		BufferedReader br=new BufferedReader(new InputStreamReader(is));
+		String info2=null;
+		while((info2=br.readLine())!=null){
+			System.out.println("收到来自服务器的响应信息："+info2);
+		}
+		socket.shutdownInput();
+4、关闭相关资源
+br.close();
+		is.close();
+		
+		pw.flush();
+		pw.close();
+		os.close();
+		socket.close();

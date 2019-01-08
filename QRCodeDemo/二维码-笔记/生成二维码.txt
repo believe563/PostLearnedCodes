@@ -1,0 +1,18 @@
+在encodingUtil类中，
+有createQRCode（）生成最基本的二维码
+和addLogo在二维码中间添加最基本的图案
+两个方法
+
+之所以可以添加一个logo 是因为二维码的高容错性，覆盖掉一部分并不影响解析
+
+生成二维码的代码：
+String input=mEtInput.getText().toString();
+        if (input.equals("")) {
+            Toast.makeText(MainActivity.this, "input is empty", Toast.LENGTH_SHORT).show();
+        } else {
+            Bitmap qRCodeBitmap = EncodingUtils.createQRCode(input, 500,500,null);//第三个参数是放置logo的bitmap
+            mIvQRCode.setImageBitmap(qRCodeBitmap);
+        }
+
+将任意图片转换成bitmap形式的方法：
+BitmapFactory.decodeResource(getResource(),R.mipmap.thinking);

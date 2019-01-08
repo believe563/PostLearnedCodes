@@ -1,0 +1,5 @@
+需要将zxing包按照module导入，并将其作为项目的dependency
+
+设置一个button，使点击button的时候可以跳到captureActivity页面进行扫描，扫描后会自动返回原先的页面并对扫描结果进行显示
+
+代码实现：只需要写一句页面跳转语句startActivityForResult(),在onActivityResult中获取返回的数据

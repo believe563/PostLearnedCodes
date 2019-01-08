@@ -1,0 +1,12 @@
+未来之星---recyclerView 视频的笔记
+
+
+
+LayoutManager实现ListView、GridView、横向ListView/GridView、瀑布流
+
+ItemDecoration 实现原理和如何定制  项目中的ItemDecoration是获取Theme中的listDivider来定义的，系统中有类似属性时可以获取系统的
+
+ItemAnimator的使用 https://github.com/gabrielemariotti/RecyclerViewItemAnimators 可以看开源
+   添加和删除一个卡片时，调用notifyItemInserted和notifyItemRemoved才有动画效果，调用notifyDataSetChanged没有动画效果
+
+手动在Adapter中提供recyclerView的Click/LongClick回调

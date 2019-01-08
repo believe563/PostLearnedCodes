@@ -1,0 +1,12 @@
+Matrix矩阵
+
+3*3矩阵
+xScale  xSkew  xTransfer
+Yskew  yScale  yTransfer
+0  0  0
+
+要关注的是第0、2个值：x方向的缩放和平移，第4、5个值：y方向的缩放和平移
+9个值保存在一个一维数组中
+
+可以通过Matrix的setValues放入大于9个float类型的值来初始化
+也可以通过postTransfer等post方法初始化值

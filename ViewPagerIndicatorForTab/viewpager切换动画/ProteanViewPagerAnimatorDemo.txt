@@ -1,0 +1,103 @@
+因为属性动画只支持android3.0以上的版本，所以官方的setViewPagerTransformer动画中的Depth。。和。。out。。。都不能用了
+
+实现兼容3.0以上版本：
+将属性动画替换成成nineoldandroids
+nineoldandroids支持3.0以下的属性动画
+
+需要导入nineoldandroid jar包
+
+http://developer.android.com/training/animation/screen-slide.html  源码地址--需要翻墙--谷歌官方页面
+
+从第一页到第二页打印的position变化
+04-12 20:10:08.324 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ......ID 0,0-720,1230},position=0.0
+04-12 20:10:08.324 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ......ID 720,0-1440,1230},position=1.0
+04-12 20:10:18.687 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ......ID 0,0-720,1230},position=-0.009722223
+04-12 20:10:18.687 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ......ID 720,0-1440,1230},position=0.99027777
+04-12 20:10:18.738 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.08194444
+04-12 20:10:18.739 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.91805553
+04-12 20:10:18.757 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.108333334
+04-12 20:10:18.758 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.89166665
+04-12 20:10:18.770 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.13611111
+04-12 20:10:18.770 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.86388886
+04-12 20:10:18.782 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.16666667
+04-12 20:10:18.782 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.8333333
+04-12 20:10:18.798 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.2013889
+04-12 20:10:18.798 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.7986111
+04-12 20:10:18.814 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.23472223
+04-12 20:10:18.814 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.7652778
+04-12 20:10:18.830 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.26666668
+04-12 20:10:18.831 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.73333335
+04-12 20:10:18.847 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.30416667
+04-12 20:10:18.847 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.6958333
+04-12 20:10:18.865 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.34305555
+04-12 20:10:18.865 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.65694445
+04-12 20:10:18.881 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.38333333
+04-12 20:10:18.881 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.6166667
+04-12 20:10:18.892 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.4
+04-12 20:10:18.892 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.6
+04-12 20:10:18.897 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ......ID 0,0-720,1230},position=-0.40555555
+04-12 20:10:18.898 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ......ID 720,0-1440,1230},position=0.59444445
+04-12 20:10:18.913 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.48055556
+04-12 20:10:18.913 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.51944447
+04-12 20:10:18.928 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.54444444
+04-12 20:10:18.928 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.45555556
+04-12 20:10:18.944 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.60833335
+04-12 20:10:18.944 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.39166668
+04-12 20:10:18.960 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.6625
+04-12 20:10:18.960 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.3375
+04-12 20:10:18.977 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.7097222
+04-12 20:10:18.977 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.29027778
+04-12 20:10:18.993 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.75416666
+04-12 20:10:18.993 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.24583334
+04-12 20:10:19.010 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.79305553
+04-12 20:10:19.010 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.20694445
+04-12 20:10:19.025 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.82361114
+04-12 20:10:19.025 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.17638889
+04-12 20:10:19.041 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.8513889
+04-12 20:10:19.042 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.14861111
+04-12 20:10:19.058 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.875
+04-12 20:10:19.058 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.125
+04-12 20:10:19.074 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.8972222
+04-12 20:10:19.074 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.10277778
+04-12 20:10:19.091 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.9152778
+04-12 20:10:19.091 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.08472222
+04-12 20:10:19.107 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.93194443
+04-12 20:10:19.107 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.068055555
+04-12 20:10:19.124 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.9444444
+04-12 20:10:19.124 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.055555556
+04-12 20:10:19.141 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.95694447
+04-12 20:10:19.141 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.043055557
+04-12 20:10:19.157 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.9652778
+04-12 20:10:19.157 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.034722224
+04-12 20:10:19.173 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.9722222
+04-12 20:10:19.174 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.027777778
+04-12 20:10:19.189 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.9791667
+04-12 20:10:19.189 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.020833334
+04-12 20:10:19.206 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.9847222
+04-12 20:10:19.206 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.015277778
+04-12 20:10:19.222 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.9875
+04-12 20:10:19.223 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.0125
+04-12 20:10:19.238 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.9916667
+04-12 20:10:19.238 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.008333334
+04-12 20:10:19.254 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.9930556
+04-12 20:10:19.254 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.0069444445
+04-12 20:10:19.270 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.99583334
+04-12 20:10:19.271 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.004166667
+04-12 20:10:19.286 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.99722224
+04-12 20:10:19.286 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.0027777778
+04-12 20:10:19.303 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-0.9986111
+04-12 20:10:19.303 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.0013888889
+04-12 20:10:19.351 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{425c4c70 V.ED.... ........ 0,0-720,1230},position=-1.0
+04-12 20:10:19.352 31147-31147/com.feng.demo.proteanviewpageranimatordemo E/Tag: view=android.widget.ImageView{42949ba0 V.ED.... ........ 720,0-1440,1230},position=0.0
+
+从第一页到第二页 第一页的postion从0变为-1，
+		 第二页的position从1变为0，
+		如果position指的是每一页的左上角的话，手机屏幕左上角就是0，右上角就是1
+
+总结：	1.ViewPager.setPageTransformer实现切换动画
+	默认为3.0以上api，
+	2.修改ViewPager内部代码+使用nineoleandroids代替属性动画实现向下兼容
+	3.观察api的规律，自定义切换动画
+
+自定义ViewPager来实现切换效果
+

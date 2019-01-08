@@ -1,0 +1,285 @@
+自定义ViewPager实现动画切换效果
+需要拿到当前切换的两个view
+一个动画的梯度值，position有从0到1的变化或从1到0的变化
+
+设置一个translation和一个scale
+
+从第0页到第1页的position和offset变化
+04-13 19:05:25.622 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.0055555557
+04-13 19:05:25.675 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.055555556
+04-13 19:05:25.689 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.079166666
+04-13 19:05:25.704 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.10277778
+04-13 19:05:25.718 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.13472222
+04-13 19:05:25.738 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.16944444
+04-13 19:05:25.754 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.19861111
+04-13 19:05:25.770 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.22916667
+04-13 19:05:25.787 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.26527777
+04-13 19:05:25.804 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.30555555
+04-13 19:05:25.819 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.3513889
+04-13 19:05:25.835 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.40555555
+04-13 19:05:25.852 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.46944445
+04-13 19:05:25.868 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.55972224
+04-13 19:05:25.878 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.5708333
+04-13 19:05:25.885 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.59305555
+04-13 19:05:25.906 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.69722223
+04-13 19:05:25.917 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.7416667
+04-13 19:05:25.933 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.7972222
+04-13 19:05:25.950 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.84305555
+04-13 19:05:25.966 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.8833333
+04-13 19:05:25.983 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.9125
+04-13 19:05:25.999 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.9361111
+04-13 19:05:26.015 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.95416665
+04-13 19:05:26.032 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.96805555
+04-13 19:05:26.048 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.9777778
+04-13 19:05:26.064 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.9861111
+04-13 19:05:26.080 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.99027777
+04-13 19:05:26.099 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.99444443
+04-13 19:05:26.112 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.99722224
+04-13 19:05:26.129 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.9986111
+04-13 19:05:26.160 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.0
+
+position始终为0，offset为0~1
+
+从第2页到第0页的position和offset变化：
+04-13 19:07:05.308 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.9930556
+04-13 19:07:05.355 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.92083335
+04-13 19:07:05.369 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.8833333
+04-13 19:07:05.385 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.8472222
+04-13 19:07:05.402 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.8138889
+04-13 19:07:05.418 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.78194445
+04-13 19:07:05.434 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.74583334
+04-13 19:07:05.451 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.7097222
+04-13 19:07:05.467 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.6736111
+04-13 19:07:05.483 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.64166665
+04-13 19:07:05.500 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.6111111
+04-13 19:07:05.504 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.60555553
+04-13 19:07:05.517 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.54305553
+04-13 19:07:05.532 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.4763889
+04-13 19:07:05.548 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.4138889
+04-13 19:07:05.565 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.35416666
+04-13 19:07:05.581 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.30416667
+04-13 19:07:05.598 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.25833333
+04-13 19:07:05.615 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.21805556
+04-13 19:07:05.630 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.18611111
+04-13 19:07:05.646 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.15694444
+04-13 19:07:05.662 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.13055556
+04-13 19:07:05.679 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.108333334
+04-13 19:07:05.695 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.08888889
+04-13 19:07:05.711 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.072222225
+04-13 19:07:05.727 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.059722222
+04-13 19:07:05.743 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.047222223
+04-13 19:07:05.759 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.0375
+04-13 19:07:05.776 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.029166667
+04-13 19:07:05.792 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.022222223
+04-13 19:07:05.810 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.016666668
+04-13 19:07:05.826 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.0125
+04-13 19:07:05.842 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.009722223
+04-13 19:07:05.861 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.0069444445
+04-13 19:07:05.876 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.004166667
+04-13 19:07:05.891 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.0027777778
+04-13 19:07:05.922 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.0013888889
+04-13 19:07:05.955 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.0
+
+position始终为0，offset为1到0
+
+
+从第2页到第3页的position和offset变化：
+04-13 19:08:38.302 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.012500048
+04-13 19:08:38.336 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.09861112
+04-13 19:08:38.350 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.1569444
+04-13 19:08:38.366 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.23333335
+04-13 19:08:38.382 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.35138893
+04-13 19:08:38.392 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.3722222
+04-13 19:08:38.399 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.41250002
+04-13 19:08:38.415 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.5611111
+04-13 19:08:38.431 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.67222226
+04-13 19:08:38.447 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.75972223
+04-13 19:08:38.463 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.82638884
+04-13 19:08:38.480 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.8805555
+04-13 19:08:38.498 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.92222226
+04-13 19:08:38.514 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.94861114
+04-13 19:08:38.531 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.9680556
+04-13 19:08:38.547 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.98055553
+04-13 19:08:38.563 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.98888886
+04-13 19:08:38.578 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.9944445
+04-13 19:08:38.594 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.9972222
+04-13 19:08:38.611 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.9986111
+04-13 19:08:38.627 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=2,offset=0.0
+
+position始终为1，offset从0到1
+
+从第3页到第2页的position和offset变化：
+04-13 19:09:44.346 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.98888886
+04-13 19:09:44.365 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.9666667
+04-13 19:09:44.380 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.9416667
+04-13 19:09:44.396 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.9111111
+04-13 19:09:44.415 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.8666667
+04-13 19:09:44.430 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.82916665
+04-13 19:09:44.446 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.7902777
+04-13 19:09:44.463 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.75
+04-13 19:09:44.479 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.70555556
+04-13 19:09:44.496 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.6569444
+04-13 19:09:44.514 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.6041666
+04-13 19:09:44.529 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.54861116
+04-13 19:09:44.540 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.5416666
+04-13 19:09:44.548 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.5319444
+04-13 19:09:44.562 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.4652778
+04-13 19:09:44.576 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.4097222
+04-13 19:09:44.593 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.34861112
+04-13 19:09:44.609 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.29861116
+04-13 19:09:44.626 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.2513889
+04-13 19:09:44.642 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.21527779
+04-13 19:09:44.658 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.17916667
+04-13 19:09:44.674 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.14999998
+04-13 19:09:44.691 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.122222185
+04-13 19:09:44.707 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.10138893
+04-13 19:09:44.722 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.08333337
+04-13 19:09:44.739 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.06666672
+04-13 19:09:44.755 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.054166675
+04-13 19:09:44.772 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.043055534
+04-13 19:09:44.788 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.0333333
+04-13 19:09:44.804 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.026388884
+04-13 19:09:44.820 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.019444466
+04-13 19:09:44.836 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.015277743
+04-13 19:09:44.852 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.01111114
+04-13 19:09:44.869 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.008333325
+04-13 19:09:44.886 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.0055555105
+04-13 19:09:44.902 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.0041667223
+04-13 19:09:44.917 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.0027778149
+04-13 19:09:44.933 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.0013889074
+04-13 19:09:44.966 7254-7254/com.feng.demo.zidingyiviewpager E/LOG: position=1,offset=0.0
+
+position始终为1，offset从1到0
+
+从上面可以得到:position就是当前所切换的两个页面中前一个页面的下标值
+		offset如果是从下标小的页翻到下标大的页，则offset从0到1
+			如果是从下标大的页翻到下标小的页，则offset从1到0
+
+position的值是adapter确定的，可能是0~100，但是ViewPager内部有一个缓存机制，内部最多会维系3个page，
+也就是说viewpager内部只有3个孩子，通过getChildAt(position)，当position为4的时候就会报错
+所以通过position不可能拿到view，因为它的值是变化的，0~pagesize，
+
+getChild(0)
+getChild(1)
+getChild(2)
+只能有0,1,2三个值
+获取有一定的难度，这只是可能性
+
+另一种获取当前页的方法是：
+getCurrentItem();---当前页
+getCurrentItem()-1;---上一页
+getCurrentItem()+1;---下一页
+
+
+第0页到第1页的currentItem变化过程：
+04-13 19:27:40.385 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=0,getChildCount()=2
+04-13 19:27:40.434 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=0,getChildCount()=2
+04-13 19:27:40.453 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=0,getChildCount()=2
+04-13 19:27:40.466 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.481 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.496 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.512 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.528 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.545 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.561 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.577 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.593 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.609 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.626 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.642 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.658 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.674 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.691 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.707 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.723 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.739 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.755 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+04-13 19:27:40.788 10172-10172/com.feng.demo.zidingyiviewpager E/LOG: getCurrentItem()=1,getChildCount()=2
+如果用getCurrentItem()获取当前页和下一页的话，因为变化的过程是动态的，可能会因为还没变化完，就开始获取当前页和上一页和下一页，而发生错乱
+所以用getCurrentItem()实现也比较困难
+
+一个好方法：
+通过position拿到左边的view和右边的view
+因为当前position指的一直是左边的view的下标，
+所以左边的view一直是position，右边的view一直是position+1
+
+具体方法是创建一个类型为map的mChildren变量，key是integer(下标值)，value是View，用来存放每一个子view
+
+提供两个方法：
+1、
+setViewForPosition(View view,int position)
+{
+	mChildren.put(position,view);
+}
+在instantiateItem（初始化）的时候把这个方法放进去，mViewPager.setViewForPosition(imageView,position);这样就初始化成功了
+2、
+public void removeViewFromPosition(Integer position)
+{
+	mChildren.remove(position);
+}
+
+在destroyItem（）的时候可以调用mViewPager.removeViewFromPosition(position);就可以移除这个view
+只要当前view可见，就可以通过mChildren.get(position);在自定义的viewpager类中拿到当前view
+
+offsetPixel值的变化：offset*宽度这个变化值
+04-13 20:05:11.049 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.015277778,offsetPixels=11
+04-13 20:05:11.195 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.3125,offsetPixels=225
+04-13 20:05:11.209 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.37083334,offsetPixels=267
+04-13 20:05:11.239 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.5402778,offsetPixels=389
+04-13 20:05:11.247 14264-14264/com.android.calendar E/dalvikvm: /system/framework/cloud-common.jar odex has stale dependencies
+04-13 20:05:11.248 14264-14264/com.android.calendar E/dalvikvm: /system/priv-app/Calendar.apk odex has stale dependencies
+04-13 20:05:11.254 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.60833335,offsetPixels=438
+04-13 20:05:11.271 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.67638886,offsetPixels=486
+04-13 20:05:11.287 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.73055553,offsetPixels=526
+04-13 20:05:11.303 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.7763889,offsetPixels=559
+04-13 20:05:11.319 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.81666666,offsetPixels=588
+04-13 20:05:11.336 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.8527778,offsetPixels=614
+04-13 20:05:11.352 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.88055557,offsetPixels=634
+04-13 20:05:11.369 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.90555555,offsetPixels=652
+04-13 20:05:11.384 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.925,offsetPixels=666
+04-13 20:05:11.400 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.94166666,offsetPixels=678
+04-13 20:05:11.417 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.95555556,offsetPixels=688
+04-13 20:05:11.425 14310-14310/com.miui.backup E/dalvikvm: /system/framework/cloud-common.jar odex has stale dependencies
+04-13 20:05:11.426 14310-14310/com.miui.backup E/dalvikvm: /system/priv-app/Backup.apk odex has stale dependencies
+04-13 20:05:11.433 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.96666664,offsetPixels=696
+04-13 20:05:11.449 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.975,offsetPixels=702
+04-13 20:05:11.465 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.98194444,offsetPixels=707
+04-13 20:05:11.482 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.9875,offsetPixels=711
+04-13 20:05:11.498 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.99027777,offsetPixels=713
+04-13 20:05:11.516 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.99444443,offsetPixels=716
+04-13 20:05:11.531 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.99583334,offsetPixels=717
+04-13 20:05:11.549 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.99722224,offsetPixels=718
+04-13 20:05:11.564 14168-14168/com.feng.demo.zidingyiviewpager E/LOG: position=0,offset=0.9986111,offsetPixels=719
+
+总结：：：
+自定义Viewpager时，要拿到当前切换的两个view，（通过map存储与获取）
+通过offset和offsetPixels获得动画的梯度值
+
+
+一个关于切换动画的开源项目：JazzyViewPager，使用人多，比较稳定
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

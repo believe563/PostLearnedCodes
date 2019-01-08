@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:fengjianghui="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.fengjianghui.personal.my.myActionBarLinearLayout
+        android:id="@+id/ll_submit"
+        fengjianghui:text_right="提交"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    </com.fengjianghui.personal.my.myActionBarLinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_margin="10dp"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="App是英文Application的简称,由于iPhone智能手机的流行,现在的APP多指智能手机的第三方应用程序。App是英文Application的简称,由于iPhone智能手机的流行,现在的APP多指智能手机的第三方应用程序。"
+            android:background="@null"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 4-300字"
+                android:textColor="@color/picture_gray"
+                android:textSize="@dimen/small_font_size"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.fengjianghui.personal.my.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="#254472"
+        >
+
+        <ImageView
+            android:id="@+id/iv_wmy15"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:src="@mipmap/wmy15"/>
+
+        <TextView
+            android:id="@+id/tv_adoptionRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:text="采纳率 50%"
+            android:textColor="#fff"/>
+
+        <ImageView
+            android:id="@+id/iv_wmy12"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/wmy12"/>
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdge="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:id="@+id/tablelayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:padding="10dp"
+                android:shrinkColumns="0"
+                android:stretchColumns="0"
+                >
+
+                <TableRow
+                    android:id="@+id/tablerow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:id="@+id/myquestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@mipmap/wmy17"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="我的提问"
+                        android:textSize="@dimen/font_size"/>
+
+                    <ImageView
+                        android:id="@+id/iv_myquestion"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:src="@mipmap/wmy11"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="40dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    >
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray"
+                        android:gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tablerow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_myservice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@mipmap/wmy18"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="我的服务"
+                        android:textSize="@dimen/font_size"/>
+
+                    <ImageView
+                        android:id="@+id/iv_myservice"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:src="@mipmap/wmy11"/>
+                </TableRow>
+            </TableLayout>
+            <TableLayout
+                android:id="@+id/tablelayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:padding="10dp"
+                android:shrinkColumns="0"
+                android:stretchColumns="0"
+                >
+
+                <TableRow
+                    android:id="@+id/tablerow3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@mipmap/wmy19"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="我的申诉"
+                        android:textSize="@dimen/font_size"/>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:src="@mipmap/wmy11"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="40dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    >
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray"
+                        android:gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tablerow4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@mipmap/wmy20"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="我的回答"
+                        android:textSize="@dimen/font_size"/>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:src="@mipmap/wmy11"/>
+                </TableRow>
+            </TableLayout>
+            <TableLayout
+                android:id="@+id/tablelayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:padding="10dp"
+                android:shrinkColumns="0"
+                android:stretchColumns="0"
+                >
+
+                <TableRow
+                    android:id="@+id/tablerow5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@mipmap/wmy21"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="我的等级"
+                        android:textSize="@dimen/font_size"/>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:src="@mipmap/wmy11"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="40dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    >
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#dcdcdc"
+                        android:gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tablerow6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@mipmap/wmy14"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="我的收藏"
+                        android:textSize="@dimen/font_size"/>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:src="@mipmap/wmy11"/>
+                </TableRow>
+            </TableLayout>
+            <TableLayout
+                android:id="@+id/tablelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:padding="10dp"
+                android:shrinkColumns="0"
+                android:stretchColumns="0"
+                >
+
+                <TableRow
+                    android:id="@+id/tablerow7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_set"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@mipmap/wmy10"
+                        android:drawablePadding="16dp"
+
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="设置"
+                        android:textSize="@dimen/font_size"/>
+
+                    <ImageView
+                        android:id="@+id/iv_set"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:src="@mipmap/wmy11"/>
+                </TableRow>
+
+            </TableLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

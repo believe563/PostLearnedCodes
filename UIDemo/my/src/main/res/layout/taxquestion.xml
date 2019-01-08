@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:fengjianghui="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <com.fengjianghui.personal.my.myActionBarLinearLayout
+        fengjianghui:text_center="关于税问"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    </com.fengjianghui.personal.my.myActionBarLinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/login6"
+            android:paddingTop="50dp"
+            android:paddingBottom="20dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="税问 1.0.0"
+            android:paddingLeft="40dp"
+            android:gravity="center"
+            android:textSize="18sp"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用协议"
+        android:layout_margin="10dp"
+        android:layout_marginTop="30dp"
+        android:background="#ffffff"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:textColor="#000000"/>
+</LinearLayout>

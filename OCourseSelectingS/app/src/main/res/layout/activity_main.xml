@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPurple"
+    android:fitsSystemWindows="true"
+    tools:context="com.courseselecting.onlinesystem.ocourseselectings.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:text="@string/personal_message"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/font_size_large" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/paddings"
+            android:layout_marginRight="@dimen/paddings"
+            android:layout_marginTop="@dimen/paddings"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/genders"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/font_size_medium" />
+
+            <Spinner
+                android:id="@+id/spinner_grades"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/paddings"
+                android:background="@null"
+                android:entries="@array/grades_detail"
+                android:prompt="@string/genders"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/paddings"
+            android:layout_marginRight="@dimen/paddings"
+            android:layout_marginTop="@dimen/paddings"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/classes"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/font_size_medium" />
+
+            <Spinner
+                android:id="@+id/spinner_classes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/paddings"
+                android:background="@null"
+                android:entries="@array/classes_detail"
+                android:prompt="@string/classes"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/paddings"
+            android:layout_marginRight="@dimen/paddings"
+            android:layout_marginTop="@dimen/paddings"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/names"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/font_size_medium" />
+
+            <Spinner
+                android:id="@+id/spinner_names"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/paddings"
+                android:background="@null"
+                android:entries="@array/names_detail"
+                android:prompt="@string/names"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/paddings"
+            android:layout_marginRight="@dimen/paddings"
+            android:layout_marginTop="@dimen/paddings"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pwd"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/font_size_medium" />
+
+            <com.courseselecting.onlinesystem.ocourseselectings.ClearableAutoCompleteTextView
+                android:id="@+id/actv_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/paddings"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:text=""
+                android:textColor="@color/colorPurple"
+                android:textColorHint="@color/colorGray"
+                android:textSize="@dimen/font_size_medium" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/paddings"
+            android:layout_marginRight="@dimen/paddings"
+            android:layout_marginTop="@dimen/paddings"
+            android:background="@color/colorWhite"
+            android:text="@string/login"
+            android:textColor="@color/colorPurple"
+            android:textSize="@dimen/font_size_medium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/paddings"
+            android:layout_marginRight="@dimen/paddings"
+            android:layout_marginTop="@dimen/paddings"
+            android:gravity="right"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/font_size_small" />
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/pb_wait"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

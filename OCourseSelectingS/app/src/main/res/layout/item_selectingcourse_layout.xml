@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/paddings">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_className"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="课程名称"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/font_size_small" />
+
+        <TextView
+            android:id="@+id/tv_classDetail_onLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/paddings"
+            android:text="一行课程详情"
+            android:singleLine="true"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/font_size_tiny" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin">
+
+        <Button
+            android:id="@+id/bt_selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selected"
+            android:singleLine="true"
+            android:text="@string/selectingcourse"
+            android:textSize="@dimen/font_size_tiny" />
+
+        <Button
+            android:id="@+id/bt_unselected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selected"
+            android:singleLine="true"
+            android:text="@string/unselectingcourse"
+            android:textSize="@dimen/font_size_tiny" />
+    </LinearLayout>
+</LinearLayout>

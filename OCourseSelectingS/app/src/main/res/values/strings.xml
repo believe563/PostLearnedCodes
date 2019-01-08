@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">OCourseSelectingS</string>
+    <string name="action_settings">Settings</string>
+    <string name="personal_message">学生登录</string>
+    <string name="genders">年级:</string>
+    <string name="classes">班级:</string>
+    <string name="names">姓名:</string>
+    <string name="pwd">密码:</string>
+    <string name="login">登录</string>
+    <string name="save">保存</string>
+    <string name="cancel">返回</string>
+    <string name="selectingcourse">选课</string>
+    <string name="unselectingcourse">退选</string>
+    <string name="ok">确定</string>
+    <string name="reNewPwd">再次输入新密码</string>
+    <string name="newPwd">输入新密码</string>
+    <string name="oldPwd">输入原密码</string>
+    <string-array name="grades_detail">
+    <item name="grade1">高一</item>
+    <item name="grade2">高二</item>
+    <item name="grade3">高三</item>
+
+</string-array>
+    <string-array name="classes_detail">
+        <item name="classes_one">414</item>
+        <item name="classes_two">415</item>
+        <item name="classes_three">416</item>
+    </string-array>
+    <string-array name="names_detail">
+        <item name="one">冯江惠</item>
+        <item name="two">陈妍颖</item>
+        <item name="three">董香玉</item>
+        <item name="four">胡欢</item>
+    </string-array>
+</resources>

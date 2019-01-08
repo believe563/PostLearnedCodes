@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.feng.demo.parallaxguidedemo.MainActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/bt_go"
+        android:layout_width="160dp"
+        android:layout_height="42dp"
+        android:layout_alignBottom="@+id/vp_guide"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/sel_guide_go"
+        android:gravity="center"
+        android:text="立即体验"
+        android:textColor="#fff"
+        android:textSize="17sp"
+        android:visibility="gone" />
+
+</RelativeLayout>

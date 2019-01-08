@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/androidStudioDocument/消息推送/见证Android消息推送时刻/socket的使用和mina框架讲解/Mina框架需要的jar包/apache-mina-2.0.13-bin/apache-mina-2.0.13/dist/mina-core-2.0.13.jar"/>
+	<classpathentry kind="lib" path="E:/androidStudioDocument/消息推送/见证Android消息推送时刻/socket的使用和mina框架讲解/Mina框架需要的jar包/apache-mina-2.0.13-bin/apache-mina-2.0.13/lib/slf4j-api-1.7.14.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,38 @@
+服务器端：
+MinaDemo_Server文件夹中
+
+在 Apache Mina网站下载mina相关的jar包、解压
+有两个包是必须拷贝的
+1--dist\mina-core.jar
+2--lib\slf4j.jar 是mina内部用来做日志用的，不放mina不能正常工作
+
+在服务器端选择buildpath-- addExtraArchives 将这两个包导入
+
+
+第一部分：
+新建一个类，创建一个main方法 
+如果只使用基本的功能的话只需要4步：详情见代码----MinaDemo--Server
+实现了客户端向服务器发送一条数据，服务器向客户端返回一条数据
+
+第二部分：
+设置空闲时间，每到空闲时间就在屏幕上打印一条数据
+
+第三部分：
+自定义?ProtocolCodecFilter里的factory
+（用系统自带的不知道内部的实现且不好用自己定制的功能，且mina没有自带解析xml和json的factory，所以要自己写）
+主要实现了一个解析字符串的编解码器，
+解决了带与不带\n下数据丢失的问题
+
+第四部分：
+accepter.bind();方法，参数是InetSocketAddress（端口号）
+
+
+因为服务器端对网络通信框架的依赖是最高的，如果不用这种网络通信框架
+我们需要自己去管理很多高并发的网络请求，需要考虑的东西非常多，
+客户端对网络通信框架依赖的比较少，它不需要管理非常多的连接，
+
+
+客户端：
+也用mina框架实现：
+NioSocketConnector是客户端用来连接的，NioSocketAcceptor是服务器端用来等待连接的
+也是4步，就可以实现连接

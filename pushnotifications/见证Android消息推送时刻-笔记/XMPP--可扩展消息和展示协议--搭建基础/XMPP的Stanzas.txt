@@ -1,0 +1,125 @@
+Stanzas 一节、一局
+
+XMPP协议可以跨平台是因为它不关心底层的传输方式，只是限定了传输内容的格式
+
+几个常用标签：
+stream presence message iq 
+<stream:stream>
+...
+<presence>
+<show/>
+</presence>
+
+<message to='foo'>
+<body/>
+</message>
+
+<iq to='bar'>
+<query/>
+</iq>
+...
+</stream:stream>
+这个叫XML Stanzas（一节、诗的一节）表示XMPP协议的一段内容
+
+XMPP的身份标识：
+XMPP规定，每个客户端是使用JID来作为身份标识的：
+[user "@"]domain["/"resource]
+(domain 域)
+用户名后面加上域防止重名 /后面的resource指的是登录的设备，防止同一用户登录不同设备
+
+XML Stanzas通用属性：
+from：表示数据的发送端 里面有个JID（服务器通常都不会信赖from制定的JID，不然的话可能出现客户端伪造另一个用户发送消息的情况，服务器端是根据连接的状态自动判断这条数据是由谁发出的），更多的作用是帮助调试和分析问题的原因）
+to：指定这条消息发送给谁 里面也是JID（服务器会解析出JID的值，将这条消息转发给相应的用户，如果没有指定JID，就相当于是发送给服务器自己，内部处理消息）
+type：指定Stanzas的类型
+id：对一段Stanzas做唯一标识符的（判断客户端回应的Stanzas是应答服务器端的Stanzas，两端带上相同的id）
+
+标签的作用：
+stream：客户端和服务器建立初始化连接的
+Client：
+<stream:stream
+	to="example.com"//目标服务器的地址，可以是域名或ip
+	xmlns="jabber:client"//命名空间，是固定不变的
+	xmlns:stream="http://etherx.jabber.org/streams"
+	version="1.0">
+
+Server:
+<stream:stream
+	from="example.com"//服务器收到后发送这样的一段，from属性指的是 这条信息是从服务器发出的
+	id="someid"//服务器端随机生成的，客户端会将它作为与服务端的连接id
+	xmlns="jabber:client"
+	xmlns:stream="http://etherx.jabber.org/stream"
+	version="1.0">
+经历了这样的一次数据交互之后，客户端和服务器成功建立连接（才能认为双方都是支持XMPP协议的），才能进行进一步的交互，
+注意：只有开始标签，没有结束标签，是因为两边还没有断开连接
+像下面的就断开连接了：
+Client:
+</stream:stream>
+Server:
+</stream:stream>
+
+
+presence:表示用户的在线状态的
+基本结构：
+<presence
+	from="jackson@gmail.com"//是由这个用户发出的
+	to="jimmy@msn.com"//要发给这个用户
+	type="unavailable"/>//表示用户下线了，就是告诉jimmy jackson已经下线了
+type可选参数：
+available--上线（默认）
+unavailable--下线
+subscribe--订阅某个用户的在线状态
+subscribed--授权该次订阅
+unsubscribe--取消订阅某个用户的在线状态
+unsubscribed--授权该次取消订阅
+error--错误
+推送中一般不用订阅相关功能
+当客户端处于在线状态时，还可以通过一些扩展标签来更加丰富的表示当前用户的在线状态
+<show>away</show> away表示暂离，还可以选chat（愿意聊天），xa（长时间离开），dnd（do not deserve不想联系）
+<status>having a spot of tea</status>详细的说干什么了
+
+message：传输聊天的主体内容
+基本结构：
+<message
+	from="jackson@gmail.com"
+	to="jimmy@msn.com"
+	type="chat">//normal（可指定为一条独立消息，不属于任何会话 默认）、chat（两个人 一对一组成的聊天会话）、groupchat（群聊）、headline（头条内容、滚动条等）、error（错误）
+	<body>hello!</body>//主体内容封装在body标签中
+	</message>
+
+IQ：信息查询（info query）
+基本结构：
+<iq
+	from="jackson@gmail.com"
+	id="rr82a1z7"//没有格式限制，但是get时候和result时候的id必须是一致的
+	to="jackson@gmail.com"//from和to指向同样的id，表示只能查询自己的id的联系人列表
+	type="get">//有点类似于http里的get，还有set（设置数据，类似于post）、result（响应数据，比如响应get请求）、error（发生错误）
+	<query xmlns="jabber:iq:roster"/>//指定具体的查询动作，jabber:iq:roster是查询联系人列表的意思，roster（花名册）
+</iq>
+
+返回的<iq>:
+<iq
+	from="jackson@gmail.com"
+	id="rr82a1z7"
+	to="jackson@gmail.com"
+	type="result"
+	<query xmlns="jabber:iq:roster">
+		<item jid="jimmy@msn.com"/>
+		<item jid="tom@hotmail.com"/>
+	</query>
+和http协议有点类似，不仅获取联系人，还可以实现注册登录
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

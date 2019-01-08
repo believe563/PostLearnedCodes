@@ -1,0 +1,10 @@
+用于数据的一些提供
+sharedPreference、文件存储、SQLite还有其他网络存储等都只是在单独的一个应用程序之中达到一个数据的共享，
+                 在其他程序操作另外一个程序的情况时就会出现问题
+                 例如读取系统的媒体库、通讯录、图片时。
+contacts storage应用程序用来提供数据，它没有UI，无法获取图标
+contacts联系人程序，用来读取数据
+
+用来提供数据的程序叫做contentProvider：其他程序等通过UI访问对数据进行增删改查，数据由contentProvider提供
+要想解析到contentProvider提供的数据的话，需要用到contentResolver
+例如data/data/com.provider.contacts

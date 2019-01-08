@@ -1,0 +1,21 @@
+使用fragment实现内容区域时，
+如果使用support-v4包：
+	1、需要继承的是FragmentActivity
+	2、FragmentManager 管理器的获得是通过getSupportFragmentManager()（使用app.Fragment包的话通过getFragmentManager()获得）
+
+
+要拿到fragmentmanager,再拿到一个事务--Fragmenttransaction (fragmentmanager.beginTransaction())\
+事务可以用来隐藏（hide）和展示（show）需要隐藏和展示的fragment，每次都要记得提交，而且一个transaction对应一个提交（commit），不能一个对应多个，所以需要创建多个FragmentTransaction
+
+fragment实现tab就没有了viewpager的左右滑动效果，好处是可以在如果fragment中有listview时，可以为每个item设置左右滑动效果，不会产生冲突
+
+使用viewpager的缺点：
+viewpager的初始化会在mainactivity中，而且每个tab所展示的内容的初始化也都写在mainactivity中
+就会造成mainactivity特别冗长，不以代码改善以及后期的维护
+
+fragment的好处：
+每个fragment内部的初始化以及事件都由它自己处理，mainactivity只是起到一个调度作用，
+这样就是所有控件各归其主，后期维护比较容易，
+fragment在做屏幕适配的时候有优势
+
+

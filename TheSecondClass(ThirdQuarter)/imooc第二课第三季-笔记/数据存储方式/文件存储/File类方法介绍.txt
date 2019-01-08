@@ -1,0 +1,31 @@
+//在内存中
+File file=this.getFilesDir();//当前应用程序默认的存储目录
+File file = this.getCacheDir();//当前应用程序默认的缓存文件的存放位置
+
+//指定权限去创建文件夹
+        /**
+         * 参数1 name
+         * 参数2 权限（mode）
+         */
+File file = getDir("fengjianghui", MODE_PRIVATE);
+三个所创建的文件都在  类似于/data/data/com.example.fengjianghui.filedemo/files（或cache或app_冯江惠等）的文件夹下
+
+File操作的权限：
+1、MODE_PRIVTE 默认操作模式，代表该文件是私有数据，只能被应用本身访问，在该模式下，写入的内容会覆盖原文件的内容
+2、MODE_APPEND 追加模式：检查文件是否存在，存在就往文件加内容，否则就创建新文件
+3、MODE_WORLD_READABLE和MODE_WORLD_WRITEABLE 用来控制其它应用是否有权限读写该文件
+4、MODE_READABLE 当前文件可以被其他应用读取
+5、MODE_WRITEABLE 当前文件可以被其它应用写入 同时也可以去读写
+
+在外存中：文件中和缓存文件中
+this.getExternalFilesDir(type);
+File file=this.getExternalCacheDir();
+
+//以上两个方法可以得到外部的存储位置，该位置的数据跟内置的使用是一样的
+        //好处是如果APP卸载了 这里面的数据也会自动清除掉
+        //如果开发者不遵守这样的规则，不把数据放入data/data/<包名>
+        //或/mnt/sdcard/Android/data/<包名>
+        //卸载之后数据将不会自动清除掉，将会造成所谓的数据垃圾
+
+
+File file = new File("/mnt/sdcard/test");是直接创建了名为test的文件，而上述物种都是到文件夹，必须在它的基础上再按这种方法创建文件到指定目录

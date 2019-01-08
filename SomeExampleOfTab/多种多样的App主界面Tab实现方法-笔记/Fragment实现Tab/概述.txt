@@ -1,0 +1,4 @@
+谷歌官方十分推荐使用fragment，
+内容区域实现tab类型的主界面
+
+优化布局层次：可以使用include、merge、ViewStub

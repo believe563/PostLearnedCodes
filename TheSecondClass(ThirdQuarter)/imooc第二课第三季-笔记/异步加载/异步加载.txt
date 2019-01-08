@@ -1,0 +1,50 @@
+异步加载：用异步的方式加载数据
+原因：提高用户体验，让用户不会感到明显的卡顿
+      耗时任务要放在非主线程去做
+异步加载的两种方式：
+                  多线程/线程池
+                  AsyncTask，它的底层也是基于线程池
+
+使用多线程的方式完成异步加载任务：
+慕课网的API提供的接口www.imooc.com/api/teacher?type=4&num=30 提供json格式的数据
+
+通过inputstream和inputStreamReader和bufferedReader将网页中的json数据变成字符串，再将字符串作为参数通过new一个jsonObject将字符串作为一个jsonObject，
+再通过jsonObject的getJsonArray将jsonObject变成jsonArray，最后将jsonArray一个一个取出来放到jsonObject中，
+再通过getString（“”）方法 将对应名字的内容取出来，存到泛型类中，将该泛型类的实例添加到list中
+
+加载json所对应的图片的时候 通过URL来获取bitmap  用异步线程的方式将URL解析出来
+
+两种方式避免listView的缓存特性所造成的listView的item混乱或错位的现象
+1、在baseAdapter中设置对应的一个Tag将一个url或一个身份验证信息与相应的item进行绑定，在真正在handler中加载的时候去判断身份验证信息是否正确
+   正确的情况下才会去验证加载图片的操作
+2、使用成员变量将对应的数据进行缓存，从而避免由于网络下载时间不确定所导致的时序上的紊乱，这种方式与在baseAdapter中使用ViewHolder的模式去缓存View的方式是一样的
+   通过成员变量将每次调用所传进方法中的一个具体的view或参数缓存起来，从而避免时序上的顺序错误
+
+
+使用AsyncTask的方式实现异步加载任务
+也需要解决时序紊乱问题
+
+
+LruCache缓存：：：解决图片重复加载的问题，使listView的滑动更加流畅，也可以节省流量：：：LruCache缓存
+Lru算法：
+       Lru：least recently used 近期最少使用算法
+       android提供了LruCache类来实现这个缓存算法
+    将内容保存在内存中，并以一定的方法来管理这些内容，保证在一定的余值之内保证能够缓存所有的内容数据，
+    超出一定范围之后将近期很少使用的内容剔除出去
+
+异步加载好之后就会更新UI线程，就回导致UI线程发生一次重绘，而如果重绘正好发生在listView滚动的时候，就会让listview卡顿一下，
+所以要提高listView异步加载时的效率问题：
+            1。让listView滑动停止之后再加载可见项
+            2。listView滑动时取消所有加载项
+ 要实现适配器的滚动监听AbsListView.onScrollListener，实现两个方法
+ 在onsrollStatechanged方法里加载图片
+
+
+总结：
+    通过使用异步加载，避免了阻塞UI线程
+    通过LruCache，将已下载图片放到内存中，以一个缓存去避免多次重复的下载。。LruCache类似于map
+   （diskLruCache是将内存中的图片保存到硬盘中，存储器中，作为一个私有化的缓存，叫做二级缓存）
+    通过判断listView的滑动状态，决定何时加载图片
+    任何控件都可以使用异步加载，所有耗时操作都可以使用异步加载
+    
+

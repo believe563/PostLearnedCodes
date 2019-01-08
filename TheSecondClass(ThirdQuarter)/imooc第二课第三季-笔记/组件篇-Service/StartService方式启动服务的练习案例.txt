@@ -1,0 +1,14 @@
+StartService方式：
+新建一个服务类（写一个类继承抽象类）
+在配置文件中注册service
+给每一个按钮添加onClick属性，并写一个onClick方法
+启动服务要首先new一个intent，中间传context和继承了service的类.class
+然后用startService------启动服务
+将service生命周期中开启服务所用到的方法都写出来（开启服务的时候用不到Ibinder这个抽象方法）
+可以在里面打印日志信息查看
+用stopService()方法可以------停止服务
+oncreate()方法只能启动一次，除非把服务销毁或停掉之后再创建才可以再次调用，这样的好处是有些初始化一次的操作可以在onCreate()里写。
+而onStartCommand()方法可以启动多次
+
+
+手机中要想看到service 在application中有一个正在运行的服务。。。否则在程序中是看不到service的

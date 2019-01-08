@@ -1,0 +1,13 @@
+ViewPager实现tab类型
+
+一个在linearlayout里的小技巧：
+当有三个布局在vertical的linearlayout里时，如果第二个布局的高度设置为match_parent,则第三个布局显示不出来，
+解决方法：将第二个布局的高度设置为0dp，再将weight属性设置为1，就可以显示第三个布局了
+
+
+让tab中的imagebutton把不能处理点击事件的消息告诉它的父布局的方法：
+每个布局当点击子控件的时候都会优先响应子控件，再响应父控件，如果子控件没有设置点击事件，但是没有明确把响应事件抛给父布局来完成的话，可能会造成不能响应事件的情况。
+在tabhost中设置一个imagebutton和一个textview，然后给textview设置点击事件，当点击文字的时候会切换到相应的子view，但是点击imagebutton的时候由于没有设置点击事件，所以imagebutton找不到点击事件也就切换不到相应的ziview，解决方法是：将imageview不能相应点击事件的消息告诉父布局（在xml布局中的imagebutton中写上clickable="false"），让父布局响应，这样因为父布局设置了对应的子view，就可以响应点击事件而切换
+事件，就不会发生上述情况
+
+代码：TabFromViewPager

@@ -1,0 +1,31 @@
+打印提示信息但不获取焦点
+Toast常用方法
+Toast.makeText(context,text,duration).show();//返回值为toast，设置默认toast，第二个参数可以写成调用string文件里的(R.string.str1等)
+显示自定义位置的toast
+Toast.makeText(context,text,duration);
+toast.setDuration(duration);//设置持续时间
+toast.setGravity(gravity,xOffset,yOffset);//设置toast的位置，xOffset,yOffset分别是相对于第一个参数的 
+toast.setText();//设置提示内容
+toast.show();//显示
+
+
+带有图片的toast
+Toast.makeText(context,text,duration);
+//将toast的getView()方法尝试转化成一个linearLayout
+LinearLayout toast_layout=(LinearLayout)toast.getView();
+ImageView iv=new ImageView(this);
+iv.setImageResource(R.id.flower);
+toast_layout.addView(iv);
+Toast.show();
+就可以显示带图片的toast
+图片默认在文字的下面，如果放在上面，要将toast_layout.addView(iv);改为toast_layout.addView(iv,0);其中0是当前imageView在layout中的索引 如果是0表示第一个控件
+
+
+完全自定义的Toast布局
+定义一个layout布局，名字叫toast_layout,里面写个textview和imageview，下面再写一个textview
+//获取toastLayout
+LayoutInflater inflater=LayoutInflater.from(this);
+View toast_view=inflater.inflate(R.layout.toast_layout,null);
+Toast toast=new Toast(this);
+toast.setView(toast_view);
+toast.show();

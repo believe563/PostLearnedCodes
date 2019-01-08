@@ -1,0 +1,2 @@
+include ':app', ':sharedpreferencedemo01', ':sqlitedemo01', ':sqlitedemo02', ':sqliteopenhelper', ':filedemo', ':filedemo1', ':contentproviderdemo1', ':contentproviderdemo2', ':broadcastreceiverdemo', ':servicedemo', ':systemservicedemo', ':gesturedetector', ':gestureoverlayviewdemo'
+include ':gestureBuilder'

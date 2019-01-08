@@ -1,0 +1,4 @@
+android的安全模型：
+当应用程序安装的时候系统会分配给他一个userid，当该应用访问其他资源比如文件的时候，
+就需要userid分配，默认情况下，任何应用创建的文件，sharedpreference，数据库都应该是私有的
+（位于data/data/<package>/files)），其他程序无法访问。除非在创建时指定了MODE_WORLD_READBLE或者MODE_WORLD_WRITEABLE

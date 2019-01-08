@@ -1,0 +1,12 @@
+显示在手机状态栏的消息
+内容包括：图标 标题 内容 时间 点击后响应
+
+实现：两个类：1、通知管理类NotificationManager 
+                 方法：显示通知：notify(id,notification)
+                       取消通知：cancel(id)
+               NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+               manager.notify(1,notification);
+               id的设置是为了提供显示和取消通知的对应关系
+
+              2、通知类 Notification 
+                 设置显示内容，设置声音提示，指示灯及震动效果

@@ -1,0 +1,35 @@
+写一个类继承抽象类ContentProvider
+将数据分享出去
+
+实现它的方法，这些方法可以实现增删改查等
+比如实现了增和删，别人要是访问数据库的话，将只能去实现增和删的功能
+ 第三方的能力全部取决于contentProvider的功能，要是contentProvider很简单，就会影响程序对数据的解析
+
+查询系统的联系人的话，相关的provider已经写好，不需要再自己去写类
+
+如果自己写程序将完全用不到provider，只不过要根据uri访问contentprovider就可以了
+
+Uri：通用资源标识符
+     安卓里的写法是：content://com.imooc.provider/music/#
+     写法的具体分段：
+                   A、content:// 表明数据受控于一个内容提供者，它从不修改，也就是schema，就是表示contentprovider的一个uri地址
+                   B、com.imooc.provider是指在AndroidManifest.xml中我们注册的provider中的android:aurhorities属性所对应的
+                      这个值是全局唯一的，要跟程序里的写成一样的值，如果在新程序里再写一个这样的值就会出错，它是全局唯一的，即url地址一样
+                   C、/music/ 指具体操作于哪个条目
+                   D、/# 具体指定到哪个条目下的哪条记录（#表示通配符）
+
+客户端其实就是通过uri访问contentprovider，uri其实就是表示我们操作的数据，以后在写的时候会经常解析uri，并从uri中获取数据
+
+
+解析uri的工具类：UriMatcher类 ：
+使用：
+    UriMatcher matcher=new UriMatcher(UriMatcher.NO_MATCH);  其中UriMatcher.NO_MATCH表示不匹配任何路径的返回码
+
+    //将自己的uri地址加进去
+      matcher.addURI("com.imooc.provider","music",1);//第三个参数如果匹配失败就返回-1，第一二个参数为B、C段的code值，，一般都写为当前的包名B段C段
+      往UriMatcher类里添加一个拼凑的Uri，可以理解为uriMatcher是uri的容器，容器里包含了我们即将可能要操作的uri，这里包含了一些逻辑的处理，尤其是code值，
+      如果通过match()方法匹配成功就返回code值，如果匹配失败就会返回NO_MATCHcode值
+    
+      matcher.match(uri);//匹配uri，首先找通过adduri()方法添加进来的uri匹配，匹配成功则返回设置的uri的code值，反之，返回一个UriMatcher.NO_MATCHER常量(-1)
+      如果匹配到了，将会去寻找所有增加过的uri地址，如果有则返回设置的uri的code值，反之，返回一个UriMatcher.NO_MATCHER常量(-1)
+     

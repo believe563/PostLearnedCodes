@@ -1,0 +1,25 @@
+1、本地服务（Local Service）
+   用在应用程序的内部
+   启动：startService();   可以通过startService或bindService两种方式启动
+   停止startService:在启动源中或者activity中调用stopService,当执行了stopService的时候就会自动回调onDestroy()方法
+               或者服务自己调用stopSelf或stopSelfResult
+   这种启动方式也称为非绑定的---unboundedService
+   这种方式的特点：启动之后的服务跟启动源就没有联系了、将无法得到服务对象
+
+   绑定：bindService 要想停掉的话要先去解绑定，然后再停掉（unBindService()）
+    这种启动方式称为绑定形式
+   这种启动方式的特点：通过Ibinder接口实例，返回一个ServiceConnection对象给启动源
+                       通过ServiceConnection对象的相关方法可以得到Service对象，然后就可以得到服务给我们返回的一些数据了，包括服务对象 参数 变量
+
+
+要在manifest中注册service
+继承contextWrapper  共同的父类ConText
+startService的生命周期：onCreate()-->onStartCommand()-->ServiceRunning(the service is stopped by itself or a client)-->onDestroy()-->ServiceShutdown  unbounded service
+bindService的生命周期：onCreate()-->onBind()-->clients are bound to service(all clients unbind by calling unbindSerice())-->onUnbind()-->onDestroy()-->Service Shut Down
+//上面的生命周期图中带括号的是方法  不带括号的是陈述
+
+
+2、远程服务（Remote Service）
+   --android系统内部的应用程序之间
+   --bind操作和远程服务的数据的操作都需要添加IBinder接口 通过接口把数据暴露出来 然后把数据提供给启动源或其他程序
+     远程服务只能通过bind去启动

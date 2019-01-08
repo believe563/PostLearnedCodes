@@ -1,0 +1,39 @@
+获得服务之后，可以辅助应用程序做很多开发上的事情
+组件的service是自己写的service
+
+后台Service在系统启动时时被SystemServer开启
+1、MountService：监听是否有SD卡安装及移除
+2、ClipboardService：提供剪切板功能
+3、PackageManagerService：提供软件包的安装移除及查看
+4、电量、网络连接状态
+
+getSystemService()来自context，但是activity间接地继承了它
+Activity的一个方法
+在方法中传入NAME->Object->服务对象
+
+
+例1、设置布局
+LayoutInflater layoutInflater = (LayoutInflater) MainActivity.this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.activity_main, null);
+        setContentView(view);
+例2、获取包名
+ActivityManager activityManager = (ActivityManager) MainActivity.this.getSystemService(ACTIVITY_SERVICE);
+                //获得当前进程的名字
+                String packageName =activityManager.getRunningTasks(1).get(0).topActivity.getPackageName();
+例3、获取和改变wifi两个状态
+                WifiManager wifiManager = (WifiManager) MainActivity.this.getSystemService(WIFI_SERVICE);
+                if (wifiManager.isWifiEnabled()) {
+                    wifiManager.setWifiEnabled(false);
+                }else {
+                    wifiManager.setWifiEnabled(true);
+                    Toast.makeText(MainActivity.this, "wifi已经打开", Toast.LENGTH_SHORT).show();
+                }
+4、系统音量
+AudioManager audioManager = (AudioManager) MainActivity.this.getSystemService(AUDIO_SERVICE);
+                //得到系统音量值
+                int maxAudio = audioManager.getStreamMaxVolume(audioManager.STREAM_SYSTEM);
+                //得到当前音量值
+                //系统音量指的是铃声音量
+                int current = audioManager.getStreamVolume(audioManager.STREAM_SYSTEM);
+                Toast.makeText(MainActivity.this, "系统的最大音量为：" + maxAudio + ",当前音量是：" + current,Toast.LENGTH_SHORT).show();
+//              

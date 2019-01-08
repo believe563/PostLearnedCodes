@@ -1,0 +1,24 @@
+使用GestureOverlayView进行识别
+1、使用gesturebuilder生成手势文件
+   //首先将从gesturebuilder生成的手势文件放到res文件夹的raw文件夹中
+        
+2、将文件加入项目
+   //如果放在assets文件夹中的话将不能被R文件索引，所以放在res文件夹的raw文件夹中
+3、创建GestureOverlayView，把它放在想要识别手势的控件上，或者将它包裹起来 
+
+ 
+拓展：画笔颜色、多画笔识别等
+GestureOverlayView在使用的时候要生成一些预先使用的手势，所以要先将手势生成，再加入程序中，才可能使用
+
+GestureOverlayView：
+    一种用于手势输入的透明覆盖层，可覆盖在其他控件的上方，也可以包含其他控件，存在3个监听器接口：
+    GestureOverlayView.OnGestureListener 手势监听器
+    GestureOverlayView.OnGesturePerformListener 手势执行监听器
+    GestureOverlayView.OnGesturingListener 手势执行中监听器
+    里面的一些属性：
+     Android:eventInterceptionEnabled定义当手势已经被识别出来时，是否拦截该手势动作
+     Android:fadeDuration当用户画完之后，手势效果淡出的时间
+     Android:fadeEnabled当用户画完之后，手势是否自动淡出
+     Android:gestureColor手势的颜色
+     Android:gestureStrokeType笔画的类型
+     Android:gestureStrokeWidth笔画的粗细

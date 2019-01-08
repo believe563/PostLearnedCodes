@@ -1,0 +1,23 @@
+android的四种数据存储方式：
+1、sharedPreference
+2、SQLite 数据库
+3、contentProvider内容提供者
+4、File 文件的形式存储 或者传到网络上
+
+sharedPreference：android自带
+    1、是一种轻型的数据存储方式
+    2、本质是基于XML文件存储key-value键值对数据
+    3、通常用来存储一些简单的配置信息（比如说窗口的状态（是否保存密码，设置登录壁纸，下次登陆是否能在其中取到）），软件的配置文件中都会放置一些软件的属性
+    只能存储int String等简单的类型，类似于windows中的ini配置文件，有很多权限 也可以全局共享 也可以程序私有，
+    xml文件的好处是android自带的虚拟机可以缓解资源的占有问题，
+
+使用：SharedPreference对象本身只能获取数据而不支持存储和修改，存储修改是通过编辑器对象Editor对象实现
+
+存储步骤：
+1、获得SharedPreference对象 通过getSharedPreference key-value的文件的名称由存在它的第一个参数指定
+2、获得SharedPreference.Editor对象
+3、通过Editor接口的putXXX方法保存key-value对，其中Xxx表示不同的数据类型
+4、通过Editor接口的commit方法保存key-value对  这里的commit类似于数据库事务中的commit
+ 
+查看所保存的数据：打开ddms 找到虚拟机，找到数据目录data，下的data(即app的数据的文件夹) 找到当前所在类的包名 下面有个shared_prefs
+                  刚刚写的sharedPreference文件都会强制性放到那个目录下

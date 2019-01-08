@@ -1,0 +1,48 @@
+android为啥需要异步任务？
+android的单线程模型：只有主线程可以对UI进行更新操作，其它线程不能直接操作UI
+                     这样做是保证了UI的稳定性和准确性，避免了多线程同时对UI进行操作，造成UI的混乱
+
+网络操作 读取文件耗时，不能总在主线程中实现  如果放在主线程中执行，
+                       就会造成后面任务的阻塞ApplicationNotResponsed异常（ANR）
+                       所以这些操作要放在非主线程中执行
+
+AsyncTask为何而生？
+1、在子线程中更新UI
+2、封装、简化异步操作
+
+实现异步任务，通常要使用线程或线程池，涉及到线程同步和线程管理，线程结束后还要通知主线程去更新UI
+
+
+构建AsyncTask子类的参数：（AsyncTask是抽象类）
+params：启动任务时输入参数的类型
+progress：后台任务执行中返回进度值的类型
+result：后台执行任务完成后返回结果的类型
+
+构建AsyncTask子类的回调方法：
+doInBackground() 必须重写，异步执行后台线程将要完成的任务，所有的耗时操作都将在这个方法中完成，参数是可变长的数组
+onPreExecute() 执行后台耗时操作前被调用，通常用户完成一些初始化操作
+onPostExecute() 当doInBackground()完成后，系统会自动调用这个方法，并将Background()方法返回的值传给该方法
+onProgressUpdate() 在doInBackground()方法中调用publishProgress()方法更新任务的执行进度后，就会触发该方法
+
+void是空类型的返回参数（在AsyncTask中）
+
+新建一个AsyncTask类，实现它的方法
+在Activity中new一个AsyncTask，并且调用asyncTask的execute方法，execute方法类似于线程中的start方法
+然后通过方法中打印log日志就可以看出它们的执行顺序
+
+加载网络图片：网络操作是一个不稳定的耗时操作  从4.0开始就被严禁放入主线程中
+              所以要在异步处理中下载图像，并在UI线程中设置图像
+              创建一个layout，其中有imageview和progressbar  android:visibility="gone"表示进度条隐藏
+              progressbar在imageview的上面
+
+自动加载progressBar的方法：通过publishProgress(i);和onProgressUpdate(Integer... values)模拟进度条
+自定义监听必须加View参数！！！
+
+在上一个异步任务加载完毕后  才能继续加载下一个异步任务，所以当前任务可能要等很长世间，
+要解决异步任务执行当前任务，就要让线程的生命周期与Activity的生命周期保持一致
+
+注意：必须在UI线程中创建AsyncTask的实例和调用AsyncTask的execute方法，
+AsyncTask的四个被重写的方法是自动调用的，不能手动调用
+每个AsyncTask只能被调用一次，多次调用就会引发异常
+只有doInBackground方法运行在其他线程，其他方法运行在主线程且都可以更新UI，
+OnPostExecute和onProgressUpdate方法承接了异步处理的操作，使得可以在异步的过程中更新UI

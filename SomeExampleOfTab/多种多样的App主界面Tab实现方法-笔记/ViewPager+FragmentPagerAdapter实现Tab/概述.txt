@@ -1,0 +1,1 @@
+既可以实现ViewPager的滑动效果，由可以将每个fragment分开管理，Fragment作为内容区域，mainactivity只作为调用

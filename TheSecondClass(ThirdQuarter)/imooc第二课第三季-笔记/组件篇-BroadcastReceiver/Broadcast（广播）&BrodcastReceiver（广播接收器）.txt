@@ -1,0 +1,104 @@
+1、Broadcast（广播）
+是一种广泛运用在应用程序之间传输信息的机制
+2、BroadcastReceiver（广播接收者）
+广播接收器：是对发送出来的广播进行过滤并且进行一些响应的组件，它是接收来自系统和应用中的广播
+
+用途：
+开机完成后系统会产生一条广播，接收了这条广播的程序会自动把程序打开，这就是开机自动启动
+网络状态发生改变时系统会产生一条广播，程序会产生相应，比如网络中断、数据需要保存等等
+电池电量改变时，系统会产生一条广播，收到广播来告知用户 百分比等等
+
+设置广播的好处：
+减少开发的工作量和开发周期（只需要去等待广播）
+作为开发者，只需掌握BroadcaReceiver
+
+使用方法：
+发送：
+1、在发送的地方指定好相关的信息,比如把信息装入一个intent对象(Action Category)
+2、通过context对象，service、activity等凡是继承了context对象的实例去执行sendBroadcast()或者sendOrderBroadcast()或sendStickyBroadcast()把广播发送出去
+接收：
+当intent发送以后，所有已经注册的BroadcastReceiver会检查注册时的intentFilter是否与发送的intent相配，
+若相配则就回调用BroadcastReceiver()方法，所以当我们定义一个BroadcastReceiver的时候，都需要实现onReceive()方法
+
+注意：BroadcastRecerver（接收器）需要注册  其次只有匹配到之后才能接收到消息
+      静态注册
+      代码注册
+
+注意！！！1、BroadcastRecerver的生命周期不到10秒钟，跟activity中的耗时操作类似，当卡了5秒之后再有操作再过5秒就会崩溃，即程序没有响应
+          2、每次广播来的时候都会创建broadcastreceiver对象，并且调用onReceive方法，执行完之后这个对象会立刻被销毁，如果没有执行完，会认为程序没有响应，
+             这时不能做比较耗时的操作，否则会出现nar
+          3、必须做耗时操作时，要把信息通过发送intent给service，由service来完成，
+             如果需要完成一项比较耗时的工作 , 应该通过发送 Intent 给 Service, 由 Service 来完成。
+          4、也不能用子线程来做，因为它的生命周期很短，子线程还没结束这个接收器可能就已经结束了
+             接收器一旦结束了，receiver所在的进程很容易就会被需要的程序杀死，因为它是空进程（没有活动组建的进程就是空进程）
+             如果宿主进程被杀死了，正在工作的子线程也会被杀死
+             
+
+广播的种类：
+1、（常用）普通广播（normal broadcasts）
+    所有监听该广播的广播接收者都可以监听到该广播
+    特点：
+        同级别接收先后是随机的（无序）
+        级别低的后收到广播
+        接收器不能截断广播的继续传播也不能处理广播
+        同级别动态注册高于静态注册-----静态注册就是在配置文件manifest中的注册，这个注册是全局有效的。
+        动态注册是在Mainactivity 的oncreate方法中注册的
+2、（常用）有序广播（ordered broadcast）
+    会按照接收者的优先级顺序接收广播，有限级别在intent-filter中的priority中声明，-1000到1000之间，值越大，优先级越高，
+    可以终止广播意图的继续传播，接收者可以篡改内容
+    特点：
+        同级别接收顺序是随机的
+        能截断广播的继续传播，高级别的广播接收器收到该广播后，可以决定把该广播是否截断
+        接收器能截断广播的继续传播，也能处理广播
+        同级别动态注册高于静态注册
+3、异步广播（粘滞性滞留广播）
+   不能将处理结果传给下一个接收者，无法终止广播
+
+
+发送普通广播：
+    直接执行sendBroadcast方法（用context）  将广播放在broadcast中
+    Intent intent=new Intent();
+                intent.putExtra("msg","这是一条普通广播");
+                //要配合action或者是catagory进行过滤
+                intent.setAction("fengjianghui_putong");
+                //发送广播
+                sendBroadcast(intent);
+    这样就发送了一条广播
+接收普通广播：
+    写一个类继承broadcastRecerver并实现它的onreceive方法
+    在onreceive中用String s=intent.getStringExtra("msg");获取广播信息
+    静态注册：
+      在manifest中要生命还要写intent-filter过滤器  name为包名+类名（继承了broadcastreceiver的类名）
+      在intent-filter里加所加的项，比如里面加了一个action 就把action的名字写上 和类里action的名字对应
+      完毕
+      在intent-filter中加上优先级 priority
+    截断广播：abortBroadcast()  普通广播中这句话没有作用
+    intentFilter的动态注册：
+        IntentFilter intentFilter = new IntentFilter("fengjianghui");
+        BroadcastReceiver2 b2=new BroadcastReceiver2();
+        registerReceiver(b2, intentFilter);
+        动态注册的缺点：如果写receiver注册的代码并没有被执行，则代码不会起到作用
+        普通广播的数据处理不可以，通过
+        //用bundle进行数据的传输
+        Bundle bundle=new Bundle();
+        bundle.putString("test","广播处理的数据");
+        //设置一个返回的值
+        setResultExtras(bundle);
+        并在低优先级的receiver中用：
+        Bundle bundle=getResultExtras(true);
+        //得到字符串的值
+        String s1 = bundle.getString("test");
+        System.out.println("得到的处理结果是："+s1);s1为null，说明并不能处理数据
+
+发送有序广播：
+    用sendOrderedBroadcast(intent，null);//第一个参数是intent，的二个参数是权限，其他部分跟普通广播一样
+            
+异步广播：一直都存在，，，
+    用sendStickyBroadcast(intent);
+    跟普通广播类似，也是不能被截断的
+   如果是动态注册了broadcastReceiver，则程序运行结束后要将其unregister（卸载）掉（可以在ondestroy方法中）
+
+
+例子：
+  改壁纸的小程序：改完壁纸后发送一条广播，回到桌面上的时侯桌面上的壁纸就是改好的壁纸了
+  播放音乐时 发一条广播给系统，然后广播通过service实现音乐的播放和暂停等

@@ -1,0 +1,13 @@
+android中的三种菜单：
+
+OptionsMenu：选择菜单
+ContextMenu：上下文菜单
+SubMenu：子菜单
+
+1、OptionsMenu：选择菜单
+   点击手机上的menu按钮的时候在手机底部显示的菜单
+   实现步骤：
+   创建选项菜单：在Activity中重写onCreateOptionsMenu()，在这里构造菜单项
+   构造菜单项的方式：代码动态添加：menu.add()
+                     通过xml设置MenuInflater.inflate();
+   设置菜单项点击事件：onOptionsItemSelected()

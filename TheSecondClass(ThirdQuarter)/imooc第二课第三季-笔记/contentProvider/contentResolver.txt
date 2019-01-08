@@ -1,0 +1,49 @@
+使用contentResolver操作contentProvider中的数据：
+当外部应用需要对contentprovider中的数据进行添加，删除，修改和查询操作时，可以使用contentResolver类来完成
+获取contentResolver：使用Activity提供的getContentResolver（）方法获取contentResolver对象
+
+contentResolver类提供了与contentProvider类相同签名的四个方法 oncreate、delete、update、query 参数名完全一致
+                                         contentResolver中的四个方法都是用于对contentProvider进行增删改查，
+                                         例如contentResolver中的insert方法用于往contentProvider添加数据
+
+实例：1、使用系统提供的contentprovider
+         --查询和增加联系人
+
+           查询id和姓名
+           //因为contentProvider是现成提供过的，并且uri也是写死的，
+        //用的时候将会非常的受限，必须根据现成提供的api进行操作
+        //查询联系人
+        //在contentProvider系统已经写过的前提下，直接写下述语句
+        ContentResolver cr = getContentResolver();
+        //执行contentResolver里的相关方法：insert、update、delete、query
+        /**
+         * 第一个参数是固定的uri书写参数，uri从contacts找，contacts类被ContactsContract类取代
+         * ContactsContract把contacts做成了自己的内部类
+         * ContactsContract.Contacts.CONTENT_URI表示要查询联系人的uri地址
+         * 第二个参数表示查询的列，是列名，要写一个数组，把要查的字符都存在第二个函数，
+         *     直接写一个数组，把要查的字段直接写上去
+         * 第三个参数查询条件selection
+         * 第四个条件selectionArgs
+         * 第五个参数是排列方式order
+         */
+        Cursor c = cr.query(ContactsContract.Contacts.CONTENT_URI, new String[]{ContactsContract.Contacts.
+                _ID, ContactsContract.Contacts.DISPLAY_NAME}, null, null, null);
+        //接下来跟sqlite的操作完全一致
+        if (c != null) {
+            while (c.moveToNext()) {
+                String[] columnNames = c.getColumnNames();
+                int id=c.getInt(c.getColumnIndex("_id"));//写成_id有一定的风险性，如果_id写错了将会非常麻烦
+                //可以直接写成ContactsContract.Contacts._ID
+                Log.i("info", "id:"+id);
+                Log.i("info", "name" + c.getColumnIndex("display_name"));
+                //display_name与ContactsContract.Contacts.DISPLAY_NAME效果是一样的，display_name必须要翻过数据库才会知道
+            }
+        }
+      
+       查询联系人电话号码：必须根据id去查，而且它不能像查id和姓名一样再查一遍，因为这样会导致顺序错误
+                           根据Phone.CONTENT_URI去获得uri，通过query语句查询
+
+       系统提供的contentProvider有：查询联系人、增加联系人、短信的读取、通话记录、多媒体（图片视频音频）。。。
+
+      2、使用自定义的contentProvider  
+         会比较麻烦 使用也比较少 除非是企业级的应用程序，，，实际意义不是很大

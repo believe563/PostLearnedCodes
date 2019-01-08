@@ -1,0 +1,40 @@
+实现手势识别：
+1、GestureDetector（手势识别器）
+2、GestureOverlayView
+
+1、使用GestureDetector进行手势识别：
+   交互原理：
+     1、触屏一刹那，触发MotionEvent事件
+     2、这个事件被OnTouchListener监听，在onTouch()中获得MotionEvent对象
+     3、通过GestureDetector对象(gesturedetector.ontouchevent())转发MotionEvent对象至OnGestureListener
+     4、OnGestureListener获得该对象，根据该对象封装的信息做出合适的反馈
+    名词解释：
+    MotionEvent：1、封装手势、触摸笔、轨迹球等动作事件，2、内部封装用于记录横轴和纵轴坐标的属性x和y
+    GestureDetector：识别各种手势
+                     按下、移动、抬起等
+                     重载onTouch或者设置setOnTouchListener
+                     可以把它实例化到touch事件中
+                    工作原理：
+                            1、当接收到用户触摸消息时，将消息交给GestureDetector加工
+                            2、通过设置监听器获得GestureDetector处理后的手势
+                    GestureDetector提供两个监听器
+                           1、onGestureListener：处理单击类消息
+                           2、onDoubleTapListener：处理双击类消息
+    OnGestureListener接口：1、手势交互的监听接口，其提供多个抽象方法，
+                           2、根据GestureDetector的手势识别结果调用相对应的方法
+                         方法有：单击：onDown(MotionEvent e)
+                                 抬起：onSingleTapUp(MotionEvent e)
+                                 短按：onShowPress(MotionEvent e)
+                                 长按：onLongPress(MotionEvent e)
+                                 滚动：onScroll(MotionEvent e1,MotionEvent e2,float ditanceX,float distanceY)
+                                 滑动：onFling(MotionEvent e1,MotionEvent e2,float velocityX,float velovityY)
+    onDoubleTapListener接口：
+                         方法有：双击：onDoubleTap(MotionEvent e)
+                                 双击按下和抬起各触发一次：onDoubleTapEvent(MotionEvent e)
+                                 单击确认：onSingleTapConfirmed(MotionEvent e)很快的按下并抬起，但并不连续点击第二下
+
+    SimpleOnGestureListener接口已经实现了上述两个接口，SimpleOnGestureListener继承GestureDetector：
+          进行手势识别，继承SimpleOnGestureListener
+                        重载感兴趣的手势
+
+  

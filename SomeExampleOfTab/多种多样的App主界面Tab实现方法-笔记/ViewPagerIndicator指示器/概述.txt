@@ -1,0 +1,4 @@
+主界面还是用ViewPager+FragmentPagerAdapter实现
+
+ViewPagerIndicator的类在github上搜 viewpagerLibrary可以搜到
+viewpagerindicator指示器 省去了我们在底部写tab的那些linearlayout等那些步骤

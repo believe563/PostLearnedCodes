@@ -1,0 +1,30 @@
+windows系统中右键某个文件弹出的菜单就是上下文菜单
+android系统下 是长按弹出的菜单
+
+注意：要长按！！！
+
+上下文菜单的组成：
+图标 标题
+菜单项
+菜单项
+菜单项
+菜单项
+菜单项
+菜单项
+菜单项
+
+点击菜单项有点击响应事件
+
+一个activity值对应一个选项菜单OptionsMenu
+一个ContextMenu对应一个view
+
+ContextMenu创建方法：
+首先给View注册上下文菜单registerForContextMenu()
+添加上下文菜单内容onCreateContextMenu()
+
+添加菜单项的两种方法：代码动态添加和xml添加
+                      动态添加是menu.add()方法
+                      静态添加是在menu菜单再多写几个item，然后在代码段里用menuInflater inflater=getMenuInflater();
+                              然后是inflater.inflate()这样就将菜单项添加进去了
+
+设置菜单点击后响应事件onContextItemSelected()

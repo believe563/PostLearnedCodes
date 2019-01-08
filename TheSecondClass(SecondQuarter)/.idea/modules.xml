@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DialogDemo/DialogDemo.iml" filepath="$PROJECT_DIR$/DialogDemo/DialogDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TheSecondClass(SecondQuarter).iml" filepath="$PROJECT_DIR$/TheSecondClass(SecondQuarter).iml" />
+      <module fileurl="file://$PROJECT_DIR$/contextmenudemo/contextmenudemo.iml" filepath="$PROJECT_DIR$/contextmenudemo/contextmenudemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notificationdemo/notificationdemo.iml" filepath="$PROJECT_DIR$/notificationdemo/notificationdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/optionsmenudemo/optionsmenudemo.iml" filepath="$PROJECT_DIR$/optionsmenudemo/optionsmenudemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/submenudemo/submenudemo.iml" filepath="$PROJECT_DIR$/submenudemo/submenudemo.iml" />
+    </modules>
+  </component>
+</project>

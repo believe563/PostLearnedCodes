@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/broadcastreceiverdemo" />
+            <option value="$PROJECT_DIR$/contentproviderdemo1" />
+            <option value="$PROJECT_DIR$/contentproviderdemo2" />
+            <option value="$PROJECT_DIR$/filedemo" />
+            <option value="$PROJECT_DIR$/filedemo1" />
+            <option value="$PROJECT_DIR$/gestureBuilder" />
+            <option value="$PROJECT_DIR$/gesturedetector" />
+            <option value="$PROJECT_DIR$/gestureoverlayviewdemo" />
+            <option value="$PROJECT_DIR$/servicedemo" />
+            <option value="$PROJECT_DIR$/sharedpreferencedemo01" />
+            <option value="$PROJECT_DIR$/sqlitedemo01" />
+            <option value="$PROJECT_DIR$/sqlitedemo02" />
+            <option value="$PROJECT_DIR$/sqliteopenhelper" />
+            <option value="$PROJECT_DIR$/systemservicedemo" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

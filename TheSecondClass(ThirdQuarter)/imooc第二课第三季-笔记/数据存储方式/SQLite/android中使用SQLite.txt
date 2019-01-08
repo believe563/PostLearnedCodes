@@ -1,0 +1,54 @@
+1、SQLiteDatabase：
+2、SQLiteOpenHelper：
+
+1、SQLiteDatabase：
+   提供一些管理SQLite数据库的类
+                 创建、删除、执行SQL命令，并执行其他常见的数据库管理任务的方法
+   每个数据库的名字是唯一的
+   SQLiteDatabase db=openOrCreateDatabase("fjh.db",MODE_PRIVATE,null);//创建数据库，前面是名字，后面是访问的模式和实例化的cursor游标
+
+   常用方法：
+     db.execSQL(sql)//执行任何SQL语句，里面是sql语句
+     db.insert(table,nullColumnHack,values)参数依次是表名、空列的默认值、一个hashmap
+     //可以用数据库管理工具premium navicat查看所存入的数据
+     db.delete(table,whereClause,whereArgs)参数依次是表名、删除的条件、删除条件的数组值（这个参数如果第二个参数写的完整的话就可以不要了）返回值是要删除的行数
+     db.update(table,values,whereClause,whereArgs)参数依次为表名、底层是包括键值对的hashmap的值、要更新的字段、
+     db.query(table,columns,selection,selectionArgs,groupBy,having,orderBy)参数依次是表名、查询的列名组成的数组、条件值（sql里的where）、另一个条件（数组的形式）
+                                                                                     分组、分组的条件、排序、分页查询的限制
+     db.rawQuery(sql,selectionArgs)根据sql语句去查询，第二个参数是条件，，是一个执行sql语句的query
+
+DDMS中data目录的作用：data目录是所有app的数据目录，app目录是用户安装的所有app，内层app目录是当前以每个项目的包名命名的文件夹
+                      包括第三方类库、数据库、sharedpreference，导出：选中，右上角有一个存盘的图标
+
+Cursor：
+  是android查询数据后得到的一个管理数据集合的类，正常情况下，如果查询得到的数据量较小时不会有内存问题，而且虚拟机能够保证Cursor最终会被释放掉
+  然而如果Cursor的数据量特别大，特别是里面有Blob信息时，应该保证Cursor占用的内存被及时释放掉，而不是等待GC来处理。而且android明显是侵向于编程者
+  手动的将cursor close掉，因为在源代码中我们发现，如果等到垃圾回收器来回收时，也就是如果不手动关闭，系统会报错，会给用户以错误提示
+ cursor：游标接口，提供了遍历查询结果的方法，如移动指针方法move()，获得列值得方法getString()等常用方法
+       getCount()总记录条数
+       isFirst()判断是否第一条记录
+       isLast()判断是否最后一条记录
+       moveToFirst()移动到第一条记录
+       moveToLast()移动到最后一条记录
+       move(int offset)移动到指定记录
+       moveToNext()移动到下一条记录
+       moveToPrevious()移动到上一条记录
+       getColumnIndexOrThrow(String columnName)根据列名获得列索引
+       getInt(int columnIndex)获得指定列索引的int类型值
+       getString(int columnIndex)获得指定列索引的String类型值
+
+ 以上是编写sql语句操作数据库
+ 以下是使用内置函数操作数据库
+
+ ContentValues：
+ 这个类用来存储一组可以被ContentResolver处理的值
+ ContentValues values=new ContentValues();//类似hashMap key-values
+ values.put("name","张三");
+ 执行对应的sql操作
+ 可以不用写那些复杂的数据库操作语句而直接插入数据，可以提高效率 建议用这种方法
+用后记得把cursor和SQLitedatabase close()掉
+
+2、SQLiteOpenHelper
+  是SQLiteDatabase的帮助类
+  见SQLiteOpenHelper文本文档
+  

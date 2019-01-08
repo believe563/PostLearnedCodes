@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TheSecondClass(ThirdQuarter).iml" filepath="$PROJECT_DIR$/TheSecondClass(ThirdQuarter).iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/broadcastreceiverdemo/broadcastreceiverdemo.iml" filepath="$PROJECT_DIR$/broadcastreceiverdemo/broadcastreceiverdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/contentproviderdemo1/contentproviderdemo1.iml" filepath="$PROJECT_DIR$/contentproviderdemo1/contentproviderdemo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/contentproviderdemo2/contentproviderdemo2.iml" filepath="$PROJECT_DIR$/contentproviderdemo2/contentproviderdemo2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/filedemo/filedemo.iml" filepath="$PROJECT_DIR$/filedemo/filedemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/filedemo1/filedemo1.iml" filepath="$PROJECT_DIR$/filedemo1/filedemo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gestureBuilder/gestureBuilder.iml" filepath="$PROJECT_DIR$/gestureBuilder/gestureBuilder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gesturedetector/gesturedetector.iml" filepath="$PROJECT_DIR$/gesturedetector/gesturedetector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gestureoverlayviewdemo/gestureoverlayviewdemo.iml" filepath="$PROJECT_DIR$/gestureoverlayviewdemo/gestureoverlayviewdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servicedemo/servicedemo.iml" filepath="$PROJECT_DIR$/servicedemo/servicedemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sharedpreferencedemo01/sharedpreferencedemo01.iml" filepath="$PROJECT_DIR$/sharedpreferencedemo01/sharedpreferencedemo01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sqlitedemo01/sqlitedemo01.iml" filepath="$PROJECT_DIR$/sqlitedemo01/sqlitedemo01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sqlitedemo02/sqlitedemo02.iml" filepath="$PROJECT_DIR$/sqlitedemo02/sqlitedemo02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sqliteopenhelper/sqliteopenhelper.iml" filepath="$PROJECT_DIR$/sqliteopenhelper/sqliteopenhelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/systemservicedemo/systemservicedemo.iml" filepath="$PROJECT_DIR$/systemservicedemo/systemservicedemo.iml" />
+    </modules>
+  </component>
+</project>

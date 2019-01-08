@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ContentProviderDemo2</string>
+    <string name="action_settings">Settings</string>
+</resources>

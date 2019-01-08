@@ -1,0 +1,14 @@
+android中文件存储的操作：
+首先通过File类创建一些文件
+其次通过I/O流进行文件的读与写
+File file = new File("/mnt/sdcard/test");//这个方法都是存到storage的sdcard目录下
+        //如果是外置目录的话sdcard要写成extsdcard
+        if (!file.exists()){//如果文件不存在就要重新创建
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+            Toast.makeText(MainActivity.this, "文件已经存在",Toast.LENGTH_SHORT).show();
+        }

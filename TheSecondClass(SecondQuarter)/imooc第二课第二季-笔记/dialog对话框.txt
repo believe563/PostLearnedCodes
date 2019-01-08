@@ -1,0 +1,26 @@
+弹出的窗口，用于提示信息，提示用户输入信息，确认信息，或显示某种状态，如下载进度，退出提示等，
+一般情况下，用户要与对话框进行交互，然后返回到被遮盖的界面以继续进行当前的应用程序
+
+几种dialog：
+确认对话框，
+单选按钮对话框
+多选按钮对话框
+列表对话框
+
+AlertDialog常用方法：
+要创建一个AlertDialog，就要用到AlertDialog.Builder中的create()方法，然后调用show()方法就可以显示对话框
+AlertDialog.Builder有一系列的方法，
+setTitle:为对话框设置标题
+setIcon:为对话框设置图标
+setMessage:为对话框设置内容
+setView:给对话框设置自定义样式
+setItems:设置对话框要显示的一个list,一般用于显示几个命令时
+setMultiChoiceItems:用来设置对话框显示一系列的复选框
+setSingleChoiceItems:设置单选按钮
+setNeutralButton:普通按钮
+setPositiveButton:给对话框添加“确认”按钮
+setNegativeButton:给对话框添加“取消”按钮
+
+自定义对话框要先用layoutinflater创建一个view，再用alertDialog.builder的setView方法将这个自定义的View设置进去，然后就可以显示自己的view了
+
+重命名之后出现错误  只要自动同步一下就好了  点击出现的async now  或者右击该module 然后选择syncronize “module名”

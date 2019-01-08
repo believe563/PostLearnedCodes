@@ -1,0 +1,36 @@
+bind方式启动：
+新建一个类MyBindService继承service 并重写iBind方法
+注册service
+重写onCreate()\onBind()\unBindService()\onDestroy()方法
+绑定服务：
+写一个intent作为bindService()(启动bindService的方法)的参数，
+bindService中有三个参数，第一个是intent，第二个是connection，可以写null，第三个是flag，作用是为了让服务创建
+解绑定服务：
+unbindService()有一个参数是connection，因为上面绑定的时候就没有写，所以直接写null就可以
+
+unbind()方法只能unbind一次，如果多次unbind将会报错(服务的解绑定异常)
+直接退出会报没有解绑定的错，退出时要先解绑定，否则要出严重的问题
+
+
+如何从绑定式的服务中得到一些回传数据：
+（前面写过）通过IBinder接口实例，  在继承了Service的类中的onbind方法返回的是IBinder的参数
+Ibinder接口里面包含我们需要的数据，而且ibinder接口不能直接去用，
+android中已经写好了一个Bind类继承了Ibinder接口，只需要重写一个类继承Bind类，把它作为参数返回即可
+可以返回一个服务对象的参数context，这样就可以使用服务里面的东西了（要写一个返回值为Service的方法 ）return MyBindService.this
+然后在onBind方法中写一个new MyBind()就可以认为数据已经返回了
+可以在service类中写几个模拟的方法来验证一下  play stop next previous pause等
+
+在Activity中得到服务的状态：（通过ServiceConnection）
+要实现一个ServiceConnection的对象，实现客户端和Service的绑定  
+ServicceConnection是一种接口，只需要创建一个ServiceConnection的实现类，或者直接实现ServiceConnection的匿名实例(中间有onServiceDisconnected和onServiceConnected方法）
+onServiceDisconnected的作用是当启动源跟service的连接以外丢失的时候会调用这个方法，比如当service崩溃了或被强行杀死了的时候，但是被正常解绑定了是不会调用这个方法的
+onServiceConnected的作用是当启动源跟service成功连接之后会自动调用这个方法
+在onServiceConnected中得到服务对象 这个方法的参数第一个是组件名，第二个是Ibinder对象，将它强转为实例化的对象并调用getService方法得到binderService对象
+然后可以直接使用bindservice里面的方法  比如刚刚自己写的play等方法
+
+注意！！！
+绑定serviceConnection的时候要把这个对象放到bindService的参数中！
+
+startService和bindService两个方法写在一起可以，但是startService停止的时候要调用stop，解绑定的时候要先去停止服务，再去解绑定服务
+为了防止不出错，要在activity中写一个ondestroy方法，即在activity销毁的时候要stopService(),unBindService()，不然的话会出问题
+

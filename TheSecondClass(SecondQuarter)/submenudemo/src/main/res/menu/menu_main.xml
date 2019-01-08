@@ -1,0 +1,47 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.fengjianghui.personal.submenudemo.MainActivity">
+    <item
+        android:id="@+id/file"
+        android:orderInCategory="100"
+        android:title="文件"
+        app:showAsAction="never">
+        <menu>
+            <item android:id="@+id/new_file"
+                  android:showAsAction="never"
+                  android:title="新建"
+                  tools:ignore="AppCompatResource"/>
+            <item android:id="@+id/new_open"
+                  android:showAsAction="never"
+                  android:title="打开"
+                  tools:ignore="AppCompatResource"/>
+            <item android:id="@+id/new_save"
+                  android:showAsAction="never"
+                  android:title="保存"
+                  tools:ignore="AppCompatResource"/>
+
+        </menu>
+    </item>
+    <item
+        android:id="@+id/edit"
+        android:orderInCategory="100"
+        android:title="编辑"
+        app:showAsAction="never">
+        <menu>
+            <item android:id="@+id/new_copy"
+                  android:showAsAction="never"
+                  android:title="复制"
+                  tools:ignore="AppCompatResource"/>
+            <item android:id="@+id/new_paste"
+                  android:showAsAction="never"
+                  android:title="粘贴"
+                  tools:ignore="AppCompatResource"/>
+            <item android:id="@+id/new_cut"
+                  android:showAsAction="never"
+                  android:title="剪切"
+                  tools:ignore="AppCompatResource"/>
+
+        </menu>
+    </item>
+</menu>
